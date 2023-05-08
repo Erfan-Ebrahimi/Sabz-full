@@ -1,0 +1,38 @@
+@import './variables';
+@import './reset.css';
+
+
+
+@font-face {
+    font-family: lale;
+    src: url(../../assets/fonts/lale.ttf);
+}    
+@font-face {
+    font-family: nazanin;
+    src: url(../../assets/fonts/nazanin.ttf);
+}    
+@font-face {
+    font-family: vazir;
+    src: url(../../assets/fonts/Vazir.ttf);
+}
+@font-face {
+    font-family: sam1;
+    src: url(../../assets/fonts/sam1.ttf);
+}
+@font-face {
+    font-family: sam2;
+    src: url(../../assets/fonts/sam2.ttf);
+}
+@font-face {
+    font-family: iranSansNumber;
+    src: url(../../assets/fonts/IRANSansNumFa.ttf);
+}
+body{
+    background: red;
+    display: flex;
+    direction: rtl;
+}
+* , body , html{
+    font-family: vazir;
+} 
+
