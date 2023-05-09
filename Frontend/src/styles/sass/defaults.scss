@@ -1,7 +1,4 @@
-@import './variables';
-@import './reset.css';
-
-
+@import './variables.scss';
 
 @font-face {
     font-family: lale;
@@ -27,12 +24,41 @@
     font-family: iranSansNumber;
     src: url(../../assets/fonts/IRANSansNumFa.ttf);
 }
-body{
-    background: red;
-    display: flex;
-    direction: rtl;
-}
-* , body , html{
-    font-family: vazir;
-} 
 
+/* Start Default Styles */
+
+html {
+    box-sizing: border-box;
+    font-size: 62.5%;
+  }
+  
+  body {
+    line-height: 1.6;
+    font-size: 1.6rem;
+    font-family: vazir;
+    direction: rtl;
+  }
+  
+  *,
+  *::after,
+  *::before {
+    outline: none;
+    box-sizing: inherit;
+  }
+  
+  a {
+    text-decoration: none;
+    color: $white1;
+    transition: all 400ms ease;
+  }
+  
+  a:hover {
+    color: #1e83f0;
+  }
+  
+  i {
+    user-select: none;
+  }
+  
+  /* Finish Default Styles */
+  

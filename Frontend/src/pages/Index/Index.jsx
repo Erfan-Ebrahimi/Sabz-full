@@ -1,5 +1,5 @@
 // ------------COMPONENTS-------------------//
-import Header from '../../components/Header/Header/Header';
+import Header from '../../components/Header/Header';
 
 
 import './Index.scss';
