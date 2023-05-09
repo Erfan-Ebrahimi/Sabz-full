@@ -2,12 +2,12 @@
 
 
 .landing {
-    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(../images/background_landing.jfif) no-repeat center center;
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(../../assets/images/background_landing.jfif) no-repeat center center;
     background-size: cover;
     background-attachment: fixed;
     text-align: center;
     padding: 9rem 0;
-    color: var(--white-color);
+    color: $white1;
   }
   
   .landing__title {
@@ -35,7 +35,7 @@
   
   .landing__searchbar-btn {
     border: none;
-    background-color: var(--primary-color);
+    background-color: $green1;
     position: absolute;
     left: 1rem;
     width: 6rem;
@@ -46,7 +46,7 @@
   
   .landing__searchbar-icon {
     font-size: 2.8rem;
-    color: var(--white-color);
+    color: $white1;
   }
   
   .landing-status {
@@ -63,7 +63,7 @@
   }
   
   .landing-status__item svg {
-    fill: var(--white-color);
+    fill: $white1;
   }
   
   .landing-status__count {
