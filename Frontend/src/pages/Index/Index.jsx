@@ -1,8 +1,14 @@
-import React from 'react'
+// ------------COMPONENTS-------------------//
+import Header from '../../components/Header/Header/Header';
+
+
+import './Index.scss';
 
 const Index = () => {
   return (
-    <div>Index</div>
+    <div>
+      <Header/>
+    </div>
   )
 }
 
