@@ -1,6 +1,7 @@
 // ------------COMPONENTS-------------------//
 import Topbar from '../Topbar/Topbar'
 import Navbar from '../Navbar/Navbar'
+import Landing from '../Landing/Landing';
 
 
 import './Header.scss';
@@ -8,9 +9,10 @@ import './Header.scss';
 
 const Header = () => {
   return (
-    <header class="header">
+    <header className="header">
       <Topbar/>
-      <Navbar/>      
+      <Navbar/>  
+      <Landing/>    
     </header>
   )
 }
