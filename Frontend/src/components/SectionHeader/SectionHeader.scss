@@ -1,0 +1,36 @@
+@import '../../styles/sass/variables.scss';
+
+.section-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  .section-header__right {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .section-header__text {
+    color: #9c9c9c;
+    font-size: 1.5rem;
+  }
+  
+  .section-header__link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: $white1;
+    background-color: $green1;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+  }
+  
+  .section-header__link:hover {
+    color: $white1;
+  }
+  
+  .section-header__icon {
+    margin-right: 0.5rem;
+    font-size: 1.5rem;
+  }
