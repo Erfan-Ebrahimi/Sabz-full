@@ -1,6 +1,7 @@
 // ------------COMPONENTS-------------------//
 import AboutUs from '../../components/AboutUs/AboutUs';
 import Header from '../../components/Header/Header';
+import LastArticles from '../../components/LastArticles/LastArticles';
 import LastCourses from '../../components/LastCourses/LastCourses';
 import PopularCourses from '../../components/PopularCourses/PopularCourses';
 import PresellCourses from '../../components/PresellCourses/PresellCourses';
@@ -16,6 +17,7 @@ const Index = () => {
       <AboutUs/>
       <PopularCourses/>
       <PresellCourses/>
+      <LastArticles/>
     </>
   )
 }
