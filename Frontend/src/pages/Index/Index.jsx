@@ -1,5 +1,6 @@
 // ------------COMPONENTS-------------------//
 import AboutUs from '../../components/AboutUs/AboutUs';
+import Footer from '../../components/Footer/Footer';
 import Header from '../../components/Header/Header';
 import LastArticles from '../../components/LastArticles/LastArticles';
 import LastCourses from '../../components/LastCourses/LastCourses';
@@ -18,6 +19,7 @@ const Index = () => {
       <PopularCourses/>
       <PresellCourses/>
       <LastArticles/>
+      <Footer/>
     </>
   )
 }
