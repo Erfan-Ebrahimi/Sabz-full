@@ -57,14 +57,14 @@ const CourseInfo = () => {
           </div>
         </section>
 
-        <main class="main">
-          <div class="container">
-            <div class="row">
-              <div class="col-8">
-                <div class="course">
+        <main className="main">
+          <div className="container">
+            <div className="row">
+              <div className="col-8">
+                <div className="course">
                   {/* Start Course Boxes  */}
-                  <div class="course-boxes">
-                    <div class="row">
+                  <div className="course-boxes">
+                    <div className="row">
                       <CourseDetailBox 
                         title='وضعیت دوره' 
                         text='به اتمام رسیده'
@@ -97,6 +97,28 @@ const CourseInfo = () => {
                       />
                     </div>
                   </div>
+                  {/* Start Course Progress */}
+                  <div className="course-progress">
+                    <div className="course-progress__header">
+                      <i className="fas fa-chart-line course-progress__icon"></i>
+                      <span className="course-progress__title">
+                        درصد پیشرفت دوره: 100%
+                      </span>
+                    </div>
+                    <div className="progress course-progress__bar">
+                      <div 
+                        className="progress-bar progress-bar-striped progress-bar-animated" 
+                        role="progressbar" 
+                        aria-label="Animated striped example" 
+                        aria-valuenow="75" 
+                        aria-valuemin="0" 
+                        aria-valuemax="100" 
+                        style={{width: '75%'}}
+                      >
+                      </div>
+                    </div>
+                  </div>
+                  {/* Finish Course Progress  */}
                 </div>
               </div>
             </div>
