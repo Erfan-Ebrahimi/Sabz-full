@@ -1,4 +1,4 @@
-
+@import './variables.scss';
 /* Start Helper Classes */
 
 .title {
@@ -15,7 +15,7 @@
     right: -1rem;
     width: 0.4rem;
     height: 4.4rem;
-    background-color: var(--primary-color);
+    background-color: $green1;
     border-radius: 5rem;
     transform: rotate(8deg);
   }

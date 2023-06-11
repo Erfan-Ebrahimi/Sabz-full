@@ -1,4 +1,5 @@
 import './Navbar.scss';
+import logo from '../../assets/images/logo/logo.png';
 
 const Navbar = () => {
   return (
@@ -6,7 +7,7 @@ const Navbar = () => {
         <div className="container-fluid">
           <div className="main-header__content">
             <div className="main-header__right">
-              <img src="images/logo/Logo.png" className="main-header__logo" alt="لوگوی سبزلرن" />
+              <img src={logo} className="main-header__logo" alt="لوگوی سبزلرن" />
 
               <ul className="main-header__menu">
                 <li className="main-header__item">
