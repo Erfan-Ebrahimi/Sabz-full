@@ -6,6 +6,7 @@ import Topbar from '../../components/Topbar/Topbar';
 import Breadcrumb from '../../components/Breadcrumb/Breadcrumb';
 
 import img from '../../assets/images/courses/jango.png';
+import CourseDetailBox from '../../components/CourseDetailBox/CourseDetailBox';
 
 const CourseInfo = () => {
   return (
@@ -55,6 +56,52 @@ const CourseInfo = () => {
             </div>
           </div>
         </section>
+
+        <main class="main">
+          <div class="container">
+            <div class="row">
+              <div class="col-8">
+                <div class="course">
+                  {/* Start Course Boxes  */}
+                  <div class="course-boxes">
+                    <div class="row">
+                      <CourseDetailBox 
+                        title='وضعیت دوره' 
+                        text='به اتمام رسیده'
+                        icon='graduation-cap'
+                      />
+                      <CourseDetailBox 
+                        title='مدت زمان دوره' 
+                        text='19 ساعت' 
+                        icon='clock'
+                      />
+                      <CourseDetailBox 
+                        title='آخرین بروزرسانی' 
+                        text='1401/03/02'
+                        icon='calendar-alt'
+                      />
+                      <CourseDetailBox 
+                        title='روش پشتیبانی' 
+                        text='آنلاین' 
+                        icon='user-alt'
+                      />
+                      <CourseDetailBox 
+                        title='پیش نیاز' 
+                        text='HTML CSS' 
+                        icon='info-circle'
+                      />
+                      <CourseDetailBox 
+                        title='نوع مشاهده'
+                        text='ضبط شده / آنلاین'
+                        icon='play'
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </main>
 
 
         <Footer/>
