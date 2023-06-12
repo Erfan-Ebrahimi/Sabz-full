@@ -61,6 +61,7 @@ const CourseInfo = () => {
         <main className="main">
           <div className="container">
             <div className="row">
+
               <div className="col-8">
                 <div className="course">
                   {/* Start Course Boxes  */}
@@ -240,31 +241,133 @@ const CourseInfo = () => {
                   {/* <!-- Finish Introduction --> */}
 
                   {/*  Start Teacher Details */}
-
-                  <div class="techer-details">
-                    <div class="techer-details__header">
-                      <div class="techer-details__header-right">
-                        <img src={img} alt="Teacher Profile" class="techer-details__header-img" />
-                        <div class="techer-details__header-titles">
-                          <a href="#" class="techer-details__header-link">محمدامین سعیدی راد</a>
-                          <span class="techer-details__header-skill">
+                  <div className="techer-details">
+                    <div className="techer-details__header">
+                      <div className="techer-details__header-right">
+                        <img src={img} alt="Teacher Profile" className="techer-details__header-img" />
+                        <div className="techer-details__header-titles">
+                          <a href="#" className="techer-details__header-link">محمدامین سعیدی راد</a>
+                          <span className="techer-details__header-skill">
                             Front End & Back End Developer
                           </span>
                         </div>
                       </div>
-                      <div class="techer-details__header-left">
-                        <i class="fas fa-chalkboard-teacher techer-details__header-icon"></i>
-                        <span class="techer-details__header-name">مدرس</span>
+                      <div className="techer-details__header-left">
+                        <i className="fas fa-chalkboard-teacher techer-details__header-icon"></i>
+                        <span className="techer-details__header-name">مدرس</span>
                       </div>
                     </div>
-                    <p class="techer-details__footer">
+                    <p className="techer-details__footer">
                       اول از همه برنامه نویسی اندروید رو شروع کردم و نزدیک به 2 سال با زبان جاوا اندروید کار میکردم .بعد تصمیم گرفتم در زمینه وب فعالیت داشته باشم.و..
                     </p>
                   </div>
-
-              {/* Finish Teacher Details*/}
+                  {/* Finish Teacher Details*/}
                 </div>
               </div>
+
+              <div className="col-4">
+                <div className="courses-info">
+                  <div className="course-info">
+                    <div className="course-info__register">
+                      <span className="course-info__register-title">
+                        <i className="fas fa-graduation-cap course-info__register-icon"></i>
+                        &nbsp; دانشجوی دوره هستید&nbsp;
+                      </span>
+                    </div>
+                  </div>
+                  <div className="course-info">
+                    <div className="course-info__total">
+                      <div className="course-info__top">
+                        <div className="course-info__total-sale">
+                          <i className="fas fa-user-graduate course-info__total-sale-icon"></i>
+                          <span className="course-info__total-sale-text">
+                            تعداد دانشجو :
+                          </span>
+                          <span className="course-info__total-sale-number">
+                            178
+                          </span>
+                        </div>
+                      </div>
+                      <div className="course-info__bottom">
+                        <div className="course-info__total-comment">
+                          <i className="far fa-comments course-info__total-comment-icon"></i>
+                          <span className="course-info__total-comment-text">
+                            67 دیدگاه
+                          </span>
+                        </div>
+                        <div className="course-info__total-view">
+                          <i className="far fa-eye course-info__total-view-icon"></i>
+                          <span className="course-info__total-view-text">
+                            14,234 بازدید
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="course-info">
+                    <div className="course-info__header-short-url">
+                      <i className="fas fa-link course-info__short-url-icon"></i>
+                      <span className="course-info__short-url-text">
+                        لینک کوتاه
+                      </span>
+                    </div>
+                    <span className="course-info__short-url">
+                      https://sabzlearn.ir/?p=117472
+                    </span>
+                  </div>
+                  <div className="course-info">
+                    <span className="course-info__topic-title">
+                      سرفصل های دوره
+                    </span>
+                    <span className="course-info__topic-text">
+                      برای مشاهده و یا دانلود دوره روی کلمه
+                      <a href="#" style={{color: 'blue', fontWeight: 'bold'}}>
+                      &nbsp; لینک &nbsp;
+                      </a>
+                      کلیک کنید&nbsp;
+                    </span>
+                  </div>
+                  <div className="course-info">
+                    <span className="course-info__courses-title">دوره های مرتبط</span>
+                    <ul className="course-info__courses-list">
+                      <li className="course-info__courses-list-item">
+                        <a href="#" className="course-info__courses-link">
+                          <img src={img} alt="Course Cover" className="course-info__courses-img" />
+                          <span className="course-info__courses-text">
+                            پروژه های تخصصی با جاوا اسکریپت
+                          </span>
+                        </a>
+                      </li>
+                      <li className="course-info__courses-list-item">
+                        <a href="#" className="course-info__courses-link">
+                          <img src={img} alt="Course Cover" className="course-info__courses-img" />
+                          <span className="course-info__courses-text">
+                            تعیین قیمت پروژه های فریلنسری
+                          </span>
+                        </a>
+                      </li>
+                      <li className="course-info__courses-list-item">
+                        <a href="#" className="course-info__courses-link">
+                          <img src={img} alt="Course Cover" className="course-info__courses-img" />
+                          <span className="course-info__courses-text">
+                            دوره Api نویسی
+                          </span>
+                        </a>
+                      </li>
+                      <li className="course-info__courses-list-item">
+                        <a href="#" className="course-info__courses-link">
+                          <img src={img} alt="Course Cover" className="course-info__courses-img" />
+                          <span className="course-info__courses-text">
+                            متخصص جنگو
+                          </span>
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+              
             </div>
           </div>
         </main>
