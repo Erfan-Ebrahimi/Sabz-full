@@ -4,6 +4,7 @@ import Footer from '../../components/Footer/Footer';
 import Navbar from '../../components/Navbar/Navbar';
 import Topbar from '../../components/Topbar/Topbar';
 import Breadcrumb from '../../components/Breadcrumb/Breadcrumb';
+import SectionHeader from '../../components/SectionHeader/SectionHeader';
 
 import img from '../../assets/images/courses/jango.png';
 import CourseDetailBox from '../../components/CourseDetailBox/CourseDetailBox';
@@ -125,9 +126,7 @@ const CourseInfo = () => {
                   {/* <!-- Start Introduction --> */}
                   <div className="introduction">
                     <div className="introduction__item">
-                      <span className="introduction__title title">
-                        آموزش 20 کتابخانه جاوا اسکریپت مخصوص بازار کار
-                      </span>
+                      <SectionHeader title='آموزش 20 کتابخانه جاوا اسکریپت مخصوص بازار کار'/>
                       <img src={img} alt="course info image" className="introduction__img img-fluid" />
                       <p className="introduction__text">
                         کتابخانه های بسیار زیادی برای زبان جاوا اسکریپت وجود دارد و سالانه چندین کتابخانه جدید نیز به این لیست اضافه می شود که در بازار کار به شدت از آن ها استفاده می شود و اگر بدون بلد بودن این کتابخانه ها وارد بازار کار شوید، خیلی اذیت خواهید شد و حتی ممکن است ناامید شوید!
@@ -137,9 +136,7 @@ const CourseInfo = () => {
                       </p>
                     </div>
                     <div className="introduction__item">
-                      <span className="introduction__title title">
-                        هدف از این دوره چیست؟ (تنها راه ورود به بازار کار و کسب درآمد)
-                      </span>
+                      <SectionHeader title='هدف از این دوره چیست؟ (تنها راه ورود به بازار کار و کسب درآمد)'/>
                       <img src={img} alt="course info image" className="introduction__img img-fluid" />
                       <p className="introduction__text">
                         وقتی برای اولین بار وارد یکی از شرکت های برنامه نویسی شدم، از کتابخانه هایی به اسم Lodash و Formik استفاده می شد، در حالی که من اولین بارم بود اسم Formik را می شنیدم و تا اون موقع از این کتابخانه ها استفاده نکرده بودم.
@@ -241,6 +238,31 @@ const CourseInfo = () => {
 
                   </div>
                   {/* <!-- Finish Introduction --> */}
+
+                  {/*  Start Teacher Details */}
+
+                  <div class="techer-details">
+                    <div class="techer-details__header">
+                      <div class="techer-details__header-right">
+                        <img src={img} alt="Teacher Profile" class="techer-details__header-img" />
+                        <div class="techer-details__header-titles">
+                          <a href="#" class="techer-details__header-link">محمدامین سعیدی راد</a>
+                          <span class="techer-details__header-skill">
+                            Front End & Back End Developer
+                          </span>
+                        </div>
+                      </div>
+                      <div class="techer-details__header-left">
+                        <i class="fas fa-chalkboard-teacher techer-details__header-icon"></i>
+                        <span class="techer-details__header-name">مدرس</span>
+                      </div>
+                    </div>
+                    <p class="techer-details__footer">
+                      اول از همه برنامه نویسی اندروید رو شروع کردم و نزدیک به 2 سال با زبان جاوا اندروید کار میکردم .بعد تصمیم گرفتم در زمینه وب فعالیت داشته باشم.و..
+                    </p>
+                  </div>
+
+              {/* Finish Teacher Details*/}
                 </div>
               </div>
             </div>
