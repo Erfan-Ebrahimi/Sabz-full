@@ -8,6 +8,7 @@ import SectionHeader from '../../components/SectionHeader/SectionHeader';
 
 import img from '../../assets/images/courses/jango.png';
 import CourseDetailBox from '../../components/CourseDetailBox/CourseDetailBox';
+import CommentsTextArea from '../../components/CommentsTextArea/CommentsTextArea';
 
 const CourseInfo = () => {
   return (
@@ -262,6 +263,8 @@ const CourseInfo = () => {
                     </p>
                   </div>
                   {/* Finish Teacher Details*/}
+
+                  <CommentsTextArea/>
                 </div>
               </div>
               {/* Finish Course Main  */}
