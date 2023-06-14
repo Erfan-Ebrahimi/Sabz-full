@@ -6,6 +6,7 @@ import Footer from '../../components/Footer/Footer';
 import Breadcrumb from '../../components/Breadcrumb/Breadcrumb';
 import img from '../../assets/images/courses/python.png';
 import star from '../../assets/images/svgs/star.svg';
+import CommentsTextArea from '../../components/CommentsTextArea/CommentsTextArea';
 
 
 const ArticleInfo = () => {
@@ -150,7 +151,9 @@ const ArticleInfo = () => {
                   </div>
                 </div>
 
-                
+                <CommentsTextArea/>
+
+
               </div>
             </div>
           </div>
