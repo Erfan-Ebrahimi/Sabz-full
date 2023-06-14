@@ -61,7 +61,7 @@ const CourseInfo = () => {
         <main className="main">
           <div className="container">
             <div className="row">
-
+              {/* Start Course Main  */}
               <div className="col-8">
                 <div className="course">
                   {/* Start Course Boxes  */}
@@ -264,7 +264,9 @@ const CourseInfo = () => {
                   {/* Finish Teacher Details*/}
                 </div>
               </div>
+              {/* Finish Course Main  */}
 
+              {/* Start Course Sidebar  */}
               <div className="col-4">
                 <div className="courses-info">
                   <div className="course-info">
@@ -366,7 +368,7 @@ const CourseInfo = () => {
                   </div>
                 </div>
               </div>
-
+              {/* Finish Course Sidebar  */}
               
             </div>
           </div>
