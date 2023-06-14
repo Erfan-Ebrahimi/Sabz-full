@@ -10,9 +10,9 @@ import './Header.scss';
 const Header = () => {
   return (
     <header className="header">
-      <Topbar/>
-      <Navbar/>  
-      <Landing/>    
+      <Topbar />
+      <Navbar />
+      <Landing />
     </header>
   )
 }

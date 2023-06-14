@@ -10,8 +10,8 @@ import Pagination from '../../components/Pagination/Pagination';
 const Category = () => {
   return (
     <>
-      <Topbar/>
-      <Navbar/>
+      <Topbar />
+      <Navbar />
 
       <section className="courses">
         <div className="container">
@@ -55,17 +55,17 @@ const Category = () => {
       <div className="courses-content">
         <div className="container">
           <div className="row">
-            <CourseBox/>
-            <CourseBox/>
-            <CourseBox/>
+            <CourseBox />
+            <CourseBox />
+            <CourseBox />
           </div>
         </div>
       </div>
 
-      <Pagination/>
+      <Pagination />
 
-      <Footer/>
-    
+      <Footer />
+
     </>
   )
 }

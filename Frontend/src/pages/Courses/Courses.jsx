@@ -23,11 +23,11 @@ const Courses = () => {
             />
 
             {/* <!--------------------------------  Courses-Section  --------------------------------> */}
-            <section class="courses">
-                <div class="container">
-                    <div class="courses-content">
-                        <div class="container">
-                            <div class="row">
+            <section className="courses">
+                <div className="container">
+                    <div className="courses-content">
+                        <div className="container">
+                            <div className="row">
                                 <CourseBox />
                                 <CourseBox />
                                 <CourseBox />
@@ -39,39 +39,11 @@ const Courses = () => {
                             </div>
                         </div>
                     </div>
-
-                    {/* <div class="courses-pagination">
-                        <ul class="courses__pagination-list">
-                            <li class="courses__pagination-item">
-                                <a href="#" class="courses__pagination-link">
-                                    <i class="fas fa-long-arrow-alt-right courses__pagination-icon"></i>
-                                </a>
-                            </li>
-                            <li class="courses__pagination-item">
-                                <a
-                                    href="#"
-                                    class="courses__pagination-link courses__pagination-link--active"
-                                >
-                                    1
-                                </a>
-                            </li>
-                            <li class="courses__pagination-item">
-                                <a href="#" class="courses__pagination-link">
-                                    2
-                                </a>
-                            </li>
-                            <li class="courses__pagination-item">
-                                <a href="#" class="courses__pagination-link">
-                                    3
-                                </a>
-                            </li>
-                        </ul>
-                    </div> */}
-                    <Pagination/>
                 </div>
             </section>
             {/* <!--------------------------------  Courses-Section  --------------------------------> */}
 
+            <Pagination />
             <Footer />
         </>
     )

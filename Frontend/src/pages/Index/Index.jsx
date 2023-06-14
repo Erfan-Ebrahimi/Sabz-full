@@ -13,13 +13,13 @@ import './Index.scss';
 const Index = () => {
   return (
     <>
-      <Header/>
-      <LastCourses/>
-      <AboutUs/>
-      <PopularCourses/>
-      <PresellCourses/>
-      <LastArticles/>
-      <Footer/>
+      <Header />
+      <LastCourses />
+      <AboutUs />
+      <PopularCourses />
+      <PresellCourses />
+      <LastArticles />
+      <Footer />
     </>
   )
 }

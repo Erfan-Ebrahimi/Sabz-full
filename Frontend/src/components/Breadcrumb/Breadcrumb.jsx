@@ -12,14 +12,14 @@ const Breadcrumb = ({ links }) => {
           </div>
           <ul className="breadcrumb__list">
             {
-                links.map(link => (
-                    <li key={link.id} className="breadcrumb__item">
-                        <Link to={`/${link.to}`} className="breadcrumb__link">
-                            {link.title}
-                            {link.id !== links.length ? (<i className="fas fa-angle-left breadcrumb__icon"></i>) : null}
-                        </Link>
-                    </li>
-                ))
+              links.map(link => (
+                <li key={link.id} className="breadcrumb__item">
+                  <Link to={`/${link.to}`} className="breadcrumb__link">
+                    {link.title}
+                    {link.id !== links.length ? (<i className="fas fa-angle-left breadcrumb__icon"></i>) : null}
+                  </Link>
+                </li>
+              ))
             }
           </ul>
         </div>
