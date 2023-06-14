@@ -1,13 +1,30 @@
 import './CourseBox.scss';
-import img from '../../assets/images/courses/jango.png'
-import star from '../../assets/images/svgs/star_fill.svg'
+import { useState } from 'react';
+import CircleSpinner from '../CircleSpinner/CircleSpinner';
+import img from '../../assets/images/courses/jango.png';
+import star from '../../assets/images/svgs/star_fill.svg';
 
 const CourseBox = () => {
+
+  // --------state & function for loader images
+  const [isShowImg, setIsShowImg] = useState(false)
+  const onImgLoaded = () => setIsShowImg(true)
+
   return (
     <div className="col-4">
       <div className="course-box">
         <a href="#">
-          <img src={img} alt="Course img" className="course-box__img" />
+          <img
+            src={img}
+            alt="Course img"
+            className="course-box__img"
+            onLoad={onImgLoaded}
+          />
+
+          {/*--------- IMG LOADER ----------- */}
+          {
+            !isShowImg && <CircleSpinner/>
+          }
         </a>
         <div className="course-box__main">
           <a href="#" className="course-box__title">دوره پروژه محور متخصص جنگو</a>
