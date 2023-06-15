@@ -1,10 +1,34 @@
+import { useReducer } from "react";
 
 import "./Input.scss";
 
+//---------------reducer for input
+const inputReducer = (state, action) => {
+  switch (action.type) {
+    case 'CHANGE': {
+      return {
+        ...state,
+        value: action.value,
+        isValid: action.isValid
+      }
+    }
+
+    default: {
+      return state
+    }
+  }
+}
+
 const Input = (props) => {
 
+  //steta for value & validation -> useReducer
+  const [mainInput, dispatch] = useReducer(inputReducer, {
+    value: '',
+    isValid: false
+  })
+
   const onChangeHandler = (e) => {
-    console.log(e.target.value);
+    dispatch({ type: 'CHANGE', value: e.target.value, isValid: true })
   }
 
   const element =
@@ -14,12 +38,14 @@ const Input = (props) => {
         placeholder={props.placeholder}
         className={props.className}
         onChange={onChangeHandler}
+        value={mainInput.value}
       />
     ) : (
       <textarea
         placeholder={props.placeholder}
         className={props.className}
         onChange={onChangeHandler}
+        value={mainInput.value}
       />
     );
 
