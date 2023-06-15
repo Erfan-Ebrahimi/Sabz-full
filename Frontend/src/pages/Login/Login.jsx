@@ -6,6 +6,7 @@ import Navbar from "../../components/Navbar/Navbar";
 import Topbar from "../../components/Topbar/Topbar";
 
 import { Link } from 'react-router-dom'
+import Input from "../../components/Form/Input";
 
 
 
@@ -30,18 +31,20 @@ const Login = () => {
                     </div>
                     <form action="#" className="login-form">
                         <div className="login-form__username">
-                            <input
+                            <Input
                                 className="login-form__username-input"
                                 type="text"
                                 placeholder="نام کاربری یا آدرس ایمیل"
+                                element='input'
                             />
                             <i className="login-form__username-icon fa fa-user"></i>
                         </div>
                         <div className="login-form__password">
-                            <input
+                            <Input
                                 className="login-form__password-input"
-                                type="text"
+                                type="password"
                                 placeholder="رمز عبور"
+                                element='input'
                             />
                             <i className="login-form__password-icon fa fa-lock-open"></i>
                         </div>
