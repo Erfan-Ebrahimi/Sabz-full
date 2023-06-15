@@ -36,14 +36,14 @@ const Input = (props) => {
       <input
         type={props.type}
         placeholder={props.placeholder}
-        className={props.className}
+        className={`${props.className} ${mainInput.isValid ? 'success' : 'error'}`}
         onChange={onChangeHandler}
         value={mainInput.value}
       />
     ) : (
       <textarea
         placeholder={props.placeholder}
-        className={props.className}
+        className={`${props.className} ${mainInput.isValid ? 'success' : 'error'}`}
         onChange={onChangeHandler}
         value={mainInput.value}
       />
