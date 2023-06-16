@@ -12,9 +12,9 @@ const LastCourses = () => {
                     btnTitle=' تمام دوره ها'
                     btnHref='courses'
                 />
-                <div class="courses-content">
-                    <div class="container">
-                        <div class="row">
+                <div className="courses-content">
+                    <div className="container">
+                        <div className="row">
                             <CourseBox />
                             <CourseBox />
                             <CourseBox />
