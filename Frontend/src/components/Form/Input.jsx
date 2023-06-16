@@ -1,4 +1,5 @@
 import { useReducer } from "react";
+import validator from "../../validators/validator";
 
 import "./Input.scss";
 
@@ -9,7 +10,7 @@ const inputReducer = (state, action) => {
       return {
         ...state,
         value: action.value,
-        isValid: action.isValid
+        isValid: validator(action.value, action.validations)  // mire be samt function validator v ya true barmigarde ya false => isValid:true or false
       }
     }
 
@@ -20,15 +21,21 @@ const inputReducer = (state, action) => {
 }
 
 const Input = (props) => {
+  console.log(props.validations);
 
-  //steta for value & validation -> useReducer
+  //steta for value & validations -> useReducer
   const [mainInput, dispatch] = useReducer(inputReducer, {
     value: '',
     isValid: false
   })
 
   const onChangeHandler = (e) => {
-    dispatch({ type: 'CHANGE', value: e.target.value, isValid: true })
+    dispatch({
+      type: 'CHANGE',
+      value: e.target.value,               //ino az chiziy k karbar type kard migirim v be onvane vorodye aval validatoir()
+      isValid: true,
+      validations: props.validations       //ino az props (Login.jsx or Register.jsx) migirim v be case CHANGE mifrestim be onvane vorodye dovom validator()
+    })
   }
 
   const element =
