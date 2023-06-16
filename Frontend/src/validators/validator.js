@@ -1,4 +1,5 @@
-import rules from './rules'
+import rules from './rules';
+import regex from './regex';
 
 // ham meghdar value input ra migirad v ham validation hay anra
 const validator = (value, validations) => {
@@ -18,7 +19,7 @@ const validator = (value, validations) => {
       value.trim().length > validator.max && validationResults.push(false);
     }
     if (validator.value === rules.emailValue) {
-      !value.trim().includes("@") && validationResults.push(false);
+      regex.testEmail(value) && validationResults.push(false);
     }
   }
 
