@@ -109,6 +109,10 @@
     background-color: #2bce56;
     position: relative;
   }
+  .login-form__btn:disabled{
+    background-color: #8a0a1980;
+  }
+
   .login-form__btn-icon {
     color: $white1;
     font-size: 1.8rem;
