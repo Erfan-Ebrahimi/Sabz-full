@@ -9,6 +9,8 @@ import { Link } from 'react-router-dom'
 import Input from "../../components/Form/Input";
 import Button from '../../components/Form/Button';
 
+import { requiredValidator, minValidator, maxValidator, emailValidator } from "../../validators/rules";
+
 
 
 const Login = () => {
@@ -43,6 +45,12 @@ const Login = () => {
                                 type="text"
                                 placeholder="نام کاربری یا آدرس ایمیل"
                                 element='input'
+                                validations={[
+                                    requiredValidator(),
+                                    minValidator(8),
+                                    maxValidator(20),
+                                    emailValidator()
+                                ]}
                             />
                             <i className="login-form__username-icon fa fa-user"></i>
                         </div>
@@ -52,12 +60,17 @@ const Login = () => {
                                 type="password"
                                 placeholder="رمز عبور"
                                 element='input'
+                                validations={[
+                                    requiredValidator(),
+                                    minValidator(8),
+                                    maxValidator(20)
+                                ]}
                             />
                             <i className="login-form__password-icon fa fa-lock-open"></i>
                         </div>
-                        <Button 
-                            className="login-form__btn" 
-                            type="submit" 
+                        <Button
+                            className="login-form__btn"
+                            type="submit"
                             disabled={true}
                             onClick={userLogin}
                         >
