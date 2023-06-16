@@ -1,4 +1,4 @@
-import { useReducer } from "react";
+import { useEffect, useReducer } from "react";
 import validator from "../../validators/validator";
 
 import "./Input.scss";
@@ -28,6 +28,16 @@ const Input = (props) => {
     value: '',
     isValid: false
   })
+
+  //---------for useForm
+    //---------destructuring
+  const { value, isValid } = mainInput;
+  const {id, onInputHandler} = props;
+  
+  
+  useEffect(() => {
+    onInputHandler(id, value, isValid)
+  }, [value])
 
   const onChangeHandler = (e) => {
     dispatch({
