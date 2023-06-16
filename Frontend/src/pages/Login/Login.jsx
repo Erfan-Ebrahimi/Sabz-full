@@ -11,10 +11,27 @@ import Button from '../../components/Form/Button';
 
 import { requiredValidator, minValidator, maxValidator, emailValidator } from "../../validators/rules";
 
+import { useForm } from "../../hooks/useForm";
+
 
 
 const Login = () => {
 
+    //---------------useForm
+    const [formState, onInputHandler] = useForm(
+        {
+            username: {
+                value: '',
+                isValid: false
+            },
+            password: {
+                value: '',
+                isValid: false
+            }
+        },
+        false
+    )
+        console.log(formState);
     // --------------User login 
     const userLogin = (e) => {
         e.preventDefault()
@@ -42,9 +59,11 @@ const Login = () => {
                         <div className="login-form__username">
                             <Input
                                 className="login-form__username-input"
+                                id='username'
                                 type="text"
                                 placeholder="نام کاربری یا آدرس ایمیل"
                                 element='input'
+                                onInputHandler={onInputHandler}
                                 validations={[
                                     requiredValidator(),
                                     minValidator(8),
@@ -57,9 +76,11 @@ const Login = () => {
                         <div className="login-form__password">
                             <Input
                                 className="login-form__password-input"
+                                id='password'
                                 type="password"
                                 placeholder="رمز عبور"
                                 element='input'
+                                onInputHandler={onInputHandler}
                                 validations={[
                                     requiredValidator(),
                                     minValidator(8),
@@ -71,7 +92,7 @@ const Login = () => {
                         <Button
                             className="login-form__btn"
                             type="submit"
-                            disabled={true}
+                            disabled={!formState.isFormValid}
                             onClick={userLogin}
                         >
                             <i className="login-form__btn-icon fas fa-sign-out-alt"></i>
