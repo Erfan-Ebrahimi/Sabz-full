@@ -1,4 +1,4 @@
-import { useReducer } from "react";
+import { useCallback, useReducer } from "react";
 
 const formReducer = (state, action) => {
   switch (action.type) {
@@ -35,14 +35,15 @@ export const useForm = (initInputs, initFormIsValid) => {
     isFormValid: initFormIsValid,
   });
 
-  const onInputHandler = (id, value, isValid) => {
+  // az useCallback estefade mikonim ta az render bihode jelogiri konim
+  const onInputHandler = useCallback((id, value, isValid) => {
     dispatch({
       type: "INPUT_CHANGE",
       value,
       isValid,
       inputID: id,
     });
-  };
+  } , []);
 
   return [formState, onInputHandler];
 };
