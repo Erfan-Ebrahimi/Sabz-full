@@ -1,18 +1,29 @@
 import './Register.scss';
 
+//---------CONTEXT
+import { useContext } from 'react';
+import AuthContext from '../../context/AuthContext';
+
+//---------Componets
 import Footer from "../../components/Footer/Footer";
 import Navbar from "../../components/Navbar/Navbar";
 import Topbar from "../../components/Topbar/Topbar";
-
-import { Link } from 'react-router-dom'
 import Input from '../../components/Form/Input';
 import Button from '../../components/Form/Button';
 
-import { requiredValidator, minValidator, maxValidator, emailValidator } from "../../validators/rules";
+//------------SPA
+import { Link } from 'react-router-dom'
 
+//----------VALIDATION
+import { requiredValidator, minValidator, maxValidator, emailValidator } from "../../validators/rules";
 import { useForm } from "../../hooks/useForm";
 
 const Register = () => {
+
+    // -------------context
+    const authContext = useContext(AuthContext)
+    console.log(authContext);
+
 
     //---------------useForm
     const [formState, onInputHandler] = useForm(
@@ -41,7 +52,7 @@ const Register = () => {
         },
         false
     )
-    console.log(formState);
+    // console.log(formState);
 
     // --------------User Register
     const registerNewUser = (e) => {
@@ -56,14 +67,17 @@ const Register = () => {
             phone: formState.inputs.phone.value,
         }
 
-        fetch('http://localhost:4000/v1/auth/register' ,{
+        fetch('http://localhost:4000/v1/auth/register', {
             method: 'POST',
             headers: {
-                "Content-Type" : "application/json"
+                "Content-Type": "application/json"
             },
             body: JSON.stringify(newUserInfos)
         }).then(res => res.json())
-            .then(data => console.log(data))
+            .then(result => {
+                console.log(result)
+                authContext.login(result.user, result.accessToken)       // (resul.user = userInfos) & token ro mifrest to App.jsx(login function)
+            })
 
 
 
