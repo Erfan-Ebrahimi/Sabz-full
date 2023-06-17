@@ -36,7 +36,7 @@ function App() {
   // data karbar ra dar userInfos save mikonim
   useEffect(() => {
 
-    const localStorageData = localStorage.getItem('user')
+    const localStorageData = JSON.parse(localStorage.getItem('user'))
 
     if (localStorageData) {
       fetch('http://localhost:4000/v1/auth/me', {

@@ -1,7 +1,15 @@
 import './Navbar.scss';
 import logo from '../../assets/images/logo/logo.png';
 
+import { Link } from 'react-router-dom';
+
+import { useContext } from 'react';
+import AuthContext from '../../context/AuthContext';
+
 const Navbar = () => {
+
+  const authContext = useContext(AuthContext);
+
   return (
     <div className="main-header">
       <div className="container-fluid">
@@ -100,9 +108,20 @@ const Navbar = () => {
             <a href="#" className="main-header__cart-btn">
               <i className="fas fa-shopping-cart main-header__cart-icon"></i>
             </a>
-            <a href="#" className="main-header__profile">
-              <span className="main-header__profile-text">محمدامین سعیدی راد</span>
-            </a>
+            {
+              authContext.isLoggedIn ?
+                (
+                  <Link to="/" className="main-header__profile">
+                    <span className="main-header__profile-text">{authContext.userInfos.name}</span>
+                  </Link>
+                )
+                :
+                (
+                  <Link to="/login" className="main-header__profile">
+                    <span className="main-header__profile-text">ورود / ثبت نام</span>
+                  </Link>
+                )
+            }
           </div>
         </div>
       </div>
