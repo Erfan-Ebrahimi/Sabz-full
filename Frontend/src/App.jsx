@@ -1,4 +1,4 @@
-import { useContext, useState } from 'react';
+import { useState } from 'react';
 import { useRoutes } from 'react-router-dom';
 import routes from './routes';
 import './App.css'
@@ -12,10 +12,14 @@ function App() {
   const [userInfos, setUserInfos] = useState({})
 
   // ---------------global functions send to Context
-  const login = (token) => {
-    console.log('login');
+  const login = (userIfos , token) => {    //userInfos & token az Register.jsx vaghti registerNewUser farakhani mishavad miad
+    if(token){
+      console.log('login : token omad');
+    }
     setToken(token)
-    localStorage.setItem('user', JSON.stringify({ token })) //token:token =>token
+    setUserInfos(userIfos)
+    setIsLoggedIn(true)
+    localStorage.setItem('user', JSON.stringify({token : token}))
   }
 
   const logout = () => {

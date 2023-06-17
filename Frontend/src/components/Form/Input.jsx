@@ -21,7 +21,6 @@ const inputReducer = (state, action) => {
 }
 
 const Input = (props) => {
-  console.log(props.validations);
 
   //steta for value & validations -> useReducer
   const [mainInput, dispatch] = useReducer(inputReducer, {
