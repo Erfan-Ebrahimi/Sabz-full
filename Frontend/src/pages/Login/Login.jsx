@@ -17,6 +17,8 @@ import { useForm } from "../../hooks/useForm";
 
 const Login = () => {
 
+
+
     //---------------useForm
     const [formState, onInputHandler] = useForm(
         {
@@ -31,11 +33,35 @@ const Login = () => {
         },
         false
     )
-        console.log(formState);
+
+    // --------------Context
+
     // --------------User login 
     const userLogin = (e) => {
         e.preventDefault()
-        console.log('user login');
+
+        const userData = {
+            identifier: formState.inputs.username.value,
+            password: formState.inputs.password.value
+        }
+
+        fetch('http://localhost:4000/v1/auth/login', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(userData)
+        }).then(res => {
+            if (!res.ok) {
+                return res.text().then(text => {
+                    throw new Error(text)
+                })
+            } else {
+                return res.json()
+            }
+        })
+        .then(result => console.log(result))
+        .catch(err => alert(err))
     }
     return (
         <>
@@ -68,7 +94,6 @@ const Login = () => {
                                     requiredValidator(),
                                     minValidator(8),
                                     maxValidator(20),
-                                    emailValidator()
                                 ]}
                             />
                             <i className="login-form__username-icon fa fa-user"></i>
