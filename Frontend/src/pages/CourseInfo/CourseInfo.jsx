@@ -28,10 +28,13 @@ const CourseInfo = () => {
   // --------------get course data from api
   const params = useParams()
   useEffect(() => {
+    // aval check mikonim k tokeni hast ya n k if fetch ham anjam shod baz karbari k token dare betone dastresi dashte bashe
+    // film jalase 349 dide shavad
+    const localStorageData = JSON.parse(localStorage.getItem('user'))
     fetch(`http://localhost:4000/v1/courses/${params.courseName}`, {
       method: 'GET',
       headers: {
-        'Authorization': `Bearer ${JSON.parse(localStorage.getItem('user')).token}`
+        'Authorization': `Bearer ${localStorageData === null ? null : localStorageData.token}` // yani shakhs hanoz login nakarde
       }
     })
       .then(res => res.json())
@@ -206,7 +209,7 @@ const CourseInfo = () => {
                         <Accordion.Header>معرفی دوره</Accordion.Header>
                         {
                           sessions.map((session, index) => (
-                            <Accordion.Body className='introduction__accordion-body'>
+                            <Accordion.Body key={session._id} className='introduction__accordion-body'>
                               <div className="introduction__accordion-right">
                                 <span className="introduction__accordion-count">{index + 1}</span>
                                 <i className="fab fa-youtube introduction__accordion-icon"></i>
