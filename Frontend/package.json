@@ -17,6 +17,7 @@
     "react-icons": "^4.8.0",
     "react-router-dom": "^6.11.1",
     "sass": "^1.62.1",
+    "sweetalert": "^2.1.2",
     "typewriter-effect": "^2.19.0"
   },
   "devDependencies": {

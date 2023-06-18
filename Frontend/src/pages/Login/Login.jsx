@@ -17,11 +17,11 @@ import { requiredValidator, minValidator, maxValidator, emailValidator } from ".
 
 import { useForm } from "../../hooks/useForm";
 
+//-------------ALERT
+import swal from 'sweetalert';
 
 
 const Login = () => {
-
-
 
     //---------------useForm
     const [formState, onInputHandler] = useForm(
@@ -64,10 +64,21 @@ const Login = () => {
                 return res.json()
             }
         })
-        .then(result => {
-            authContext.login({} , result.accessToken) // ( {} = userInfos) & token ro mifrest to App.jsx(login function)
-        })
-        .catch(err => alert(err))
+            .then(result => {
+                swal({
+                    title: 'با موفقیت وارد شدید',
+                    icon: 'success',
+                    buttons: 'ورود به پنل'
+                })
+                authContext.login({}, result.accessToken) // ( {} = userInfos) & token ro mifrest to App.jsx(login function)
+            })
+            .catch(err => {
+                swal({
+                    title:`${err}`,
+                    icon: 'error',
+                    buttons: 'دوباره تلاش کنید'
+                })
+            })
     }
     return (
         <>
