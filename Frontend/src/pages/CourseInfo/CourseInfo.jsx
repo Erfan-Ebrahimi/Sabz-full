@@ -14,13 +14,18 @@ import Accordion from 'react-bootstrap/Accordion';
 
 // -------------SPA
 import { useParams } from 'react-router-dom';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 const CourseInfo = () => {
-  
-  const params = useParams()
-  
+
+  // ---------------states for course data
+  // chon data shamel chandin array mibashad pas baray har bakhsh data  yek state joda dar nazar migirim
+  const [comments, setComments] = useState([])
+  const [sessions, setSessions] = useState([])
+  const [courseDetails, setCourseDetails] = useState({}) //baghiy data be joz comments & sessions dar in state save mishavad
+
   // --------------get course data from api
+  const params = useParams()
   useEffect(() => {
     fetch(`http://localhost:4000/v1/courses/${params.courseName}`, {
       method: 'GET',
@@ -29,9 +34,17 @@ const CourseInfo = () => {
       }
     })
       .then(res => res.json())
-      .then(data => console.log(data))
+      .then(courseInfo => {
+        setComments(courseInfo.comments)
+        setSessions(courseInfo.sessions)
+        setCourseDetails(courseInfo)
+      })
   }, [])
 
+
+  console.log(comments);
+  console.log(sessions);
+  console.log(courseDetails);
 
 
   return (
@@ -57,10 +70,10 @@ const CourseInfo = () => {
                 آموزش برنامه نویسی فرانت اند
               </a>
               <h1 className="course-info__title">
-                آموزش 20 کتابخانه جاوااسکریپت برای بازار کار
+                {courseDetails.name}
               </h1>
               <p className="course-info__text">
-                امروزه کتابخانه‌ها کد نویسی را خیلی آسان و لذت بخش تر کرده اند. به قدری که حتی امروزه هیچ شرکت برنامه نویسی پروژه های خود را با Vanilla Js پیاده سازی نمی کند و همیشه از کتابخانه ها و فریمورک های موجود استفاده می کند. پس شما هم اگه میخواید یک برنامه نویس عالی فرانت اند باشید، باید کتابخانه های کاربردی که در بازار کار استفاده می شوند را به خوبی بلد باشید
+                {courseDetails.description}
               </p>
               <div className="course-info__social-media">
                 <a href="#" className="course-info__social-media-item">
