@@ -12,8 +12,28 @@ import CommentsTextArea from '../../components/CommentsTextArea/CommentsTextArea
 
 import Accordion from 'react-bootstrap/Accordion';
 
+// -------------SPA
+import { useParams } from 'react-router-dom';
+import { useEffect } from 'react';
 
 const CourseInfo = () => {
+  
+  const params = useParams()
+  
+  // --------------get course data from api
+  useEffect(() => {
+    fetch(`http://localhost:4000/v1/courses/${params.courseName}`, {
+      method: 'GET',
+      headers: {
+        'Authorization': `Bearer ${JSON.parse(localStorage.getItem('user')).token}`
+      }
+    })
+      .then(res => res.json())
+      .then(data => console.log(data))
+  }, [])
+
+
+
   return (
     <>
       <Topbar />

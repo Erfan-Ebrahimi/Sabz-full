@@ -16,12 +16,7 @@ const Navbar = () => {
   useEffect(() => {
     fetch('http://localhost:4000/v1/menus')
       .then(res => res.json())
-      .then(menus => {
-        console.log(menus)
-        setAllMenus(menus)
-      })
-
-    console.log(allMenus);
+      .then(menus => setAllMenus(menus))
   }, [])
 
   return (
@@ -35,8 +30,8 @@ const Navbar = () => {
 
               {
                 allMenus.map(menu => (
-                  <li className="main-header__item">
-                    <Link to={`/category-info/${menu.href}`} className="main-header__link">
+                  <li key={menu._id} className="main-header__item">
+                    <Link to={menu.href} className="main-header__link">
                       {menu.title}
                     </Link>
                     {menu.submenus.length !== 0 && (
@@ -45,7 +40,7 @@ const Navbar = () => {
                         <ul className="main-header__dropdown">
                           {
                             menu.submenus.map(submenu => (
-                              <li className="main-header__dropdown-item">
+                              <li key={submenu._id} className="main-header__dropdown-item">
                                 <Link to={submenu.href} className="main-header__dropdown-link">{submenu.title}</Link>
                               </li>
                             ))

@@ -11,10 +11,7 @@ const Topbar = () => {
   useEffect(() => {
     fetch('http://localhost:4000/v1/menus/topbar')
       .then(res => res.json())
-      .then(data => {
-        setAllTopbarLinks(data)
-        console.log(data);
-      })
+      .then(data => setAllTopbarLinks(data))
 
   }, [])
 
