@@ -1,7 +1,7 @@
 import "./Login.scss";
 
 //-----------CONTEXT
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import AuthContext from "../../context/AuthContext";
 
 // -----------COMPONENTS
@@ -12,7 +12,7 @@ import Input from "../../components/Form/Input";
 import Button from '../../components/Form/Button';
 
 // -------------SPA
-import { Link , useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 // --------------FORM & VALIDATION
 import { requiredValidator, minValidator, maxValidator, emailValidator } from "../../validators/rules";
@@ -21,11 +21,17 @@ import { useForm } from "../../hooks/useForm";
 //-------------ALERT
 import swal from 'sweetalert';
 
+// ----------ReCAPTCHA
+import ReCAPTCHA from "react-google-recaptcha";
 
 const Login = () => {
 
+    // ---------------stete for recaptch
+    const [isGoogleRecaptchaVerify, setIsGoogleRecaptchaVerify] = useState(false)
     // --------------useNavigate
     const navigate = useNavigate()
+    // --------------Context
+    const authContext = useContext(AuthContext)
     //---------------useForm
     const [formState, onInputHandler] = useForm(
         {
@@ -41,8 +47,6 @@ const Login = () => {
         false
     )
 
-    // --------------Context
-    const authContext = useContext(AuthContext)
     // --------------User login 
     const userLogin = (e) => {
         e.preventDefault()
@@ -77,11 +81,16 @@ const Login = () => {
             })
             .catch(err => {
                 swal({
-                    title:`${err}`,
+                    title: `${err}`,
                     icon: 'error',
                     buttons: 'دوباره تلاش کنید'
                 })
             })
+    }
+
+    // ---------------recaptch Handler
+    const onChangeRecaptcha = () => {
+        setIsGoogleRecaptchaVerify(true)
     }
     return (
         <>
@@ -134,10 +143,14 @@ const Login = () => {
                             />
                             <i className="login-form__password-icon fa fa-lock-open"></i>
                         </div>
+                        <ReCAPTCHA
+                            sitekey="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"
+                            onChange={onChangeRecaptcha}
+                        />
                         <Button
                             className="login-form__btn"
                             type="submit"
-                            disabled={!formState.isFormValid}
+                            disabled={!formState.isFormValid || !isGoogleRecaptchaVerify}
                             onClick={userLogin}
                         >
                             <i className="login-form__btn-icon fas fa-sign-out-alt"></i>
