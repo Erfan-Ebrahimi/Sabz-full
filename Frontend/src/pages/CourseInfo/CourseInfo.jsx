@@ -13,7 +13,7 @@ import CommentsTextArea from '../../components/CommentsTextArea/CommentsTextArea
 import Accordion from 'react-bootstrap/Accordion';
 
 // -------------SPA
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 
 const CourseInfo = () => {
@@ -23,7 +23,8 @@ const CourseInfo = () => {
   const [comments, setComments] = useState([])
   const [sessions, setSessions] = useState([])
   const [courseDetails, setCourseDetails] = useState({}) //baghiy data be joz comments & sessions dar in state save mishavad
-
+  const [createdAt, setCreatedAt] = useState('')
+  const [updatedAt, setUpdatedAt] = useState('')
   // --------------get course data from api
   const params = useParams()
   useEffect(() => {
@@ -38,6 +39,8 @@ const CourseInfo = () => {
         setComments(courseInfo.comments)
         setSessions(courseInfo.sessions)
         setCourseDetails(courseInfo)
+        setCreatedAt(courseInfo.createdAt)
+        setUpdatedAt(courseInfo.updatedAt)
       })
   }, [])
 
@@ -106,17 +109,17 @@ const CourseInfo = () => {
                   <div className="row">
                     <CourseDetailBox
                       title='وضعیت دوره'
-                      text='به اتمام رسیده'
-                      icon='graduation-cap'
+                      text={courseDetails.isComplete === 1 ? 'به اتمام رسیده' : 'در حال برگزاری'}
+                      icon='graduation-cap fa-fade'
                     />
                     <CourseDetailBox
-                      title='مدت زمان دوره'
-                      text='19 ساعت'
-                      icon='clock'
+                      title='شروع دوره'
+                      text={createdAt.slice(0, 10)}
+                      icon='flag-checkered'
                     />
                     <CourseDetailBox
                       title='آخرین بروزرسانی'
-                      text='1401/03/02'
+                      text={updatedAt.slice(0, 10)}
                       icon='calendar-alt'
                     />
                     <CourseDetailBox
@@ -195,63 +198,32 @@ const CourseInfo = () => {
                     <a href="#" className="introduction__btns-item">دانلود همگانی ویدیوها</a>
                     <a href="#" className="introduction__btns-item">دانلود همگانی پیوست‌ها</a>
                   </div>
-
+                  {/* <!-- Start ISessions --> */}
                   <div className="introduction__topic">
-                    <Accordion defaultActiveKey="0">
+                    <Accordion>
 
-                      <Accordion.Item eventKey="0" className="accordion">
+                      <Accordion.Item className="accordion">
                         <Accordion.Header>معرفی دوره</Accordion.Header>
-                        <Accordion.Body className='introduction__accordion-body'>
-                          <div className="introduction__accordion-right">
-                            <span className="introduction__accordion-count">1</span>
-                            <i className="fab fa-youtube introduction__accordion-icon"></i>
-                            <a href="#" className="introduction__accordion-link">
-                              معرفی دوره + چرا یادگیری کتابخانه ها ضروری است؟
-                            </a>
-                          </div>
-                          <div className="introduction__accordion-left">
-                            <span className="introduction__accordion-time">
-                              18:34
-                            </span>
-                          </div>
-                        </Accordion.Body>
+                        {
+                          sessions.map((session, index) => (
+                            <Accordion.Body className='introduction__accordion-body'>
+                              <div className="introduction__accordion-right">
+                                <span className="introduction__accordion-count">{index + 1}</span>
+                                <i className="fab fa-youtube introduction__accordion-icon"></i>
+                                <a href="#" className="introduction__accordion-link">
+                                  {session.title}
+                                </a>
+                              </div>
+                              <div className="introduction__accordion-left">
+                                <span className="introduction__accordion-time">
+                                  {session.time}
+                                </span>
+                              </div>
+                            </Accordion.Body>
+                          ))
+                        }
                       </Accordion.Item>
 
-                      <Accordion.Item eventKey="1" className="accordion">
-                        <Accordion.Header>فصل اول </Accordion.Header>
-                        <Accordion.Body className='introduction__accordion-body'>
-                          <div className="introduction__accordion-right">
-                            <span className="introduction__accordion-count">1</span>
-                            <i className="fab fa-youtube introduction__accordion-icon"></i>
-                            <a href="#" className="introduction__accordion-link">
-                              معرفی دوره + چرا یادگیری کتابخانه ها ضروری است؟
-                            </a>
-                          </div>
-                          <div className="introduction__accordion-left">
-                            <span className="introduction__accordion-time">
-                              18:34
-                            </span>
-                          </div>
-                        </Accordion.Body>
-                      </Accordion.Item>
-
-                      <Accordion.Item eventKey="2" className="accordion">
-                        <Accordion.Header>فصل دوم</Accordion.Header>
-                        <Accordion.Body className='introduction__accordion-body'>
-                          <div className="introduction__accordion-right">
-                            <span className="introduction__accordion-count">1</span>
-                            <i className="fab fa-youtube introduction__accordion-icon"></i>
-                            <a href="#" className="introduction__accordion-link">
-                              معرفی دوره + چرا یادگیری کتابخانه ها ضروری است؟
-                            </a>
-                          </div>
-                          <div className="introduction__accordion-left">
-                            <span className="introduction__accordion-time">
-                              18:34
-                            </span>
-                          </div>
-                        </Accordion.Body>
-                      </Accordion.Item>
 
                     </Accordion>
                   </div>
@@ -292,10 +264,23 @@ const CourseInfo = () => {
               <div className="courses-info">
                 <div className="course-info">
                   <div className="course-info__register">
-                    <span className="course-info__register-title">
-                      <i className="fas fa-graduation-cap course-info__register-icon"></i>
-                      &nbsp; دانشجوی دوره هستید&nbsp;
-                    </span>
+                    {
+                      courseDetails.isUserRegisteredToThisCourse ?
+                        (
+                          <span className="course-info__register-title">
+                            <i className="fas fa-graduation-cap course-info__register-icon"></i>
+                            &nbsp; دانشجوی دوره هستید&nbsp;
+                          </span>
+
+                        )
+                        :
+                        (
+                          <Link className="course-info__register-title">
+                            <i className="fas fa-graduation-cap course-info__register-icon"></i>
+                            &nbsp;ثبت نام &nbsp;
+                          </Link>
+                        )
+                    }
                   </div>
                 </div>
                 <div className="course-info">
@@ -307,7 +292,7 @@ const CourseInfo = () => {
                           تعداد دانشجو :
                         </span>
                         <span className="course-info__total-sale-number">
-                          178
+                          {courseDetails.courseStudentsCount}
                         </span>
                       </div>
                     </div>

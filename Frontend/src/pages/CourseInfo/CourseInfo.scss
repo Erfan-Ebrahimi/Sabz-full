@@ -263,16 +263,20 @@
 
 .course-info__register {
     text-align: center;
-    background-color: #1fbd50;
-    padding: 1.5rem 1rem;
+    // padding: 1.5rem 1rem;
+    background-color: #0df155;
     border-radius: 0.5rem;
-    box-shadow: 0 2px 12px rgba(31, 189, 80, 36%);
 }
 
 .course-info__register-title {
     font-size: 1.7rem;
+    // width:100%;
+    padding: 1.5rem 4rem;
+    border-radius: 0.5rem;
+    background: rgb(15, 49, 2);
     color: $white1;
-    font-weight: bold;
+    font-weight: 600;
+    box-shadow: 0 2px 12px rgba(31, 189, 80, 36%);
 }
 
 .course-info__register-icon {
