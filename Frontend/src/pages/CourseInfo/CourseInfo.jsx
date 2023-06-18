@@ -254,7 +254,7 @@ const CourseInfo = () => {
                 </div>
                 {/* Finish Teacher Details*/}
 
-                <CommentsTextArea />
+                <CommentsTextArea comments={comments}/>
               </div>
             </div>
             {/* Finish Course Main  */}
