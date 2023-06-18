@@ -1,13 +1,17 @@
 import "./Login.scss";
 
+//-----------CONTEXT
+import { useContext } from "react";
+import AuthContext from "../../context/AuthContext";
 
+// -----------COMPONENTS
 import Footer from "../../components/Footer/Footer";
 import Navbar from "../../components/Navbar/Navbar";
 import Topbar from "../../components/Topbar/Topbar";
-
-import { Link } from 'react-router-dom'
 import Input from "../../components/Form/Input";
 import Button from '../../components/Form/Button';
+
+import { Link } from 'react-router-dom'
 
 import { requiredValidator, minValidator, maxValidator, emailValidator } from "../../validators/rules";
 
@@ -35,7 +39,7 @@ const Login = () => {
     )
 
     // --------------Context
-
+    const authContext = useContext(AuthContext)
     // --------------User login 
     const userLogin = (e) => {
         e.preventDefault()
@@ -60,7 +64,9 @@ const Login = () => {
                 return res.json()
             }
         })
-        .then(result => console.log(result))
+        .then(result => {
+            authContext.login({} , result.accessToken) // ( {} = userInfos) & token ro mifrest to App.jsx(login function)
+        })
         .catch(err => alert(err))
     }
     return (
