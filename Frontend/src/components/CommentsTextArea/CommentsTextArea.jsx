@@ -1,6 +1,16 @@
 import './CommentsTextArea.scss';
 
+// -------------CONTEXT
+import AuthContext from '../../context/AuthContext';
+import { useContext } from 'react';
+import { Link } from 'react-router-dom';
+
+
 const CommentsTextArea = ({ comments }) => { //az CourseInfo.jsx miad
+
+  // -------------context
+  const authContext = useContext(AuthContext)
+
   return (
     <div className="comments">
       <div className="comments__header">
@@ -11,7 +21,7 @@ const CommentsTextArea = ({ comments }) => { //az CourseInfo.jsx miad
       </div>
       <div className="comments__content">
         {comments.length === 0 ? (
-          <div className="alert alert-warning">
+          <div className="alert alert-warning link-11">
             هنوز کامنتی برای این دوره ثبت نشده
           </div>
         ) : (
@@ -79,44 +89,62 @@ const CommentsTextArea = ({ comments }) => { //az CourseInfo.jsx miad
         )}
       </div>
 
-      <div className="comments__rules">
-        <span className="comments__rules-title">قوانین ثبت دیدگاه</span>
-        <span className="comments__rules-item">
-          <i className="fas fa-check comments__rules-icon"></i>
-          اگر نیاز به پشتیبانی دوره دارید از قسمت پرسش سوال در قسمت نمایش انلاین
-          استفاده نمایید و سوالات مربوط به رفع اشکال تایید نخواهند شد
-        </span>
-        <span className="comments__rules-item">
-          <i className="fas fa-check comments__rules-icon"></i>
-          دیدگاه های نامرتبط به دوره تایید نخواهد شد.
-        </span>
-        <span className="comments__rules-item">
-          <i className="fas fa-check comments__rules-icon"></i>
-          سوالات مرتبط با رفع اشکال در این بخش تایید نخواهد شد.
-        </span>
-        <span className="comments__rules-item">
-          <i className="fas fa-check comments__rules-icon"></i>
-          از درج دیدگاه های تکراری پرهیز نمایید.
-        </span>
-      </div>
-      <div className="comments__respond">
-        <div className="comments__score">
-          <span className="comments__score-title">امتیاز شما</span>
-          <div className="comments__score-input">
-            <span className="comments__score-input-text">
-              امتیاز خود را انتخاب کنید
-            </span>
-            <i className="fas fa-angle-down	 comments__input-icon"></i>
-          </div>
-        </div>
-        <div className="comments__respond-content">
-          <div className="comments__respond-title">دیدگاه شما *</div>
-          <textarea className="comments__score-input-respond"></textarea>
-        </div>
-        <button type="submit" className="comments__respond-btn">
-          ارسال
-        </button>
-      </div>
+      {
+        authContext.isLoggedIn ?
+          (
+            <>
+              <div className="comments__rules">
+                <span className="comments__rules-title">قوانین ثبت دیدگاه</span>
+                <span className="comments__rules-item">
+                  <i className="fas fa-check comments__rules-icon"></i>
+                  اگر نیاز به پشتیبانی دوره دارید از قسمت پرسش سوال در قسمت نمایش انلاین
+                  استفاده نمایید و سوالات مربوط به رفع اشکال تایید نخواهند شد
+                </span>
+                <span className="comments__rules-item">
+                  <i className="fas fa-check comments__rules-icon"></i>
+                  دیدگاه های نامرتبط به دوره تایید نخواهد شد.
+                </span>
+                <span className="comments__rules-item">
+                  <i className="fas fa-check comments__rules-icon"></i>
+                  سوالات مرتبط با رفع اشکال در این بخش تایید نخواهد شد.
+                </span>
+                <span className="comments__rules-item">
+                  <i className="fas fa-check comments__rules-icon"></i>
+                  از درج دیدگاه های تکراری پرهیز نمایید.
+                </span>
+              </div>
+              <div className="comments__respond">
+                <div className="comments__score">
+                  <span className="comments__score-title">امتیاز شما</span>
+                  <div className="comments__score-input">
+                    <span className="comments__score-input-text">
+                      امتیاز خود را انتخاب کنید
+                    </span>
+                    <i className="fas fa-angle-down	 comments__input-icon"></i>
+                  </div>
+                </div>
+                <div className="comments__respond-content">
+                  <div className="comments__respond-title">دیدگاه شما *</div>
+                  <textarea className="comments__score-input-respond"></textarea>
+                </div>
+                <button type="submit" className="comments__respond-btn">
+                  ارسال
+                </button>
+              </div>
+            </>
+
+          )
+          :
+          (
+            <div className="alert alert-warning alert-11">
+              &nbsp;برای ثبت نظر 
+              <Link to='/login' className='link-11'>
+              &nbsp;ورود&nbsp;
+              </Link>
+              کنید
+            </div>
+          )
+      }
     </div>
   )
 }
