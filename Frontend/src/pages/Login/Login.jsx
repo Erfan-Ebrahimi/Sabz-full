@@ -143,7 +143,8 @@ const Login = () => {
                             />
                             <i className="login-form__password-icon fa fa-lock-open"></i>
                         </div>
-                        <ReCAPTCHA
+                        <ReCAPTCHA 
+                            className="recaptcha"
                             sitekey="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"
                             onChange={onChangeRecaptcha}
                         />
