@@ -11,10 +11,11 @@ import Topbar from "../../components/Topbar/Topbar";
 import Input from "../../components/Form/Input";
 import Button from '../../components/Form/Button';
 
-import { Link } from 'react-router-dom'
+// -------------SPA
+import { Link , useNavigate } from 'react-router-dom'
 
+// --------------FORM & VALIDATION
 import { requiredValidator, minValidator, maxValidator, emailValidator } from "../../validators/rules";
-
 import { useForm } from "../../hooks/useForm";
 
 //-------------ALERT
@@ -23,6 +24,8 @@ import swal from 'sweetalert';
 
 const Login = () => {
 
+    // --------------useNavigate
+    const navigate = useNavigate()
     //---------------useForm
     const [formState, onInputHandler] = useForm(
         {
@@ -69,7 +72,7 @@ const Login = () => {
                     title: 'با موفقیت وارد شدید',
                     icon: 'success',
                     buttons: 'ورود به پنل'
-                })
+                }).then(value => navigate('/'))
                 authContext.login({}, result.accessToken) // ( {} = userInfos) & token ro mifrest to App.jsx(login function)
             })
             .catch(err => {
