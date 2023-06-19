@@ -10,7 +10,7 @@ const CourseBox = (props) => {
   // --------state & function for loader images
   const [isShowImg, setIsShowImg] = useState(false)
   const onImgLoaded = () => setIsShowImg(true)
-  console.log(props);
+
   return (
     <div className="col-4">
       <div className="course-box">

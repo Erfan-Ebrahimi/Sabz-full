@@ -18,10 +18,7 @@ const Category = () => {
   useEffect(() => {
     fetch(`http://localhost:4000/v1/courses/category/${categoryName}`)
       .then(res => res.json())
-      .then(allCourses => {
-        setCourses(allCourses)
-        console.log(allCourses);
-      })
+      .then(allCourses => setCourses(allCourses))
   }, [categoryName])
   return (
     <>

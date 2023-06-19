@@ -7,10 +7,19 @@ import Breadcrumb from '../../components/Breadcrumb/Breadcrumb';
 import CourseBox from '../../components/CourseBox/CourseBox';
 import Footer from '../../components/Footer/Footer';
 import Pagination from '../../components/Pagination/Pagination';
+import { useEffect, useState } from 'react';
 
 
 
 const Courses = () => {
+
+    const [courses , setCourses] = useState([])
+
+    useEffect(() => {
+        fetch('http://localhost:4000/v1/courses')
+        .then(res => res.json())
+        .then(allCourses => setCourses(allCourses))
+    } , [])
     return (
         <>
             <Topbar />
@@ -28,14 +37,7 @@ const Courses = () => {
                     <div className="courses-content">
                         <div className="container">
                             <div className="row">
-                                <CourseBox />
-                                <CourseBox />
-                                <CourseBox />
-                                <CourseBox />
-                                <CourseBox />
-                                <CourseBox />
-                                <CourseBox />
-                                <CourseBox />
+                                {courses.map(course => (<CourseBox key={course._id} {...course} />))}
                             </div>
                         </div>
                     </div>
