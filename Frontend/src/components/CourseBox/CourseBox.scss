@@ -24,6 +24,7 @@
   .course-box__title {
     display: block;
     padding: 1rem 0;
+    color: $green2;
   }
   
   .course-box__rating-teacher {
@@ -62,6 +63,7 @@
   .course-box__users-icon {
     color: #6c757d;
     font-size: 1.6rem;
+    margin-left: .5rem;
   }
   
   .course-box__users-text {
