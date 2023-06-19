@@ -14,6 +14,7 @@ import { useEffect, useState } from 'react';
 const Courses = () => {
 
     const [courses , setCourses] = useState([])
+    const [shownCourses , setShownCourses] = useState([])     //for PAGINATION
 
     useEffect(() => {
         fetch('http://localhost:4000/v1/courses')
@@ -37,7 +38,7 @@ const Courses = () => {
                     <div className="courses-content">
                         <div className="container">
                             <div className="row">
-                                {courses.map(course => (<CourseBox key={course._id} {...course} />))}
+                                {shownCourses.map(course => (<CourseBox key={course._id} {...course} />))}
                             </div>
                         </div>
                     </div>
@@ -45,7 +46,12 @@ const Courses = () => {
             </section>
             {/* <!--------------------------------  Courses-Section  --------------------------------> */}
 
-            <Pagination />
+            <Pagination
+                items={courses}
+                itemsCount={6}
+                pathname='/courses'
+                setShownCourses={setShownCourses}
+            />
             <Footer />
         </>
     )
