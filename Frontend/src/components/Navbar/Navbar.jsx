@@ -31,7 +31,7 @@ const Navbar = () => {
               {
                 allMenus.map(menu => (
                   <li key={menu._id} className="main-header__item">
-                    <Link to={`/category-info/${menu.href}`} className="main-header__link">
+                    <Link to={`/category-info/${menu.href}/1`} className="main-header__link">
                       {menu.title}
                     </Link>
                     {menu.submenus.length !== 0 && (
@@ -41,7 +41,7 @@ const Navbar = () => {
                           {
                             menu.submenus.map(submenu => (
                               <li key={submenu._id} className="main-header__dropdown-item">
-                                <Link to={submenu.href} className="main-header__dropdown-link">{submenu.title}</Link>
+                                <Link to={`course-info/${submenu.href}`} className="main-header__dropdown-link">{submenu.title}</Link>
                               </li>
                             ))
                           }

@@ -20,7 +20,7 @@ const LastCourses = () => {
                     title='جدیدترین دوره ها'
                     desc='سکوی پرتاب شما به  سمت موفقیت'
                     btnTitle=' تمام دوره ها'
-                    btnHref='courses'
+                    btnHref='courses/1'
                 />
                 <div className="courses-content">
                     <div className="container">

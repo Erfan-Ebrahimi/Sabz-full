@@ -13,6 +13,7 @@ import Pagination from '../../components/Pagination/Pagination';
 const Category = () => {
 
   const [courses, setCourses] = useState([])
+  const [shownCourses , setShownCourses] = useState([])     //for PAGINATION
 
   const { categoryName } = useParams()
   useEffect(() => {
@@ -73,8 +74,13 @@ const Category = () => {
                         </div>
                       </div>
                     </section>
-                    {courses.map(course => (<CourseBox key={course._id} {...course} />))}
-                    <Pagination />
+                    {shownCourses.map(course => (<CourseBox key={course._id} {...course} />))}
+                    <Pagination
+                      items={courses}
+                      itemsCount={2}
+                      pathname={`/category-info/${categoryName}`}
+                      setShownCourses={setShownCourses}
+                    />
 
                   </>
                 )
