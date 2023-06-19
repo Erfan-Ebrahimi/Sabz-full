@@ -2,14 +2,26 @@ import './CommentsTextArea.scss';
 
 // -------------CONTEXT
 import AuthContext from '../../context/AuthContext';
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 
 
-const CommentsTextArea = ({ comments }) => { //az CourseInfo.jsx miad
+const CommentsTextArea = ({ comments, submitComment }) => { //az CourseInfo.jsx miad
+
+  // body & score ro mifrestim dar btn submitComment
+  const [newCommentBody, setNewCommentBody] = useState('')
+  const [score, setScore] = useState(1)
 
   // -------------context
   const authContext = useContext(AuthContext)
+
+  const onChangeBodyComment = (e) => {
+    setNewCommentBody(e.target.value)
+  }
+
+  const onChangeScoreComment = (e) => {
+    setScore(e.target.value)
+  }
 
   return (
     <div className="comments">
@@ -117,17 +129,27 @@ const CommentsTextArea = ({ comments }) => { //az CourseInfo.jsx miad
                 <div className="comments__score">
                   <span className="comments__score-title">امتیاز شما</span>
                   <div className="comments__score-input">
-                    <span className="comments__score-input-text">
-                      امتیاز خود را انتخاب کنید
-                    </span>
-                    <i className="fas fa-angle-down	 comments__input-icon"></i>
+                    <select className="comments__score-input-text" onChange={onChangeScoreComment} value={score}>
+                      <option name="1" id="">1</option>
+                      <option name="2" id="">2</option>
+                      <option name="3" id="">3</option>
+                      <option name="4" id="">4</option>
+                      <option name="5" id="">5</option>
+                    </select>
+                    {/* <i className="fas fa-angle-down	 comments__input-icon"></i> */}
                   </div>
                 </div>
                 <div className="comments__respond-content">
                   <div className="comments__respond-title">دیدگاه شما *</div>
-                  <textarea className="comments__score-input-respond"></textarea>
+                  <textarea
+                    className="comments__score-input-respond"
+                    value={newCommentBody}
+                    onChange={onChangeBodyComment}
+                  >
+                    {newCommentBody}
+                  </textarea>
                 </div>
-                <button type="submit" className="comments__respond-btn">
+                <button type="submit" className="comments__respond-btn" onClick={() => submitComment(newCommentBody, score)}>
                   ارسال
                 </button>
               </div>
@@ -137,9 +159,9 @@ const CommentsTextArea = ({ comments }) => { //az CourseInfo.jsx miad
           :
           (
             <div className="alert alert-warning alert-11">
-              &nbsp;برای ثبت نظر 
+              &nbsp;برای ثبت نظر
               <Link to='/login' className='link-11'>
-              &nbsp;ورود&nbsp;
+                &nbsp;ورود&nbsp;
               </Link>
               کنید
             </div>

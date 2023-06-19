@@ -154,6 +154,10 @@
     color: #7d7e7f;
     transition: all 400ms ease;
   }
+  select{
+    width: 200px;
+    border-radius: 5px;
+  }
   .comments__score-input:hover {
     background-color: #1e83f0;
     color: $white1;

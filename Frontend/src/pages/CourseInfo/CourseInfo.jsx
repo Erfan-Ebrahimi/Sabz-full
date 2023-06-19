@@ -16,6 +16,9 @@ import Accordion from 'react-bootstrap/Accordion';
 import { Link, useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 
+// ------------SWAL
+import swal from 'sweetalert';
+
 const CourseInfo = () => {
 
   // ---------------states for course data
@@ -25,13 +28,15 @@ const CourseInfo = () => {
   const [courseDetails, setCourseDetails] = useState({}) //baghiy data be joz comments & sessions dar in state save mishavad
   const [createdAt, setCreatedAt] = useState('')
   const [updatedAt, setUpdatedAt] = useState('')
+  
+  const { courseName } = useParams()
+  
   // --------------get course data from api
-  const params = useParams()
   useEffect(() => {
     // aval check mikonim k tokeni hast ya n k if fetch ham anjam shod baz karbari k token dare betone dastresi dashte bashe
     // film jalase 349 dide shavad
     const localStorageData = JSON.parse(localStorage.getItem('user'))
-    fetch(`http://localhost:4000/v1/courses/${params.courseName}`, {
+    fetch(`http://localhost:4000/v1/courses/${courseName}`, {
       method: 'GET',
       headers: {
         'Authorization': `Bearer ${localStorageData === null ? null : localStorageData.token}` // yani shakhs hanoz login nakarde
@@ -47,11 +52,31 @@ const CourseInfo = () => {
       })
   }, [])
 
-
-  console.log(comments);
-  console.log(sessions);
-  console.log(courseDetails);
-
+  //------------submit new comment
+  //newCommentBody & score az CommentsTextArea.jsx btn submitComment miad
+  const submitComment = (newCommentBody, score) => {
+    const newCommentDetails = {
+      body: newCommentBody,
+      courseShortName: courseName,
+      score
+    }
+    const localStorageData = JSON.parse(localStorage.getItem('user'))
+    fetch('http://localhost:4000/v1/comments', {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${localStorageData.token}`,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(newCommentDetails)
+    }).then(res => res.json())
+      .then(data => {
+        swal({
+          title: 'کامنت با موفقیت ثبت شد بعد از تایید مدیر نشان داده خواهد شد',
+          icon: 'success',
+          buttons: 'تایید'
+      })
+      })
+  }
 
   return (
     <>
@@ -256,8 +281,8 @@ const CourseInfo = () => {
                   </p>
                 </div>
                 {/* Finish Teacher Details*/}
-
-                <CommentsTextArea comments={comments}/>
+                {/*  */}
+                <CommentsTextArea comments={comments} submitComment={submitComment} />
               </div>
             </div>
             {/* Finish Course Main  */}
