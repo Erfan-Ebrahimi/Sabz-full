@@ -1,3 +1,6 @@
+import { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
+
 import './Category.scss';
 
 import Footer from '../../components/Footer/Footer';
@@ -8,6 +11,18 @@ import Pagination from '../../components/Pagination/Pagination';
 
 
 const Category = () => {
+
+  const [courses, setCourses] = useState([])
+
+  const { categoryName } = useParams()
+  useEffect(() => {
+    fetch(`http://localhost:4000/v1/courses/category/${categoryName}`)
+      .then(res => res.json())
+      .then(allCourses => {
+        setCourses(allCourses)
+        console.log(allCourses);
+      })
+  } , [categoryName])
   return (
     <>
       <Topbar />
@@ -55,9 +70,8 @@ const Category = () => {
       <div className="courses-content">
         <div className="container">
           <div className="row">
-            <CourseBox />
-            <CourseBox />
-            <CourseBox />
+            {courses.map(course => (<CourseBox key={course._id} {...course} />))}
+
           </div>
         </div>
       </div>

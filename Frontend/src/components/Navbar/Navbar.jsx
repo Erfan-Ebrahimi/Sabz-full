@@ -31,7 +31,7 @@ const Navbar = () => {
               {
                 allMenus.map(menu => (
                   <li key={menu._id} className="main-header__item">
-                    <Link to={menu.href} className="main-header__link">
+                    <Link to={`/category-info/${menu.href}`} className="main-header__link">
                       {menu.title}
                     </Link>
                     {menu.submenus.length !== 0 && (
