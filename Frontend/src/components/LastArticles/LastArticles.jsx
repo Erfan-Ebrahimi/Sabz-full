@@ -1,10 +1,25 @@
+import { useEffect, useState } from 'react';
+
 import './LastArticles.scss';
+
 import SectionHeader from '../SectionHeader/SectionHeader';
 import ArticleBox from '../ArticleBox/ArticleBox';
-import cover from '../../assets/images/courses/python.png'
 
 
 const LastArticles = () => {
+
+  const [articles, setArticles] = useState([])
+
+  // --------get articles from api
+  useEffect(() => {
+    fetch('http://localhost:4000/v1/articles')
+      .then(res => res.json())
+      .then(allArticles => {
+        setArticles(allArticles)
+        console.log(allArticles);
+      })
+  }, [])
+
   return (
     <div className='articles'>
       <div className="container">
@@ -12,21 +27,17 @@ const LastArticles = () => {
 
         <div className='articles__content'>
           <div className="row">
-            <ArticleBox
-              title='نحوه نصب کتابخانه در پایتون | آموزش نصب کتابخانه پایتون'
-              desc='زبان پایتون هم مانند دیگر زبان­های برنامه نویسی رایج، دارای کتابخانه های مختلفی برای تسریع...'
-              img={cover}
-            />
-            <ArticleBox
-              title='نحوه نصب کتابخانه در پایتون | آموزش نصب کتابخانه پایتون'
-              desc='زبان پایتون هم مانند دیگر زبان­های برنامه نویسی رایج، دارای کتابخانه های مختلفی برای تسریع...'
-              img={cover}
-            />
-            <ArticleBox
-              title='نحوه نصب کتابخانه در پایتون | آموزش نصب کتابخانه پایتون'
-              desc='زبان پایتون هم مانند دیگر زبان­های برنامه نویسی رایج، دارای کتابخانه های مختلفی برای تسریع...'
-              img={cover}
-            />
+            {
+              articles.slice(4,7).map(article => (
+                <ArticleBox
+                  key={article._id}
+                  title={article.title}
+                  description={article.description}
+                  cover={article.cover}
+                  shortName={article.shortName}
+                />
+              ))
+            }
           </div>
         </div>
       </div>
