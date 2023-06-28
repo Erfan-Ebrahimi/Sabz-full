@@ -16,6 +16,7 @@ const Category = () => {
   const [orderedCourses, setOrderedCourses] = useState([]); // courses ra dastkari nemikonim v az in state baray taghhyrat estefadeh mikonim
   const [status, setStatus] = useState('default') // for sort courses
   const [statusTitle, setStatusTitle] = useState('مرتب سازی پیش فرض') // for value sort select
+  const [searchValue, setSearchValue] = useState('')
   const [shownCourses, setShownCourses] = useState([])     //for PAGINATION
 
   const { categoryName } = useParams()
@@ -47,7 +48,7 @@ const Category = () => {
         break
       }
       case 'first': {
-        const reversedCourses = courses.slice().reverse()
+        const reversedCourses = courses.slice().reverse() //aval slice mikonim bad reverse ta roy state asli taghyery ijad nashavad
         setOrderedCourses(reversedCourses)
         break
       }
@@ -57,8 +58,19 @@ const Category = () => {
     }
   }, [status])
 
+  // for sort input handler
   const statusTitleChangeHandler = event => {
     setStatusTitle(event.target.textContent)
+  }
+
+  // for search input handler
+  const searchValueChangeHandler = event => {
+    setSearchValue(event.target.value)
+
+    const filteredCourses = courses.filter((course) => course.name.includes(event.target.value))
+
+    setOrderedCourses(filteredCourses)
+
   }
 
 
@@ -140,7 +152,13 @@ const Category = () => {
 
                           <div className="courses-top-bar__left">
                             <form action="#" className="courses-top-bar__form">
-                              <input type="text" className="courses-top-bar__input" placeholder="جستجوی دوره ..." />
+                              <input
+                                type="text"
+                                className="courses-top-bar__input"
+                                placeholder="جستجوی دوره ..."
+                                value={searchValue}
+                                onChange={searchValueChangeHandler}
+                              />
                               <i className="fas fa-search courses-top-bar__search-icon"></i>
                             </form>
                           </div>
