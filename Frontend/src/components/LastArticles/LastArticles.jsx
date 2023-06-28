@@ -23,12 +23,17 @@ const LastArticles = () => {
   return (
     <div className='articles'>
       <div className="container">
-        <SectionHeader title='جدیدترین مقاله ها' desc='پیش به سوی ارتقای دانش' btnTitle='تمامی مقاله ها' />
+        <SectionHeader
+          title='جدیدترین مقاله ها'
+          desc='پیش به سوی ارتقای دانش' 
+          btnTitle='تمامی مقاله ها'
+          btnHref='articles/1' 
+        />
 
         <div className='articles__content'>
           <div className="row">
             {
-              articles.slice(4,7).map(article => (
+              articles.slice(4, 7).map(article => (
                 <ArticleBox
                   key={article._id}
                   title={article.title}
