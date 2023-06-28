@@ -13,14 +13,55 @@ import Pagination from '../../components/Pagination/Pagination';
 const Category = () => {
 
   const [courses, setCourses] = useState([])
-  const [shownCourses , setShownCourses] = useState([])     //for PAGINATION
+  const [orderedCourses, setOrderedCourses] = useState([]); // courses ra dastkari nemikonim v az in state baray taghhyrat estefadeh mikonim
+  const [status, setStatus] = useState('default') // for sort courses
+  const [statusTitle, setStatusTitle] = useState('مرتب سازی پیش فرض') // for value sort select
+  const [shownCourses, setShownCourses] = useState([])     //for PAGINATION
 
   const { categoryName } = useParams()
   useEffect(() => {
     fetch(`http://localhost:4000/v1/courses/category/${categoryName}`)
       .then(res => res.json())
-      .then(allCourses => setCourses(allCourses))
+      .then(allCourses => {
+        setCourses(allCourses)
+        setOrderedCourses(allCourses)
+      })
   }, [categoryName])
+
+  //for sort courses
+  useEffect(() => {
+    switch (status) {
+      case 'free': {
+        const freeCourses = courses.filter(course => course.price === 0)
+        setOrderedCourses(freeCourses)
+        console.log(freeCourses);
+        break
+      }
+      case 'money': {
+        const notFreeCourses = courses.filter(course => course.price !== 0)
+        setOrderedCourses(notFreeCourses)
+        break
+      }
+      case 'last': {
+        setOrderedCourses(courses)
+        break
+      }
+      case 'first': {
+        const reversedCourses = courses.slice().reverse()
+        setOrderedCourses(reversedCourses)
+        break
+      }
+      default: {
+        setOrderedCourses(courses)
+      }
+    }
+  }, [status])
+
+  const statusTitleChangeHandler = event => {
+    setStatusTitle(event.target.textContent)
+  }
+
+
   return (
     <>
       <Topbar />
@@ -50,16 +91,49 @@ const Category = () => {
 
                             <div className="courses-top-bar__selection">
                               <span className="courses-top-bar__selection-title">
-                                مرتب سازی پیش فرض
+                                {statusTitle}
                                 <i className="fas fa-angle-down courses-top-bar__selection-icon"></i>
                               </span>
                               <ul className="courses-top-bar__selection-list">
-                                <li className="courses-top-bar__selection-item courses-top-bar__selection-item--active">مرتب سازی پیش فرض</li>
-                                <li className="courses-top-bar__selection-item">مربت سازی بر اساس محبوبیت</li>
-                                <li className="courses-top-bar__selection-item">مربت سازی بر اساس امتیاز</li>
-                                <li className="courses-top-bar__selection-item">مربت سازی بر اساس آخرین</li>
-                                <li className="courses-top-bar__selection-item">مربت سازی بر اساس ارزان ترین</li>
-                                <li className="courses-top-bar__selection-item">مربت سازی بر اساس گران ترین</li>
+                                <li className="courses-top-bar__selection-item courses-top-bar__selection-item--active" onClick={(event) => {
+                                  setStatus('مرتب سازی پیش فرض')
+                                  statusTitleChangeHandler(event)
+                                }}
+                                >
+                                  مرتب سازی پیش فرض
+                                </li>
+                                <li className="courses-top-bar__selection-item"
+                                  onClick={(event) => {
+                                    setStatus('free')
+                                    statusTitleChangeHandler(event)
+                                  }}
+                                >
+                                  دوره های رایگان
+                                </li>
+                                <li className="courses-top-bar__selection-item"
+                                  onClick={(event) => {
+                                    setStatus('money')
+                                    statusTitleChangeHandler(event)
+                                  }}
+                                >
+                                  دوره های پولی
+                                </li>
+                                <li className="courses-top-bar__selection-item"
+                                  onClick={(event) => {
+                                    setStatus('last')
+                                    statusTitleChangeHandler(event)
+                                  }}
+                                >
+                                  مربت سازی بر اساس اولین
+                                </li>
+                                <li className="courses-top-bar__selection-item"
+                                  onClick={(event) => {
+                                    setStatus('first')
+                                    statusTitleChangeHandler(event)
+                                  }}
+                                >
+                                  مربت سازی بر اساس آخرین
+                                </li>
                               </ul>
                             </div>
                           </div>
@@ -74,10 +148,12 @@ const Category = () => {
                         </div>
                       </div>
                     </section>
+
                     {shownCourses.map(course => (<CourseBox key={course._id} {...course} />))}
+                    
                     <Pagination
-                      items={courses}
-                      itemsCount={2}
+                      items={orderedCourses} //orderd ra mifrestim for pagination
+                      itemsCount={3}
                       pathname={`/category-info/${categoryName}`}
                       setShownCourses={setShownCourses}
                     />
