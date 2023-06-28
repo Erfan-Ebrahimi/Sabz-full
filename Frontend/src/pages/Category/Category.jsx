@@ -149,8 +149,18 @@ const Category = () => {
                       </div>
                     </section>
 
-                    {shownCourses.map(course => (<CourseBox key={course._id} {...course} />))}
-                    
+                    {shownCourses.length === 0 ?
+                      (
+                        <div className='alert alert-warning'>هیچ ذوره ایی برای این مرتب سازی وجود ندارد :(</div>
+                      )
+                      :
+                      (
+                        <>
+                          {shownCourses.map(course => (<CourseBox key={course._id} {...course} />))}
+                        </>
+                      )
+                    }
+
                     <Pagination
                       items={orderedCourses} //orderd ra mifrestim for pagination
                       itemsCount={3}
