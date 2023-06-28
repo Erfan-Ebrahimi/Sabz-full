@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { memo, useEffect, useState } from 'react';
 import './Topbar.scss';
 
 import { Link } from 'react-router-dom';
@@ -56,4 +56,4 @@ const Topbar = () => {
   )
 }
 
-export default Topbar;
+export default memo(Topbar); //jelogiry az render bihodev

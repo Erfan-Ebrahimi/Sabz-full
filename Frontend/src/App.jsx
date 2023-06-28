@@ -13,7 +13,7 @@ function App() {
 
   // ---------------global functions send to Context
   // az useCallback estefade mikonim ta az render bihode jelogiri konim
-  const login = useCallback((userIfos, token) => {    //userInfos & token az Register.jsx or Login.jsx vaghti registerNewUser or userLogin farakhani mishavad miad
+  const login = (userIfos, token) => {    //userInfos & token az Register.jsx or Login.jsx vaghti registerNewUser or userLogin farakhani mishavad miad
     if (token) {
       console.log('login : token omad');
     }
@@ -21,7 +21,7 @@ function App() {
     setUserInfos(userIfos)
     setIsLoggedIn(true)
     localStorage.setItem('user', JSON.stringify({ token: token }))
-  } , [])
+  }
 
   const logout = useCallback( () => {
     console.log('logout');
