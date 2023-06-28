@@ -21,12 +21,15 @@
 }
 
 .article-header__item {
+    display: flex;
+    align-items: center;
     margin-left: 2rem;
 }
 
 .article-header__icon {
     font-size: 1.7rem;
-    color: #c7c7c7;
+    color: #1a8fb3;
+    margin-left: .5rem;
 }
 
 .article-header__text {
