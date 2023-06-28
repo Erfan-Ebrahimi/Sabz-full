@@ -32,10 +32,11 @@ const PresellCourses = () => {
                   pagination={{
                     clickable: true,
                   }}
+                  loop={true}
                   className="mySwiper"
                 >
                   {presellCourses.map((course) => (
-                    <SwiperSlide>
+                    <SwiperSlide key={course._id}>
                       {/* isSlider for style  */}
                       <CourseBox {...course} isSlider={true} />               
                     </SwiperSlide>
