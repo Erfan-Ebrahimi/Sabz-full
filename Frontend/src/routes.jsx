@@ -8,6 +8,7 @@ import Login from './pages/Login/Login';
 import Register from './pages/Register/Register';
 import Contact from './pages/Contact/Contact';
 import Search from './pages/Search/Search';
+import AdminPanel from './pages/AdminPanel/AdminPanel'
 
 const routes = [
     { path: '/', element: <Index /> },
@@ -20,6 +21,11 @@ const routes = [
     { path: '/register', element: <Register /> },
     { path: '/contact', element: <Contact /> },
     { path: '/search/:value', element: <Search /> },
+    {
+        path: '/p-admin', 
+        element: <AdminPanel />,
+        //  children: [{path: '/search/:value', element: <Search />}]
+    },
 
 ]
 
