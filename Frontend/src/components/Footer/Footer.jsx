@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import FooterItem from '../FooterItem/FooterItem';
 import './Footer.scss'
 
@@ -36,6 +37,11 @@ const Footer = () => {
                                     <a href="#" className="footer-widgets__link">
                                         آموزش HTML
                                     </a>
+                                </div>
+                                <div className="col-6">
+                                    <Link to='/contact' className="footer-widgets__link">
+                                       ارتباط با ما
+                                    </Link>
                                 </div>
                                 <div className="col-6">
                                     <a href="#" className="footer-widgets__link">
