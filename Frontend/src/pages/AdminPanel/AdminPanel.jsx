@@ -1,8 +1,16 @@
+import Sidebar from '../../components/AdminPanel/Sidebar/Sidebar';
 import './AdminPanel.scss';
+import { Outlet } from 'react-router-dom';
 
+// har paneli besazim miad inja be onvane Outlet
 const AdminPanel = () => {
     return (
-        <div>AdminPanel</div>
+        <>
+            <div className='content'>
+                <Sidebar />
+            </div>
+            <Outlet />
+        </>
     )
 }
 
