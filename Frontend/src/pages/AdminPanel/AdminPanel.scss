@@ -236,19 +236,31 @@
   }
   #home .home-header .home-right .home-notification {
     margin-right: 20px;
+    position: relative;
+  }
+  #home .home-header .home-right .home-notification span {
+    position: absolute;
+    font-size: 15px;
+    width: 20px;
+    height: 20px;
+    top: -10px;
+    right: -15px;
+    text-align: center;
+    border-radius: 50%;
+    color: red;
   }
   #home .home-header .home-right .home-notification button {
     border: none;
     background: transparent;
   }
   #home .home-header .home-right .home-notification button i {
-    font-size: 18px;
+    font-size: 28px !important;
     color: #a3abb1;
   }
   #home .home-header .home-right .home-notification-modal {
-    width: 250px;
+    width: 350px;
     border-radius: 3px;
-    background-color: #fff;
+    background-color: #535c57;
     -webkit-box-shadow: 0px 0px 5px 1px #ccc;
     box-shadow: 0px 0px 5px 1px #ccc;
     position: absolute;
@@ -279,26 +291,35 @@
     justify-content: space-between;
     border-bottom: 1px solid #ccc;
     padding: 10px;
+    gap: 20px;
+  }
+  #home
+  .home-header
+  .home-right
+  .home-notification-modal
+  .home-notification-modal-item a {
+    color: rgb(0, 255, 106);
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+  #home
+  .home-header
+  .home-right
+  .home-notification-modal
+  .home-notification-modal-item a:hover {
+    color: rgb(204, 238, 218);
+    padding: 0 !important;
+    margin: 0 !important;
   }
   #home
     .home-header
     .home-right
     .home-notification-modal
     .home-notification-modal-text {
-    color: #313131;
+    color: #ffffff;
     font-size: 13px;
   }
-  #home .home-header .home-right .home-notification-modal .switch {
-    position: relative;
-    display: inline-block;
-    width: 50px;
-    height: 20px;
-  }
-  #home .home-header .home-right .home-notification-modal .switch input {
-    opacity: 0;
-    width: 0;
-    height: 0;
-  }
+  
   #home .home-header .home-right .home-notification-modal .slider {
     position: absolute;
     cursor: pointer;

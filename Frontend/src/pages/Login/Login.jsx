@@ -8,7 +8,7 @@ import AuthContext from "../../context/AuthContext";
 import Footer from "../../components/Footer/Footer";
 import Navbar from "../../components/Navbar/Navbar";
 import Topbar from "../../components/Topbar/Topbar";
-import Input from "../../components/Form/Input";
+import Input from '../../components/Form/Input';
 import Button from '../../components/Form/Button';
 
 // -------------SPA
@@ -143,7 +143,7 @@ const Login = () => {
                             />
                             <i className="login-form__password-icon fa fa-lock-open"></i>
                         </div>
-                        <ReCAPTCHA 
+                        <ReCAPTCHA
                             className="recaptcha"
                             sitekey="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"
                             onChange={onChangeRecaptcha}

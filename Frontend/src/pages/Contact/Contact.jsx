@@ -1,8 +1,8 @@
 import React from "react";
-import Topbar from "../../Components/Topbar/Topbar";
-import Navbar from "../../Components/Navbar/Navbar";
-import Footer from "../../Components/Footer/Footer";
-import Input from "../../Components/Form/Input";
+import Topbar from "../../components/Topbar/Topbar";
+import Navbar from "../../components/Navbar/Navbar";
+import Footer from "../../components/Footer/Footer";
+import Input from "../../components/Form/Input";
 import {
   requiredValidator,
   minValidator,
@@ -12,7 +12,7 @@ import {
 
 import "./Contact.scss";
 import { useForm } from "../../hooks/useForm";
-import Button from "../../Components/Form/Button";
+import Button from "../../components/Form/Button";
 
 import swal from 'sweetalert';
 import { useNavigate } from "react-router-dom";

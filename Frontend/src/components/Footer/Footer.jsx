@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import FooterItem from '../FooterItem/FooterItem';
 import './Footer.scss';
-import Input from "./../../Components/Form/Input";
+import Input from "../../components/Form/Input";
 import { emailValidator } from "../../validators/rules";
 import { useForm } from "../../hooks/useForm";
 import swal from "sweetalert";
