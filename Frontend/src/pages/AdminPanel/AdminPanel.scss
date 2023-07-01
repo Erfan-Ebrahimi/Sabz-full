@@ -99,18 +99,6 @@
     -webkit-transition: all 0.2s ease;
     transition: all 0.2s ease;
   }
-  @font-face {
-    font-family: "vazir";
-    src: url("./../../fonts/Vazir/Vazir.eot");
-    src: url("./../../fonts/Vazir/Vazir.ttf");
-    src: url("./../../fonts/Vazir/Vazir.woff");
-    src: url("./../../fonts/Vazir/Vazir.woff2");
-  }
-  @font-face {
-    font-family: "lalezar";
-    src: url("./../../fonts/Lalezar-Font/OTF/Lalezar-Regular.otf");
-    src: url("./../../fonts/Lalezar-Font/TTF/Lalezar-Regular.ttf");
-  }
   #sidebar {
     background-color: #17203f;
     height: 100vh;
@@ -423,7 +411,7 @@
   }
   #home #home-content .home-content-latset-users .home-content-users-title span {
     font-size: 18px;
-    font-family: "lalezar";
+    font-family: "lale";
   }
   #home
     #home-content
@@ -452,7 +440,7 @@
     thead
     tr
     th {
-    font-family: "lalezar";
+    font-family: "lale";
     border: none;
     color: #67747e;
     text-align: center;
@@ -581,7 +569,7 @@
   }
   #home #home-content .home-content-edit .form .input .input-title {
     font-size: 18px;
-    font-family: "lalezar";
+    font-family: "lale";
   }
   #home #home-content .home-content-edit .form .bottom-form {
     display: -webkit-box;
@@ -597,7 +585,7 @@
   }
   #home #home-content .home-content-edit .form .bottom-form .sex .input-title {
     font-size: 18px;
-    font-family: "lalezar";
+    font-family: "lale";
   }
   #home #home-content .home-content-edit .form .bottom-form .sex .radios {
     display: -webkit-box;
@@ -720,7 +708,7 @@
   }
   #delete-modal .delete-modal-title {
     font-size: 20px;
-    font-family: "lalezar";
+    font-family: "lale";
     padding: 10px 0;
   }
   #delete-modal .delete-modal-btns button {

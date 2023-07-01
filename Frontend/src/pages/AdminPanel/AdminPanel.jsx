@@ -10,10 +10,12 @@ const AdminPanel = () => {
             <div className='content'>
                 <Sidebar />
                 <div id='home' className="col-10">
-                    <Topbar/>
+                    <Topbar />
+                    <div class="container-fluid" id="home-content">
+                        <Outlet />
+                    </div>
                 </div>
             </div>
-            <Outlet />
         </>
     )
 }
