@@ -83,4 +83,31 @@
     width: 5px;
     height: 100%;
   }
+
+  .logout-li{
+    .logout-wrapper{
+      display: flex;
+      align-items: center;
+      
+      
+      span{
+        color: #ff3511b2;
+      }
   
+      .logout-icon{
+        color: #ff3511b2;
+        margin-right: 10px;
+        font-size: 28px !important;
+        
+      }
+    }
+    &:hover{
+      span{
+        color: #fff;
+      }
+      .logout-icon{
+        color: #fff;
+      }
+    }
+
+  }
