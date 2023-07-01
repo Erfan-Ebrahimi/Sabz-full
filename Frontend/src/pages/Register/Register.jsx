@@ -22,7 +22,6 @@ const Register = () => {
 
     // -------------context
     const authContext = useContext(AuthContext)
-    console.log(authContext);
 
 
     //---------------useForm
@@ -52,7 +51,6 @@ const Register = () => {
         },
         false
     )
-    // console.log(formState);
 
     // --------------User Register
     const registerNewUser = (e) => {
@@ -75,13 +73,8 @@ const Register = () => {
             body: JSON.stringify(newUserInfos)
         }).then(res => res.json())
             .then(result => {
-                console.log(result)
                 authContext.login(result.user, result.accessToken)       // (resul.user = userInfos) & token ro mifrest to App.jsx(login function)
             })
-
-
-
-        console.log('register new User');
     }
     return (
         <>
@@ -134,6 +127,22 @@ const Register = () => {
                         <div className="login-form__password">
                             <Input
                                 className="login-form__password-input"
+                                type="text"
+                                id='phone'
+                                placeholder="شماره تلغن"
+                                element='input'
+                                onInputHandler={onInputHandler}
+                                validations={[
+                                    requiredValidator(),
+                                    minValidator(11),
+                                    maxValidator(11)
+                                ]}
+                            />
+                            <i className="login-form__password-icon fa fa-phone"></i>
+                        </div>
+                        <div className="login-form__password">
+                            <Input
+                                className="login-form__password-input"
                                 type="email"
                                 id='email'
                                 placeholder="آدرس ایمیل"
@@ -155,22 +164,6 @@ const Register = () => {
                                 type="password"
                                 id='password'
                                 placeholder="رمز عبور"
-                                element='input'
-                                onInputHandler={onInputHandler}
-                                validations={[
-                                    requiredValidator(),
-                                    minValidator(8),
-                                    maxValidator(20)
-                                ]}
-                            />
-                            <i className="login-form__password-icon fa fa-lock-open"></i>
-                        </div>
-                        <div className="login-form__password">
-                            <Input
-                                className="login-form__password-input"
-                                type="text"
-                                id='phone'
-                                placeholder="شماره تلغن"
                                 element='input'
                                 onInputHandler={onInputHandler}
                                 validations={[

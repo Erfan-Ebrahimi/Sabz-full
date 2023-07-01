@@ -43,7 +43,7 @@ const Users = () => {
 
                         }
                     }).then((res) => {
-                        if(res.ok){
+                        if (res.ok) {
                             swal("حذف شد!", "", "success").then(result => getAllUsers())
                         }
                     })
@@ -51,57 +51,89 @@ const Users = () => {
             });
     }
 
-    return (
-        <>
-            <DataTable title="کاربران">
-                <table className="table">
-                    <thead>
-                        <tr>
-                            <th>شناسه</th>
-                            <th> نام و نام خانوادگی </th>
-                            <th>شماره</th>
-                            <th>ایمیل</th>
-                            <th>ویرایش</th>
-                            <th>حذف</th>
-                            <th>بن</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {users.map((user, index) => (
-                            <tr key={user._id}>
-                                <td>{index + 1}</td>
-                                <td>{user.name}</td>
-                                <td>{user.phone}</td>
-                                <td>{user.email}</td>
-                                <td>
-                                    <button type="button" className="btn btn-primary edit-btn">
-                                        ویرایش
-                                    </button>
-                                </td>
-                                <td>
-                                    <button
-                                        type="button"
-                                        className="btn btn-danger delete-btn"
-                                        onClick={() => {
-                                            removeUser(user._id)
-                                        }}
-                                    >
-                                        حذف
-                                    </button>
-                                </td>
-                                <td>
-                                    <button type="button" className="btn btn-danger delete-btn">
-                                        بن
-                                    </button>
-                                </td>
+    // ----------BAN user
+    const banUser = (userID) => {
+        swal({
+            title: "آیا از بن کاربر مطمئنی ؟",
+            icon: "warning",
+            buttons: ['نه', 'آره'],
+            dangerMode: true,
+        })
+            .then(willDelete => {
+                if (willDelete) {
+                    const localStorageData = JSON.parse(localStorage.getItem('user'))
+                    fetch(`http://localhost:4000/v1/users/ban/${userID}`, {
+                        method: 'PUT',
+                        headers: {
+                            Authorization: `Bearer ${localStorageData.token}`
+
+                        }
+                    }).then((res) => {
+                        if (res.ok) {
+                            swal("بن شد !", "", "success").then(result => getAllUsers())
+                        }
+                    })
+                }
+            })}
+
+
+        return (
+            <>
+                <DataTable title="کاربران">
+                    <table className="table">
+                        <thead>
+                            <tr>
+                                <th>شناسه</th>
+                                <th> نام و نام خانوادگی </th>
+                                <th>شماره</th>
+                                <th>ایمیل</th>
+                                <th>ویرایش</th>
+                                <th>حذف</th>
+                                <th>بن</th>
                             </tr>
+                        </thead>
+                        <tbody>
+                            {users.map((user, index) => (
+                                <tr key={user._id}>
+                                    <td>{index + 1}</td>
+                                    <td>{user.name}</td>
+                                    <td>{user.phone}</td>
+                                    <td>{user.email}</td>
+                                    <td>
+                                        <button type="button" className="btn btn-primary edit-btn">
+                                            ویرایش
+                                        </button>
+                                    </td>
+                                    <td>
+                                        <button
+                                            type="button"
+                                            className="btn btn-danger delete-btn"
+                                            onClick={() => {
+                                                removeUser(user._id)
+                                            }}
+                                        >
+                                            حذف
+                                        </button>
+                                    </td>
+                                    <td>
+                                        <button
+                                            type="button"
+                                            className="btn btn-danger delete-btn"
+                                            onClick={() => {
+                                                banUser(user._id)
+                                            }}
+                                        >
+                                            بن
+                                        </button>
+                                    </td>
+                                </tr>
 
-                        ))}
-                    </tbody>
-                </table>
-            </DataTable>
-        </>
-    )
-}
+                            ))}
+                        </tbody>
+                    </table>
+                </DataTable>
+            </>
+        )
+    }
 
-export default Users;
+    export default Users;
