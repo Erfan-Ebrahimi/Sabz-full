@@ -17,6 +17,7 @@ import { Link } from 'react-router-dom'
 //----------VALIDATION
 import { requiredValidator, minValidator, maxValidator, emailValidator } from "../../validators/rules";
 import { useForm } from "../../hooks/useForm";
+import swal from 'sweetalert';
 
 const Register = () => {
 
@@ -71,7 +72,19 @@ const Register = () => {
                 "Content-Type": "application/json"
             },
             body: JSON.stringify(newUserInfos)
-        }).then(res => res.json())
+        }).then((res) => { // if res.ok = false & status = 403 => shomare ban mibashad
+            if(res.ok){
+                res.json()
+            }else{
+                if(res.status === 403){
+                    swal({
+                        title:'این شماره بن شده است',
+                        icon:'warning',
+                        buttons:'ای بابا'
+                    })
+                }
+            }
+        })
             .then(result => {
                 authContext.login(result.user, result.accessToken)       // (resul.user = userInfos) & token ro mifrest to App.jsx(login function)
             })
