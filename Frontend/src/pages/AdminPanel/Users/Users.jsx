@@ -1,11 +1,17 @@
 import './Users.scss';
 import DataTable from '../../../components/AdminPanel/DataTable/DataTable';
 import { useEffect, useState } from 'react';
+import swal from 'sweetalert'
 
 const Users = () => {
 
     const [users, setUsers] = useState([])
     useEffect(() => {
+        getAllUsers()
+    }, [])
+
+    // -----------get users
+    function getAllUsers() {
         const localStorageData = JSON.parse(localStorage.getItem('user'))
         fetch('http://localhost:4000/v1/users', {
             headers: {
@@ -17,7 +23,33 @@ const Users = () => {
                 setUsers(allUsers)
                 console.log(allUsers);
             })
-    }, [])
+    }
+
+    // -----remove User
+    const removeUser = (userID) => {
+        swal({
+            title: "آیا از حذف کاربر مطمئنی ؟",
+            icon: "warning",
+            buttons: ['نه', 'آره'],
+            dangerMode: true,
+        })
+            .then(willDelete => {
+                if (willDelete) {
+                    const localStorageData = JSON.parse(localStorage.getItem('user'))
+                    fetch(`http://localhost:4000/v1/users/${userID}`, {
+                        method: 'DELETE',
+                        headers: {
+                            Authorization: `Bearer ${localStorageData.token}`
+
+                        }
+                    }).then((res) => {
+                        if(res.ok){
+                            swal("حذف شد!", "", "success").then(result => getAllUsers())
+                        }
+                    })
+                }
+            });
+    }
 
     return (
         <>
@@ -47,7 +79,13 @@ const Users = () => {
                                     </button>
                                 </td>
                                 <td>
-                                    <button type="button" className="btn btn-danger delete-btn">
+                                    <button
+                                        type="button"
+                                        className="btn btn-danger delete-btn"
+                                        onClick={() => {
+                                            removeUser(user._id)
+                                        }}
+                                    >
                                         حذف
                                     </button>
                                 </td>
