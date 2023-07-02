@@ -2,10 +2,11 @@ import './Courses.scss';
 import DataTable from '../../../components/AdminPanel/DataTable/DataTable';
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import swal from 'sweetalert';
 
 const Courses = () => {
     const [courses, setCourses] = useState([])
-
+   
     useEffect(() => {
         getAllCourses()
     }, [])
@@ -24,6 +25,33 @@ const Courses = () => {
                 console.log(allCourses);
             })
     }
+
+    // ----------remove course
+    const removeCourse = (courseID) => {
+        swal({
+            title: "آیا از حذف دوره مطمئنی ؟",
+            icon: "warning",
+            buttons: ['نه', 'آره'],
+            dangerMode: true,
+        })
+            .then(willDelete => {
+                if (willDelete) {
+                    const localStorageData = JSON.parse(localStorage.getItem('user'))
+                    fetch(`http://localhost:4000/v1/courses/${courseID}`, {
+                        method: 'DELETE',
+                        headers: {
+                            Authorization: `Bearer ${localStorageData.token}`
+
+                        }
+                    }).then((res) => {
+                        if (res.ok) {
+                            swal("حذف شد!", "", "success").then(result => getAllCourses())
+                        }
+                    })
+                }
+            });
+    }
+
     return (
         <DataTable title="دوره ها">
             <table className="table">
@@ -58,7 +86,13 @@ const Courses = () => {
                                 </button>
                             </td>
                             <td>
-                                <button type="button" className="btn btn-danger edit-btn">
+                                <button
+                                    type="button"
+                                    className="btn btn-danger edit-btn"
+                                    onClick={() => {
+                                        removeCourse(course._id)
+                                    }}
+                                >
                                     حذف
                                 </button>
                             </td>

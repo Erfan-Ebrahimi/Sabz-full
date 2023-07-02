@@ -172,7 +172,7 @@ const Category = () => {
                                     type="text"
                                     id="title"
                                     placeholder="لطفا عنوان را وارد کنید..."
-                                    validations={[minValidator(5), maxValidator(20)]}
+                                    validations={[minValidator(5), maxValidator(30)]}
                                 />
                                 <span className="error-message text-danger"></span>
                             </div>
@@ -203,6 +203,7 @@ const Category = () => {
                             </div>
                         </div>
                     </form>
+                    <p className='alert alert-danger'>دسته بندی فرانت و بک تغییر داده نشود</p>
                 </div>
             </div>
             <DataTable title="دسته بندی ها">

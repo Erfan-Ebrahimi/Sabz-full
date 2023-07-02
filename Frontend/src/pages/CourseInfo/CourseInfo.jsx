@@ -29,6 +29,7 @@ const CourseInfo = () => {
   const [createdAt, setCreatedAt] = useState('')
   const [updatedAt, setUpdatedAt] = useState('')
   const [courseTeacher, setCourseTeacher] = useState({})
+  const [courseCategory, setCourseCategory] = useState([])     //why array ???????????? bepors
   
   const { courseName } = useParams()
   
@@ -40,7 +41,7 @@ const CourseInfo = () => {
     fetch(`http://localhost:4000/v1/courses/${courseName}`, {
       method: 'GET',
       headers: {
-        'Authorization': `Bearer ${localStorageData === null ? null : localStorageData.token}` // yani shakhs hanoz login nakarde
+        Authorization: `Bearer ${localStorageData === null ? null : localStorageData.token}` // yani shakhs hanoz login nakarde
       }
     })
       .then(res => res.json())
@@ -51,6 +52,7 @@ const CourseInfo = () => {
         setCreatedAt(courseInfo.createdAt)
         setUpdatedAt(courseInfo.updatedAt)
         setCourseTeacher(courseInfo.creator)
+        setCourseCategory(courseInfo.categoryID.title)
         console.log(courseInfo);
         console.log(courseName);
       })
@@ -102,7 +104,7 @@ const CourseInfo = () => {
           <div className="row">
             <div className="col-6">
               <a href="#" className="course-info__link">
-                آموزش برنامه نویسی فرانت اند
+               {courseCategory}
               </a>
               <h1 className="course-info__title">
                 {courseDetails.name}
