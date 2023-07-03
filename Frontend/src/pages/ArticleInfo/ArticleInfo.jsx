@@ -6,19 +6,19 @@ import Footer from '../../components/Footer/Footer';
 import Breadcrumb from '../../components/Breadcrumb/Breadcrumb';
 import img from '../../assets/images/courses/python.png';
 import star from '../../assets/images/svgs/star.svg';
-import CommentsTextArea from '../../components/CommentsTextArea/CommentsTextArea';
-import { useActionData, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
+import dumPurify from 'dompurify'
 
 
 const ArticleInfo = () => {
 
-  const [articleDetails , setArticleDetails] = useState({})
-  const [articleCategoryDetails , setArticleCategoryDetails] = useState({})
-  const [articleCreatorDetails , setArticleCreatorDetails] = useState({})
-  const [articleCreateDate , setArticleCreateDate] = useState('')
-  
-  const {articleName} = useParams()
+  const [articleDetails, setArticleDetails] = useState({})
+  const [articleCategoryDetails, setArticleCategoryDetails] = useState({})
+  const [articleCreatorDetails, setArticleCreatorDetails] = useState({})
+  const [articleCreateDate, setArticleCreateDate] = useState('')
+
+  const { articleName } = useParams()
 
   // -----------get one article from api
   useEffect(() => {
@@ -64,7 +64,7 @@ const ArticleInfo = () => {
                   </div>
                   <div className="article-header__category article-header__item">
                     <i className="far fa-clock article-header__icon"></i>
-                    <span className="article-header__text">تاریخ انتشاز : {articleCreateDate.slice(0,10)}</span>
+                    <span className="article-header__text">تاریخ انتشاز : {articleCreateDate.slice(0, 10)}</span>
                   </div>
                 </div>
                 <img src={img} alt="Article Cover" className="article__banner" />
@@ -100,32 +100,16 @@ const ArticleInfo = () => {
                 </div>
 
                 <img src={img} alt="Article Image" className="article__seconadary-banner" />
-                <div className="article-section">
-                  <h2 className="article-section__title">
+                <div className="article-section" dangerouslySetInnerHTML={{ __html: dumPurify.sanitize(articleDetails.body)}}>
+                  {/* <h2 className="article-section__title">
                     معرفی بهترین سایت ‌های آموزش جاوا اسکریپت:
                   </h2>
                   <p className="paragraph article-section__text">
                     توجه داشته باشید که تمام وب سایت‌هایی که به عنوان بهترین سایت آموزش جاوا اسکریپت در ادامه معرفی می‌کنیم، بین‌المللی هستند و منابع موجود در آن‌ها به زبان انگلیسی است. در نتیجه شما باید یا تسلط متوسط و حداقلی به زبان انگلیسی داشته باشید و یا اینکه با استفاده از گوگل ترنسلیت منابع موجود را ترجمه کرده و از آن‌ها استفاده کنید. به همین دلیل در انتهای محتوا به شما خواهیم گفت که راه آسان دیگری برای یادگیری زبان جاوا اسکریپت وجود دارد که شما بتوانید به واسطه آن به صورت رایگان و به زبان فارسی این زبان را یاد بگیرید.
                   </p>
-                  <img src={img} alt="article body img" className="article-section__img" />
+                  <img src={img} alt="article body img" className="article-section__img" /> */}
                 </div>
-                <div className="article-section">
-                  <h2 className="article-section__title">
-                    معرفی بهترین سایت ‌های آموزش جاوا اسکریپت:
-                  </h2>
-                  <p className="paragraph article-section__text">
-                    توجه داشته باشید که تمام وب سایت‌هایی که به عنوان بهترین سایت آموزش جاوا اسکریپت در ادامه معرفی می‌کنیم، بین‌المللی هستند و منابع موجود در آن‌ها به زبان انگلیسی است. در نتیجه شما باید یا تسلط متوسط و حداقلی به زبان انگلیسی داشته باشید و یا اینکه با استفاده از گوگل ترنسلیت منابع موجود را ترجمه کرده و از آن‌ها استفاده کنید. به همین دلیل در انتهای محتوا به شما خواهیم گفت که راه آسان دیگری برای یادگیری زبان جاوا اسکریپت وجود دارد که شما بتوانید به واسطه آن به صورت رایگان و به زبان فارسی این زبان را یاد بگیرید.
-                  </p>
-                </div>
-                <div className="article-section">
-                  <h2 className="article-section__title">
-                    معرفی بهترین سایت ‌های آموزش جاوا اسکریپت:
-                  </h2>
-                  <p className="paragraph article-section__text">
-                    توجه داشته باشید که تمام وب سایت‌هایی که به عنوان بهترین سایت آموزش جاوا اسکریپت در ادامه معرفی می‌کنیم، بین‌المللی هستند و منابع موجود در آن‌ها به زبان انگلیسی است. در نتیجه شما باید یا تسلط متوسط و حداقلی به زبان انگلیسی داشته باشید و یا اینکه با استفاده از گوگل ترنسلیت منابع موجود را ترجمه کرده و از آن‌ها استفاده کنید. به همین دلیل در انتهای محتوا به شما خواهیم گفت که راه آسان دیگری برای یادگیری زبان جاوا اسکریپت وجود دارد که شما بتوانید به واسطه آن به صورت رایگان و به زبان فارسی این زبان را یاد بگیرید.
-                  </p>
-                  <img src={img} alt="article body img" className="article-section__img" />
-                </div>
+                
 
                 <div className="article-social-media">
                   <span className="article-social-media__text">اشتراک گذاری :</span>
@@ -139,9 +123,6 @@ const ArticleInfo = () => {
                     <i className="fab fa-facebook-f article-social-media__icon"></i>
                   </a>
                 </div>
-
-
-
               </div>
 
               <div className="suggestion-articles">
