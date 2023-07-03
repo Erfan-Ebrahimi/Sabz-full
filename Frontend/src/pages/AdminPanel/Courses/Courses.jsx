@@ -15,7 +15,7 @@ import {
 
 const Courses = () => {
     const [courses, setCourses] = useState([])
-    const [courseCategory, setCourseCategory] = useState(""); //for select box to set category
+    const [courseCategory, setCourseCategory] = useState(''); //for select box to set category
     const [categories, setCategories] = useState([]);  //get all categories for set category in add new course
     const [courseStatus, setCourseStatus] = useState('start')
     const [courseCover, setCourseCover] = useState({})
@@ -111,6 +111,45 @@ const Courses = () => {
     const addNewCourse = event => {
         event.preventDefault()
         console.log(formState);
+
+        let formData = new FormData()
+        formData.append('name', formState.inputs.name.value)
+        formData.append('description', formState.inputs.description.value)
+        formData.append('shortName', formState.inputs.shortName.value)
+        formData.append('categoryID', courseCategory)
+        formData.append('price', formState.inputs.price.value)
+        formData.append('support', formState.inputs.support.value)
+        formData.append('status', courseStatus)
+        formData.append('cover', courseCover)
+
+        const localStorageData = JSON.parse(localStorage.getItem('user'))
+        fetch('http://localhost:4000/v1/courses', {
+            method: 'POST',
+            headers: {
+                Authorization: `Bearer ${localStorageData.token}`
+            },
+            body: formData
+        })
+            .then((res) => {
+                if(res.ok){
+                    res.json()
+                    swal({
+                        title:'دوره با موفقیت اضافه شد :)',
+                        icon:'success',
+                        buttons:'OK'
+                    }).then((ok) => {
+                        getAllCourses()
+                    })
+                }else{
+                    swal({
+                        title:'اطلاعات داده شده صحیح نمی باشد',
+                        icon:'warning',
+                        buttons:'OHHHH'
+                    })
+                }
+            }).then(result => console.log(result))
+
+
     };
 
     return (
@@ -128,7 +167,7 @@ const Courses = () => {
                                     id="name"
                                     element="input"
                                     onInputHandler={onInputHandler}
-                                    validations={[minValidator(5) , requiredValidator()]}
+                                    validations={[minValidator(5), requiredValidator()]}
                                     type="text"
                                     placeholder="لطفا نام دوره را وارد کنید..."
                                 />
@@ -198,8 +237,9 @@ const Courses = () => {
                             <div className="number input">
                                 <label className="input-title">دسته‌بندی دوره</label>
                                 <select onChange={selectCategory}>
+                                    <option >یک دسته بندی انتخاب کنید</option>
                                     {categories.map((category) => (
-                                        <option key={category._id} value={category._id}>{category.title}</option>
+                                        <option key={category._id} placeholder='sss' value={category._id}>+{category.title}+</option>
                                     ))}
                                 </select>
                                 <span className="error-message text-danger"></span>
