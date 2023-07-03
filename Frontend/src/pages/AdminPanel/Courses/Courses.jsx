@@ -15,10 +15,10 @@ import {
 
 const Courses = () => {
     const [courses, setCourses] = useState([])
-    const [courseCategory, setCourseCategory] = useState(''); //for select box to set category
+    const [courseCategory, setCourseCategory] = useState('-1'); //for select box to set category
     const [categories, setCategories] = useState([]);  //get all categories for set category in add new course
     const [courseStatus, setCourseStatus] = useState('start')
-    const [courseCover, setCourseCover] = useState({})
+    const [courseCover, setCourseCover] = useState(false)
 
     // ---------form inputs
     const [formState, onInputHandler] = useForm(
@@ -127,27 +127,24 @@ const Courses = () => {
                 Authorization: `Bearer ${localStorageData.token}`
             },
             body: formData
+        }).then((res) => {
+            if (res.ok) {
+                res.json()
+                swal({
+                    title: 'دوره با موفقیت اضافه شد :)',
+                    icon: 'success',
+                    buttons: 'OK'
+                }).then((ok) => {
+                    getAllCourses()
+                })
+            } else {
+                swal({
+                    title: 'اطلاعات داده شده صحیح نمی باشد',
+                    icon: 'warning',
+                    buttons: 'OHHHH'
+                })
+            }
         })
-            .then((res) => {
-                if(res.ok){
-                    res.json()
-                    swal({
-                        title:'دوره با موفقیت اضافه شد :)',
-                        icon:'success',
-                        buttons:'OK'
-                    }).then((ok) => {
-                        getAllCourses()
-                    })
-                }else{
-                    swal({
-                        title:'اطلاعات داده شده صحیح نمی باشد',
-                        icon:'warning',
-                        buttons:'OHHHH'
-                    })
-                }
-            })
-
-
     };
 
     return (
@@ -209,7 +206,7 @@ const Courses = () => {
                                     element="input"
                                     onInputHandler={onInputHandler}
                                     validations={[minValidator(5), requiredValidator()]}
-                                    type="text"
+                                    type="number"
                                     isValid="false"
                                     placeholder="لطفا قیمت دوره را وارد کنید..."
                                 />
@@ -235,9 +232,9 @@ const Courses = () => {
                             <div className="number input">
                                 <label className="input-title">دسته‌بندی دوره</label>
                                 <select onChange={selectCategory}>
-                                    <option >یک دسته بندی انتخاب کنید</option>
+                                    <option value='-1'>یک دسته بندی انتخاب کنید</option>
                                     {categories.map((category) => (
-                                        <option key={category._id} placeholder='sss' value={category._id}>+{category.title}+</option>
+                                        <option key={category._id} value={category._id}>+{category.title}+</option>
                                     ))}
                                 </select>
                                 <span className="error-message text-danger"></span>
@@ -281,8 +278,15 @@ const Courses = () => {
                                         </div>
                                     </div>
                                 </div>
-                                <div className="submit-btn">
-                                    <input type="submit" value="افزودن" onClick={addNewCourse} />
+                                <div >
+                                    <button
+                                        type="submit"
+                                        className='btn-add-course'
+                                        onClick={addNewCourse}
+                                        disabled={!formState.isFormValid || courseCategory === '-1' || !courseCover}
+                                    >
+                                        افزودن
+                                    </button>
                                 </div>
                             </div>
                         </div>
