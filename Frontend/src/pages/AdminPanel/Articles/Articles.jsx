@@ -13,7 +13,7 @@ const Articles = () => {
     const [categories, setCategories] = useState([]);
     const [articleCategory, setArticleCategory] = useState("-1");
     const [articleCover, setArticleCover] = useState(false);
-    const [articleBody , setArticleBody] = useState('')
+    const [articleBody, setArticleBody] = useState('')
 
     // --------form inputs
     const [formState, onInputHandler] = useForm(
@@ -90,7 +90,32 @@ const Articles = () => {
     // --------add new article
     const addNewArticle = (event) => {
         event.preventDefault()
-        console.log('red');
+        const localStorageDate = JSON.parse(localStorage.getItem('user'))
+        let formData = new FormData()
+        formData.append('title', formState.inputs.title.value)
+        formData.append('shortName', formState.inputs.shortName.value)
+        formData.append('description', formState.inputs.description.value)
+        formData.append('categoryID', articleCategory)
+        formData.append('cover', articleCover)
+        formData.append('body', articleBody)
+
+        fetch(`http://localhost:4000/v1/articles`, {
+            method: 'POST',
+            headers: {
+                Authorization: `Bearer ${localStorageDate.token}`
+            },
+            body: formData
+        }).then(res => {
+            if (res.ok) {
+                swal({
+                    title: 'مقاله جدید با موفقیت ایجاد شد',
+                    icon: 'success',
+                    buttons: 'اوکی'
+                }).then(() => {
+                    getAllArticles()
+                })
+            }
+        })
     }
 
     return (
@@ -150,7 +175,7 @@ const Articles = () => {
                         <div className="col-12">
                             <div className="name input">
                                 <label className="input-title" style={{ display: "block" }}>
-                                    چکیده
+                                    متن
                                 </label>
                                 <Editor value={articleBody} setValue={setArticleBody} />
                             </div>
@@ -192,7 +217,7 @@ const Articles = () => {
                                         type="submit"
                                         className='btn-add-course'
                                         onClick={addNewArticle}
-                                        disabled={!formState.isFormValid || articleCategory === '-1' || !articleCover}
+                                        disabled={!formState.isFormValid || articleCategory === '-1' || !articleCover || !articleBody}
                                     >
                                         افزودن
                                     </button>
