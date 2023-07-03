@@ -63,7 +63,6 @@ const Courses = () => {
             .then(res => res.json())
             .then((allCourses) => {
                 setCourses(allCourses)
-                console.log(allCourses);
             })
     }
 
@@ -110,7 +109,6 @@ const Courses = () => {
     // ---------add new course
     const addNewCourse = event => {
         event.preventDefault()
-        console.log(formState);
 
         let formData = new FormData()
         formData.append('name', formState.inputs.name.value)
@@ -147,7 +145,7 @@ const Courses = () => {
                         buttons:'OHHHH'
                     })
                 }
-            }).then(result => console.log(result))
+            })
 
 
     };
@@ -249,7 +247,6 @@ const Courses = () => {
                             <div className="file">
                                 <label className="input-title">عکس دوره</label>
                                 <input type="file" id="file" onChange={event => {
-                                    console.log(event.target.files[0]);
                                     setCourseCover(event.target.files[0])
                                 }} />
                             </div>

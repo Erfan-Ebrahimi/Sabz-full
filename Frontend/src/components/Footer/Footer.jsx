@@ -32,8 +32,6 @@ const Footer = () => {
             },
             body: JSON.stringify(newEmail),
         }).then((res) => {
-            console.log(res);
-
             if (res.ok) {
                 swal({
                     title: "ایمیل شما با موفقیت در خبرنامه ثبت شد",

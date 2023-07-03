@@ -46,7 +46,6 @@ const Category = () => {
             .then(res => res.json())
             .then((allCategories) => {
                 setCategories(allCategories)
-                console.log(allCategories);
             })
     }
 
@@ -70,7 +69,6 @@ const Category = () => {
         })
             .then((res) => res.json())
             .then((result) => {
-                console.log(result);
                 swal({
                     title: "دسته بندی مورد نظر با موفقیت اضافه شد",
                     icon: "success",
@@ -125,7 +123,6 @@ const Category = () => {
                 ]
             }
         }).then((inputValues) => {
-            console.log(inputValues.value[0]);
             const localStorageData = JSON.parse(localStorage.getItem("user"))
             let newCategoryDetails = {
                 name: inputValues.value[0],

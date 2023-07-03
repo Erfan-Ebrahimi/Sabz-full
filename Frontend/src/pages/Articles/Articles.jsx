@@ -19,7 +19,6 @@ const Articles = () => {
             .then(res => res.json())
             .then(allArticles => {
                 setArticles(allArticles)
-                console.log(allArticles);
             })
     }, [])
     return (

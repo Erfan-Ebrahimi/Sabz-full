@@ -3,8 +3,6 @@ import regex from './regex';
 
 // ham meghdar value input ra migirad v ham validation hay anra
 const validator = (value, validations) => {
-  console.log(value , validations);
-  console.log(rules);
   let validationResults = [];
 
   for (const validator of validations) {

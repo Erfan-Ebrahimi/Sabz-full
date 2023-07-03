@@ -58,7 +58,6 @@ const Users = () => {
             .then(res => res.json())
             .then((allUsers) => {
                 setUsers(allUsers)
-                console.log(allUsers);
             })
     }
 

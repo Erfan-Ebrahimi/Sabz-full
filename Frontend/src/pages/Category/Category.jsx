@@ -35,7 +35,6 @@ const Category = () => {
       case 'free': {
         const freeCourses = courses.filter(course => course.price === 0)
         setOrderedCourses(freeCourses)
-        console.log(freeCourses);
         break
       }
       case 'money': {

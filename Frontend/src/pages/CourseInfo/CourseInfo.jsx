@@ -53,8 +53,6 @@ const CourseInfo = () => {
         setUpdatedAt(courseInfo.updatedAt)
         setCourseTeacher(courseInfo.creator)
         setCourseCategory(courseInfo.categoryID.title)
-        console.log(courseInfo);
-        console.log(courseName);
       })
   }, [])
 

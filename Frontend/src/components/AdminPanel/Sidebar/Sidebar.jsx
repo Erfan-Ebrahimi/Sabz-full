@@ -73,6 +73,11 @@ const Sidebar = () => {
                             <span>دسته‌بندی‌ها</span>
                         </NavLink>
                     </li>
+                    <li>
+                        <NavLink to='contact-us'>
+                            <span>پیام کاربران</span>
+                        </NavLink>
+                    </li>
                     <li className='logout-li'>
                         <a href='#' onClick={logoutAdmin} >
                             <div className='logout-wrapper'>

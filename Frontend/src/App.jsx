@@ -24,7 +24,6 @@ function App() {
   }
 
   const logout = useCallback( () => {
-    console.log('logout');
     setToken(null)
     setUserInfos({})
     localStorage.removeItem('user')

@@ -16,7 +16,6 @@ const LastArticles = () => {
       .then(res => res.json())
       .then(allArticles => {
         setArticles(allArticles)
-        console.log(allArticles);
       })
   }, [])
 
@@ -25,9 +24,9 @@ const LastArticles = () => {
       <div className="container">
         <SectionHeader
           title='جدیدترین مقاله ها'
-          desc='پیش به سوی ارتقای دانش' 
+          desc='پیش به سوی ارتقای دانش'
           btnTitle='تمامی مقاله ها'
-          btnHref='articles/1' 
+          btnHref='articles/1'
         />
 
         <div className='articles__content'>

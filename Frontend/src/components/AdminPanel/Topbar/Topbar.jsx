@@ -19,7 +19,6 @@ const Topbar = () => {
             },
         }).then((res) => res.json())
             .then(data => {
-                console.log(data);
                 setAdminInfo(data);
                 setAdminNotifications(data.notifications)
                 setnotifCount(data.notifications.length)
@@ -39,7 +38,6 @@ const Topbar = () => {
         })
             .then(res => res.json())
             .then(data => {
-                console.log(data);
                 setReloadPage(!reloadPage) // for reload page
             })
             .catch(error => {
