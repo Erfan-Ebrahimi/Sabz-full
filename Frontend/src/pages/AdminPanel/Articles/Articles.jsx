@@ -5,6 +5,7 @@ import './Articles.scss';
 import { useForm } from "./../../../hooks/useForm";
 import Input from "./../../../components/Form/Input";
 import { minValidator } from "./../../../validators/rules";
+import Editor from "../../../components/AdminPanel/Editor/Editor";
 
 const Articles = () => {
 
@@ -12,6 +13,7 @@ const Articles = () => {
     const [categories, setCategories] = useState([]);
     const [articleCategory, setArticleCategory] = useState("-1");
     const [articleCover, setArticleCover] = useState(false);
+    const [articleBody , setArticleBody] = useState('')
 
     // --------form inputs
     const [formState, onInputHandler] = useForm(
@@ -143,6 +145,14 @@ const Articles = () => {
                                     className="article-textarea-admin"
                                 />
                                 <span className="error-message text-danger"></span>
+                            </div>
+                        </div>
+                        <div className="col-12">
+                            <div className="name input">
+                                <label className="input-title" style={{ display: "block" }}>
+                                    چکیده
+                                </label>
+                                <Editor value={articleBody} setValue={setArticleBody} />
                             </div>
                         </div>
                         <div className="col-6">
