@@ -263,7 +263,7 @@ const Courses = () => {
                                                     type="radio"
                                                     value="start"
                                                     name="condition"
-                                                    checked
+                                                    defaultChecked
                                                     onInput={event => setCourseStatus(event.target.value)}
                                                 />
                                             </label>

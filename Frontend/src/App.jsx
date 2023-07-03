@@ -50,8 +50,8 @@ function App() {
     }else{
       setIsLoggedIn(false)
     }
-  }, [login , logout])
-
+  }, [])
+  // login , logout   if moshkel dasht inaro bezaram toy dependeseies
 
   // ----------------ROUTES
   const router = useRoutes(routes)
