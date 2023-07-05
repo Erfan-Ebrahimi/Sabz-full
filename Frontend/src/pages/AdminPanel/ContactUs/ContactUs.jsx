@@ -56,7 +56,7 @@ const ContactUs = () => {
                         title: 'ایمیل به کاربر با موفقیت ارسال شد',
                         icon: 'success',
                         buttons: 'OK'
-                    })
+                    }).then(ok => getAllContacts())
                 }
             })
         })
@@ -108,7 +108,7 @@ const ContactUs = () => {
                     <tbody>
                         {contacts.map((contact, index) => (
                             <tr key={contact._id}>
-                                <td>{index + 1}</td>
+                                <td className={contact.answer === 1 ? 'answer-contact' : 'no-answer-contact'}>{index + 1}</td>
                                 <td>{contact.name}</td>
                                 <td>{contact.email}</td>
                                 <td>{contact.phone}</td>
