@@ -12,7 +12,7 @@ import Input from '../../components/Form/Input';
 import Button from '../../components/Form/Button';
 
 //------------SPA
-import { Link } from 'react-router-dom'
+import { Link , useNavigate } from 'react-router-dom'
 
 //----------VALIDATION
 import { requiredValidator, minValidator, maxValidator, emailValidator } from "../../validators/rules";
@@ -21,9 +21,12 @@ import swal from 'sweetalert';
 
 const Register = () => {
 
+    // ------------navigate
+    const navigate = useNavigate()
+
     // -------------context
     const authContext = useContext(AuthContext)
-
+    
 
     //---------------useForm
     const [formState, onInputHandler] = useForm(
@@ -74,7 +77,7 @@ const Register = () => {
             body: JSON.stringify(newUserInfos)
         }).then((res) => { // if res.ok = false & status = 403 => shomare ban mibashad
             if(res.ok){
-                res.json()
+               return res.json()
             }else{
                 if(res.status === 403){
                     swal({
@@ -87,6 +90,12 @@ const Register = () => {
         })
             .then(result => {
                 authContext.login(result.user, result.accessToken)       // (resul.user = userInfos) & token ro mifrest to App.jsx(login function)
+                swal({
+                    title:'با موفقیت ثبت نام کردید :)',
+                    icon:'success',
+                    buttons:'چه خوب '
+                }).then(ok => navigate('/') )
+                
             })
     }
     return (
