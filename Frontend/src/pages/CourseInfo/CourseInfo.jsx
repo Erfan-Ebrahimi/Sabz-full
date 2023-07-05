@@ -30,9 +30,9 @@ const CourseInfo = () => {
   const [updatedAt, setUpdatedAt] = useState('')
   const [courseTeacher, setCourseTeacher] = useState({})
   const [courseCategory, setCourseCategory] = useState([])     //why array ???????????? bepors
-  
+
   const { courseName } = useParams()
-  
+
   // --------------get course data from api
   useEffect(() => {
     // aval check mikonim k tokeni hast ya n k if fetch ham anjam shod baz karbari k token dare betone dastresi dashte bashe
@@ -78,7 +78,7 @@ const CourseInfo = () => {
           title: 'کامنت با موفقیت ثبت شد بعد از تایید مدیر نشان داده خواهد شد',
           icon: 'success',
           buttons: 'تایید'
-      })
+        })
       })
   }
 
@@ -102,7 +102,7 @@ const CourseInfo = () => {
           <div className="row">
             <div className="col-6">
               <a href="#" className="course-info__link">
-               {courseCategory}
+                {courseCategory}
               </a>
               <h1 className="course-info__title">
                 {courseDetails.name}
@@ -239,18 +239,44 @@ const CourseInfo = () => {
                         {
                           sessions.map((session, index) => (
                             <Accordion.Body key={session._id} className='introduction__accordion-body'>
-                              <div className="introduction__accordion-right">
-                                <span className="introduction__accordion-count">{index + 1}</span>
-                                <i className="fab fa-youtube introduction__accordion-icon"></i>
-                                <a href="#" className="introduction__accordion-link">
-                                  {session.title}
-                                </a>
-                              </div>
-                              <div className="introduction__accordion-left">
-                                <span className="introduction__accordion-time">
-                                  {session.time}
-                                </span>
-                              </div>
+                              {(session.free === 1 || courseDetails.isUserRegisteredToThisCourse) ?
+                                (
+                                  <>
+                                    <div className="introduction__accordion-right">
+                                      <span className="introduction__accordion-count">{index + 1}</span>
+                                      <i className="fab fa-youtube introduction__accordion-icon"></i>
+                                      <Link to="/" className="introduction__accordion-link">
+                                        {session.title}
+                                      </Link>
+                                    </div>
+                                    <div className="introduction__accordion-left">
+                                      <span className="introduction__accordion-time">
+                                        {session.time}
+                                      </span>
+                                    </div>
+
+                                  </>
+                                )
+                                :
+                                (
+                                  <>
+                                    <div className="introduction__accordion-right">
+                                      <span className="introduction__accordion-count">{index + 1}</span>
+                                      <i className="fab fa-youtube introduction__accordion-icon"></i>
+                                      <span className="introduction__accordion-link">
+                                        {session.title}
+                                      </span>
+                                    </div>
+                                    <div className="introduction__accordion-left">
+                                      <span className="introduction__accordion-time">
+                                        {session.time}
+                                      </span>
+                                      <i className='fa fa-lock lock-icon-session'></i>
+                                    </div>
+
+                                  </>
+                                )
+                              }
                             </Accordion.Body>
                           ))
                         }
@@ -273,7 +299,7 @@ const CourseInfo = () => {
                           {courseTeacher.name}
                         </a>
                         <span className="techer-details__header-skill">
-                          Front End & Back End Developer<br/>
+                          Front End & Back End Developer<br />
                           {courseTeacher.phone}
                         </span>
                       </div>

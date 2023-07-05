@@ -182,9 +182,19 @@
 .introduction__accordion-link {
     color: #161616;
 }
+.introduction__accordion-left{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 
+    .lock-icon-session{
+        margin-right: 5px;
+        font-size: 15px;
+    }
+}
 .introduction__accordion-time {
     color: #7a7a7a;
+    margin-top: 5px;
 }
 
 /* Finish Introduction styles */

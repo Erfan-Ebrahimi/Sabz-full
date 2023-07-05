@@ -70,7 +70,7 @@ const CommentsTextArea = ({ comments, submitComment }) => { //az CourseInfo.jsx 
                 </div>
               </div>
             ))}
-            <div className="comments__pagantion">
+            {/* <div className="comments__pagantion">
               <ul className="comments__pagantion-list">
                 <li className="comments__pagantion-item">
                   <a href="#" className="comments__pagantion-link">
@@ -96,7 +96,7 @@ const CommentsTextArea = ({ comments, submitComment }) => { //az CourseInfo.jsx 
                   </a>
                 </li>
               </ul>
-            </div>
+            </div> */}
           </>
         )}
       </div>
