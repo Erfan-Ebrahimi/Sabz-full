@@ -245,7 +245,7 @@ const CourseInfo = () => {
                                     <div className="introduction__accordion-right">
                                       <span className="introduction__accordion-count">{index + 1}</span>
                                       <i className="fab fa-youtube introduction__accordion-icon"></i>
-                                      <Link to="/" className="introduction__accordion-link">
+                                      <Link to={`/${courseName}/${session._id}`} className="introduction__accordion-link">
                                         {session.title}
                                       </Link>
                                     </div>

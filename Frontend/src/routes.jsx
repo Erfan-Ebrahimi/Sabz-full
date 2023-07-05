@@ -8,22 +8,24 @@ import Login from './pages/Login/Login';
 import Register from './pages/Register/Register';
 import Contact from './pages/Contact/Contact';
 import Search from './pages/Search/Search';
+import Session from './pages/Session/Session';
 
 // -----AdminPanel routes
 import AdminPanel from './pages/AdminPanel/AdminPanel';
 import Users from "./pages/AdminPanel/Users/Users";
 import AdminCourses from "./pages/AdminPanel/Courses/Courses";
-// import Menus from "./pages/AdminPanel/Menus/Menus";
 import AdminArticles from "./pages/AdminPanel/Articles/Articles";
 import AdminCategory from "./pages/AdminPanel/Category/Category";
 import ContactUs from './pages/AdminPanel/ContactUs/ContactUs';
 import Sessions from './pages/AdminPanel/Sessions/Sessions';
+// import Menus from "./pages/AdminPanel/Menus/Menus";
 
 const routes = [
     { path: '/', element: <Index /> },
     { path: '/courses/:page', element: <Courses /> },
     { path: '/category-info/:categoryName/:page', element: <Category /> },
     { path: '/course-info/:courseName', element: <CourseInfo /> },
+    { path: '/:courseName/:sessionID', element: <Session /> },
     { path: '/articles/:page', element: <Articles /> },
     { path: '/article-info/:articleName', element: <ArticleInfo /> },
     { path: '/login', element: <Login /> },
