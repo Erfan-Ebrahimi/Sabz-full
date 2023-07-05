@@ -79,6 +79,11 @@ const Sidebar = () => {
                         </NavLink>
                     </li>
                     <li>
+                        <NavLink to='comments'>
+                            <span>کامنت کاربران</span>
+                        </NavLink>
+                    </li>
+                    <li>
                         <NavLink to='sessions'>
                             <span>جلسات دوره</span>
                         </NavLink>
