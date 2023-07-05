@@ -1,0 +1,210 @@
+@import '../../styles/sass/variables.scss';
+/* ============================== Drop-Down Desktop Style ============================== */
+.main-header__dropdow {
+    position: absolute;
+    top: 5.5rem;
+    left: 0;
+    right: 0;
+    background-color: $white1;
+    transition: all 200ms ease-in-out;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.12);
+    border-radius: 0.5rem;
+    width: 24rem;
+    z-index: 1;
+    padding: 1rem 0;
+    border-bottom: 3px solid $green1;
+    visibility: hidden;
+    opacity: 0;
+}
+.main-header__item:hover .main-header__dropdown {
+    visibility: visible;
+    opacity: 1;
+    top: 6.5rem;
+}
+.main-header__dropdown-link {
+    display: block;
+    padding: 0.6rem 2rem;
+    font-size: 1.4rem;
+    color: $dark1;
+    transition: all 400ms ease;
+}
+
+.main-header__dropdown-link:hover {
+    color:red;
+}
+/* ============================== Drop-Down Desktop Style ============================== */
+
+/* ============================== Courses Style ============================== */
+.content {
+    display: flex;
+}
+
+.sidebar__header {
+    display: flex;
+    justify-content: center;
+    padding: 2rem 0;
+    border-bottom: 1px solid #d6d6d6;
+    border-left: 1px solid #d6d6d6;
+    gap: 10px;
+    align-items: center;
+    background: rgb(2, 65, 16);
+
+    i{
+        color: red !important;
+        background-color: red !important;
+    }
+}
+.sidebar__header-link {
+    color: #ffffff;
+}
+
+.sidebar-topics {
+    background-color: #105408;
+    max-height: 60rem;
+    // overflow-y: scroll;
+}
+.sidebar-topics__item {
+    margin-bottom: 2rem;
+    background-color: rgb(239, 250, 231);
+}
+.sidebar-topics__item-content {
+    padding: 2rem;
+}
+.sidebar-topics__list-item {
+    display: flex;
+    justify-content: space-between;
+    border-top: 1px solid #13738b;
+    padding: 2rem 2rem;
+
+    a{
+        color: black;
+    }
+
+    .sidebar-topics__list-item-time{
+        color: black;
+
+        &:hover{
+            color: #13738b;
+        }
+    }
+}
+
+.sidebar-topics__list-item-icon {
+    color: #0600a8;
+    margin-left: 5px;
+}
+
+.episode-haeder {
+    display: flex;
+    justify-content: space-between;
+    background-color: #494949;
+    padding: 1.3rem 2rem 1.3rem 5rem;
+}
+.episode-header__right {
+    display: flex;
+    align-items: center;
+}
+.episode-header__right-back-link {
+    color: $white1;
+    display: flex;
+    align-items: center;
+}
+.episode-header__right-back-icon {
+    font-size: 4rem;
+}
+.episode-header__right-home {
+    color: $white1;
+    display: flex;
+    align-items: center;
+}
+.episode-header__right-home-link {
+    color: $white1;
+    margin: 0 2rem 0 1rem;
+}
+.episode-header__left {
+    display: flex;
+    align-items: center;
+}
+.episode-header__left-icon {
+    color: $white1;
+    margin-left: 1rem;
+    font-size: 2rem;
+}
+.episode-header__left-text {
+    color: $white1;
+}
+.episode-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #f4f8fa;
+    padding: 2rem 0 4rem 0;
+}
+.episode-content__video {
+    max-width: 80%;
+    margin: 4rem 0;
+}
+.episode-content__video-link {
+    color: $white1;
+    padding: 1rem 2rem;
+    border-radius: 0.3rem;
+    font-size: 1.4rem;
+    background-color: $dark1;
+}
+.episode-content__bottom {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin: 3rem 0;
+    padding: 0 10rem;
+
+}
+.episode-content__backward {
+    display: flex;
+    align-items: center;
+
+}
+.episode-content__backward-icon {
+    margin-left: 1rem;
+    color: $dark1;
+
+}
+.episode-content__forward {
+    display: flex;
+    align-items: center;
+}
+
+.episode-content__video{
+    width: 100% !important;
+    height: 500px;
+}
+/* ============================== Courses Style ============================== */
+
+
+/* ============================== Helper Class ============================== */
+.title::before {
+    content: "";
+    position: absolute;
+    right: -1rem;
+    width: 0.4rem;
+    height: 4.4rem;
+    border-radius: 5rem;
+    background-color: $green1;
+    transform: rotate(8deg);
+}
+.title::after {
+    content: "";
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    max-width: 250px;
+    height: 60%;
+    background-color: red;
+    font-size: 2.3rem;
+    color: #444446;
+    font-weight: bold;
+    line-height: 1.2;
+    position: relative;
+}
+/* ============================== Helper Class ============================== */
