@@ -18,7 +18,7 @@ import AdminArticles from "./pages/AdminPanel/Articles/Articles";
 import AdminCategory from "./pages/AdminPanel/Category/Category";
 import ContactUs from './pages/AdminPanel/ContactUs/ContactUs';
 import Sessions from './pages/AdminPanel/Sessions/Sessions';
-// import Menus from "./pages/AdminPanel/Menus/Menus";
+import Menus from "./pages/AdminPanel/Menus/Menus";
 
 const routes = [
     { path: '/', element: <Index /> },
@@ -38,7 +38,7 @@ const routes = [
         children: [
             { path: "users", element: <Users /> },
             { path: "courses", element: <AdminCourses /> },
-            // { path: "menus", element: <Menus /> },
+            { path: "menus", element: <Menus /> },
             { path: "articles", element: <AdminArticles /> },
             { path: "category", element: <AdminCategory /> },
             { path: "contact-us", element: <ContactUs /> },
