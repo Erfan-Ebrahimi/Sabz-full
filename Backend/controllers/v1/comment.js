@@ -97,6 +97,7 @@ exports.answer = async (req, res, next) => {
       { _id: req.params.id },
       {
         answer: 1,
+        isAnswer: 1
       },
       { new: true }
     );

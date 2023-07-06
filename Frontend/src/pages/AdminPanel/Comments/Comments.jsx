@@ -90,7 +90,7 @@ const Comments = () => {
             icon: 'info',
             customClass: 'swal-wide',
             showCancelButton: true,
-            onfirmButtonColor: '#3085d6',
+            confirmButtonColor: '#3085d6',
             confirmButtonText: 'ارسال',
             cancelButtonText: 'بستن',
             cancelButtonColor: '#d33',
@@ -122,12 +122,70 @@ const Comments = () => {
                             timer: 1500
                         }).then(ok => getAllComments())
                     }
-                })
+                }).then(result => console.log(result))
             }
         })
 
     }
 
+    // --------accept a comment
+    const acceptComment = (commentID) => {
+        swal({
+            title: "آیا از تایید کامنت اطمینان دارید",
+            icon: "warning",
+            buttons: ["نه", "آره"],
+        }).then((result) => {
+            if (result) {
+                fetch(`http://localhost:4000/v1/comments/accept/${commentID}`, {
+                    method: "PUT",
+                    headers: {
+                        Authorization: `Bearer ${JSON.parse(localStorage.getItem("user")).token}`,
+                    },
+                }).then((res) => {
+                    console.log(res);
+                    if (res.ok) {
+                        swal({
+                            title: "کامنت مورد نظر با موفقیت تایید شد",
+                            icon: "success",
+                            buttons: "اوکی",
+                        }).then(() => {
+                            getAllComments();
+                        });
+                    }
+                });
+            }
+        });
+    };
+
+    //----------reject a comment
+    const rejectComment = (commentID) => {
+        swal({
+            title: "آیا از رد کامنت اطمینان دارید",
+            icon: "warning",
+            buttons: ["نه", "آره"],
+        }).then((result) => {
+            if (result) {
+                fetch(`http://localhost:4000/v1/comments/reject/${commentID}`, {
+                    method: "PUT",
+                    headers: {
+                        Authorization: `Bearer ${JSON.parse(localStorage.getItem("user")).token}`,
+                    },
+                    body:JSON.stringify({body:'d'})
+                }).then((res) => {
+                    console.log(res);
+                    if (res.ok) {
+                        swal({
+                            title: "کامنت مورد نظر با موفقیت رد شد",
+                            icon: "success",
+                            buttons: "اوکی",
+                        }).then(() => {
+                            getAllComments();
+                        });
+                    }
+                });
+            }
+        });
+    };
 
     return (
 
@@ -140,6 +198,7 @@ const Comments = () => {
                         <th>دوره</th>
                         <th>مشاهده</th>
                         <th>پاسخ</th>
+                        <th>تایید / رد</th>
                         <th>ویرایش</th>
                         <th>حذف</th>
                         <th>بن</th>
@@ -169,6 +228,33 @@ const Comments = () => {
                                     پاسخ
                                 </button>
                             </td>
+                            {
+                                comment.answer === 1 ?
+                                    (
+                                        <td>
+                                            <button
+                                                type="button"
+                                                className="btn btn-danger edit-btn"
+                                                onClick={() => rejectComment(comment._id)}
+                                            >
+                                                رد
+                                            </button>
+                                        </td>
+                                    )
+                                    :
+                                    (
+                                        <td>
+                                            <button
+                                                type="button"
+                                                className="btn btn-success edit-btn"
+                                                onClick={() => acceptComment(comment._id)}
+                                            >
+                                                تایید
+                                            </button>
+                                        </td>
+                                    )
+                            }
+
                             <td>
                                 <button type="button" className="btn btn-success edit-btn">
                                     ویرایش
@@ -191,8 +277,10 @@ const Comments = () => {
                                 >
                                     بن
                                 </button>
+                                <p>{comment.isAnswer}</p>
                             </td>
                         </tr>
+
                     ))}
                 </tbody>
             </table>
