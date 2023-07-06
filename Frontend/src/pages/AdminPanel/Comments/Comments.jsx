@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import './Comments.scss';
 import DataTable from "./../../../components/AdminPanel/DataTable/DataTable";
 import swal from "sweetalert";
+import Swal from "sweetalert2";
 
 
 const Comments = () => {
@@ -30,8 +31,7 @@ const Comments = () => {
                 fetch(`http://localhost:4000/v1/comments/${commentID}`, {
                     method: "DELETE",
                     headers: {
-                        Authorization: `Bearer ${JSON.parse(localStorage.getItem("user")).token
-                            }`,
+                        Authorization: `Bearer ${JSON.parse(localStorage.getItem("user")).token}`,
                     },
                 }).then((res) => {
                     if (res.ok) {
@@ -81,6 +81,53 @@ const Comments = () => {
         });
     };
 
+    // ---------answer a comment
+    const answerToComment = (commentID, commentBody) => {
+        Swal.fire({
+            title: commentBody,
+            input: 'text',
+            inputLabel: 'پاسخ را وارد کنید...',
+            icon: 'info',
+            customClass: 'swal-wide',
+            showCancelButton: true,
+            onfirmButtonColor: '#3085d6',
+            confirmButtonText: 'ارسال',
+            cancelButtonText: 'بستن',
+            cancelButtonColor: '#d33',
+            inputValidator: (value) => {
+                if (!value) {
+                    return 'پاسخ را بنویسید'
+                }
+            }
+        }).then((result) => {
+            if (result.isConfirmed) {
+                const commentAnswerBody = {
+                    body: result.value
+                }
+                fetch(`http://localhost:4000/v1/comments/answer/${commentID}`, {
+                    method: 'POST',
+                    headers: {
+                        Authorization: `Bearer ${JSON.parse(localStorage.getItem("user")).token}`,
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(commentAnswerBody)
+                }).then(res => {
+                    if (res.ok) {
+                        res.json()
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'پاسخ با موفقیت ارسال شد',
+                            customClass: 'swal-wide',
+                            showConfirmButton: true,
+                            timer: 1500
+                        }).then(ok => getAllComments())
+                    }
+                })
+            }
+        })
+
+    }
+
 
     return (
 
@@ -114,7 +161,11 @@ const Comments = () => {
                                 </button>
                             </td>
                             <td>
-                                <button type="button" className="btn btn-primary edit-btn">
+                                <button
+                                    type="button"
+                                    className="btn btn-primary edit-btn"
+                                    onClick={() => answerToComment(comment._id, comment.body)}
+                                >
                                     پاسخ
                                 </button>
                             </td>
