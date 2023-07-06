@@ -20,6 +20,7 @@ import ContactUs from './pages/AdminPanel/ContactUs/ContactUs';
 import Sessions from './pages/AdminPanel/Sessions/Sessions';
 import Menus from "./pages/AdminPanel/Menus/Menus";
 import Comments from './pages/AdminPanel/Comments/Comments';
+import Offs from './pages/AdminPanel/Offs/Offs';
 
 const routes = [
     { path: '/', element: <Index /> },
@@ -44,7 +45,8 @@ const routes = [
             { path: "category", element: <AdminCategory /> },
             { path: "contact-us", element: <ContactUs /> },
             { path: "sessions", element: <Sessions /> },
-            { path: "comments", element: <Comments /> }
+            { path: "comments", element: <Comments /> },
+            { path: "offs", element: <Offs /> }
         ]
     },
 
