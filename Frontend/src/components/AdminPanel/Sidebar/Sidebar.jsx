@@ -39,7 +39,7 @@ const Sidebar = () => {
             <div className="sidebar-menu">
                 <ul>
                     <li className="active-menu">
-                        <NavLink to='#'>
+                        <NavLink to='/p-admin'>
                             <span>صفحه اصلی</span>
                         </NavLink>
                     </li>

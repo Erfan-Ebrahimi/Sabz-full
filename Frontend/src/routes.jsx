@@ -21,7 +21,8 @@ import Sessions from './pages/AdminPanel/Sessions/Sessions';
 import Menus from "./pages/AdminPanel/Menus/Menus";
 import Comments from './pages/AdminPanel/Comments/Comments';
 import Offs from './pages/AdminPanel/Offs/Offs';
-import Draft from './pages/AdminPanel/Articles/Draft';
+import Draft from './pages/AdminPanel/Articles/Draft/Draft';
+import APIndex from './pages/AdminPanel/APIndex/APIndex';
 
 const routes = [
     { path: '/', element: <Index /> },
@@ -36,9 +37,10 @@ const routes = [
     { path: '/contact', element: <Contact /> },
     { path: '/search/:value', element: <Search /> },
     {
-        path: '/p-admin',
+        path: '/p-admin/*',
         element: <AdminPanel />,
         children: [
+            { path: "", element: <APIndex /> },
             { path: "users", element: <Users /> },
             { path: "courses", element: <AdminCourses /> },
             { path: "menus", element: <Menus /> },
