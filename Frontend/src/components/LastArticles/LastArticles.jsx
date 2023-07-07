@@ -32,7 +32,7 @@ const LastArticles = () => {
         <div className='articles__content'>
           <div className="row">
             {
-              articles.slice(4, 7).map(article => (
+              articles.filter(article => article.publish === 1).slice(4, 7).map(article => (
                 <ArticleBox
                   key={article._id}
                   title={article.title}

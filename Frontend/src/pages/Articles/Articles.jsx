@@ -38,7 +38,7 @@ const Articles = () => {
                     <div className="courses-content">
                         <div className="container">
                             <div className="row">
-                                {shownArticles.map((article) => <ArticleBox key={article._id} {...article}/>)}
+                                {shownArticles.filter(article => article.publish === 1).map((article) => <ArticleBox key={article._id} {...article}/>)}
                             </div>
                         </div>
                     </div>

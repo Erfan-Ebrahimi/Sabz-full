@@ -118,6 +118,37 @@ const Articles = () => {
         })
     }
 
+    // --------add new article
+    const draftArticle = (event) => {
+        event.preventDefault()
+        const localStorageDate = JSON.parse(localStorage.getItem('user'))
+        let formData = new FormData()
+        formData.append('title', formState.inputs.title.value)
+        formData.append('shortName', formState.inputs.shortName.value)
+        formData.append('description', formState.inputs.description.value)
+        formData.append('categoryID', articleCategory)
+        formData.append('cover', articleCover)
+        formData.append('body', articleBody)
+
+        fetch(`http://localhost:4000/v1/articles/draft`, {
+            method: 'POST',
+            headers: {
+                Authorization: `Bearer ${localStorageDate.token}`
+            },
+            body: formData
+        }).then(res => {
+            if (res.ok) {
+                swal({
+                    title: 'مقاله جدید با موفقیت پیش نویس شد',
+                    icon: 'success',
+                    buttons: 'اوکی'
+                }).then(() => {
+                    getAllArticles()
+                })
+            }
+        })
+    }
+
     return (
         <>
             <div className="container-fluid" id="home-content">
@@ -215,11 +246,19 @@ const Articles = () => {
                                 <div className="submit-btn">
                                     <button
                                         type="submit"
-                                        className='btn-add-course'
+                                        className='btn-add-course m-1'
                                         onClick={addNewArticle}
                                         disabled={!formState.isFormValid || articleCategory === '-1' || !articleCover || !articleBody}
                                     >
                                         افزودن
+                                    </button>
+                                    <button
+                                        type="submit"
+                                        className='btn-add-course m-2'
+                                        onClick={draftArticle}
+                                        disabled={!formState.isFormValid || articleCategory === '-1' || !articleCover || !articleBody}
+                                    >
+                                        پیش نویس
                                     </button>
                                 </div>
                             </div>
@@ -235,6 +274,7 @@ const Articles = () => {
                             <th>عنوان</th>
                             <th>لینک</th>
                             <th>نویسنده</th>
+                            <th>وضعیت</th>
                             <th>ویرایش</th>
                             <th>حذف</th>
                         </tr>
@@ -246,6 +286,7 @@ const Articles = () => {
                                 <td>{article.title}</td>
                                 <td>{article.shortName}</td>
                                 <td>{article.creator.name}</td>
+                                <td>{article.publish ? (<span className="alert alert-info">منتشر شده</span>) : (<span className="alert alert-warning">پیش نویس</span>)}</td>
                                 <td>
                                     <button type="button" className="btn btn-primary edit-btn">
                                         ویرایش
