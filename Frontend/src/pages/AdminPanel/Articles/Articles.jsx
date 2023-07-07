@@ -6,6 +6,7 @@ import { useForm } from "./../../../hooks/useForm";
 import Input from "./../../../components/Form/Input";
 import { minValidator } from "./../../../validators/rules";
 import Editor from "../../../components/AdminPanel/Editor/Editor";
+import { Link } from 'react-router-dom';
 
 const Articles = () => {
 
@@ -107,6 +108,7 @@ const Articles = () => {
             body: formData
         }).then(res => {
             if (res.ok) {
+                
                 swal({
                     title: 'مقاله جدید با موفقیت ایجاد شد',
                     icon: 'success',
@@ -118,7 +120,7 @@ const Articles = () => {
         })
     }
 
-    // --------add new article
+    // --------add new draft article
     const draftArticle = (event) => {
         event.preventDefault()
         const localStorageDate = JSON.parse(localStorage.getItem('user'))
@@ -250,7 +252,7 @@ const Articles = () => {
                                         onClick={addNewArticle}
                                         disabled={!formState.isFormValid || articleCategory === '-1' || !articleCover || !articleBody}
                                     >
-                                        افزودن
+                                        انتشار
                                     </button>
                                     <button
                                         type="submit"
@@ -275,6 +277,7 @@ const Articles = () => {
                             <th>لینک</th>
                             <th>نویسنده</th>
                             <th>وضعیت</th>
+                            <th>ادامه نوشتن</th>
                             <th>ویرایش</th>
                             <th>حذف</th>
                         </tr>
@@ -286,7 +289,25 @@ const Articles = () => {
                                 <td>{article.title}</td>
                                 <td>{article.shortName}</td>
                                 <td>{article.creator.name}</td>
-                                <td>{article.publish ? (<span className="alert alert-info">منتشر شده</span>) : (<span className="alert alert-warning">پیش نویس</span>)}</td>
+                                <td>
+                                    {article.publish ?
+                                        (<span className="alert alert-info">منتشر شده</span>)
+                                        :
+                                        (<span className="alert alert-warning">پیش نویس</span>)
+                                    }
+                                </td>
+                                <td>
+                                    {article.publish ?
+                                        (<i className="fa-solid fa-check" style={{ color: '#0400ff'}}></i>)
+                                        :
+                                        (
+                                            <Link className="btn" to={`draft/${article.shortName}`}>
+                                                <i className="fa-solid fa-pen fa-beat-fade" style={{ color: '#0400ff', fontSize: 15 }}></i>
+                                            </Link>
+                                        )
+                                    }
+                                </td>
+
                                 <td>
                                     <button type="button" className="btn btn-primary edit-btn">
                                         ویرایش

@@ -3,7 +3,7 @@ import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 
 const Editor = ({value , setValue}) => {
     return (
-        <div className="App">
+        <div className="App-2">
             <h2>Using CKEditor 5 build in React</h2>
             <CKEditor
                 editor={ClassicEditor}
