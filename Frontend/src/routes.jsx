@@ -21,6 +21,7 @@ import Sessions from './pages/AdminPanel/Sessions/Sessions';
 import Menus from "./pages/AdminPanel/Menus/Menus";
 import Comments from './pages/AdminPanel/Comments/Comments';
 import Offs from './pages/AdminPanel/Offs/Offs';
+import Draft from './pages/AdminPanel/Articles/Draft';
 
 const routes = [
     { path: '/', element: <Index /> },
@@ -42,6 +43,7 @@ const routes = [
             { path: "courses", element: <AdminCourses /> },
             { path: "menus", element: <Menus /> },
             { path: "articles", element: <AdminArticles /> },
+            { path: "articles/draft/:shortName", element: <Draft /> },
             { path: "category", element: <AdminCategory /> },
             { path: "contact-us", element: <ContactUs /> },
             { path: "sessions", element: <Sessions /> },
