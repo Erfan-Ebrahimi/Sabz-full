@@ -33,8 +33,12 @@ const CourseInfo = () => {
 
   const { courseName } = useParams()
 
-  // --------------get course data from api
   useEffect(() => {
+    getCourseDetails()
+  }, [])
+
+  // --------------get course data from api
+  function getCourseDetails() {
     // aval check mikonim k tokeni hast ya n k if fetch ham anjam shod baz karbari k token dare betone dastresi dashte bashe
     // film jalase 349 dide shavad
     const localStorageData = JSON.parse(localStorage.getItem('user'))
@@ -54,7 +58,7 @@ const CourseInfo = () => {
         setCourseTeacher(courseInfo.creator)
         setCourseCategory(courseInfo.categoryID.title)
       })
-  }, [])
+  }
 
   //------------submit new comment
   //newCommentBody & score az CommentsTextArea.jsx btn submitComment miad
@@ -81,6 +85,139 @@ const CourseInfo = () => {
         })
       })
   }
+
+  // --------register in course
+  const registerInCourse = (course) => {
+    if (course.price === 0) {
+      swal({
+        title: "آیا از ثبت نام در دوره اطمینان دارید؟",
+        icon: "warning",
+        buttons: ["نه", "آره"],
+      }).then((result) => {
+        if (result) {
+          fetch(`http://localhost:4000/v1/courses/${course._id}/register`, {
+            method: "POST",
+            headers: {
+              Authorization: `Bearer ${JSON.parse(localStorage.getItem("user")).token
+                }`,
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              price: course.price,
+            }),
+          }).then((res) => {
+            console.log(res);
+            if (res.ok) {
+              swal({
+                title: "ثبت نام با موفقیت انجام شد",
+                icon: "success",
+                buttons: "اوکی",
+              }).then(() => {
+                getCourseDetails();
+              });
+            }
+          });
+        }
+      });
+    } else {
+      swal({
+        title: "آیا از ثبت نام در دوره اطمینان دارید؟",
+        icon: "warning",
+        buttons: ["نه", "آره"],
+      }).then((result) => {
+        if (result) {
+          swal({
+            title: "در صورت داشتن کد تخفیف وارد کنید:",
+            content: "input",
+            buttons: ["ثبت نام بدون کد تخفیف", "اعمال کد تخفیف"],
+          }).then((code) => {
+            if (code === null) {
+              fetch(`http://localhost:4000/v1/courses/${course._id}/register`, {
+                method: "POST",
+                headers: {
+                  Authorization: `Bearer ${JSON.parse(localStorage.getItem("user")).token
+                    }`,
+                  "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                  price: course.price,
+                }),
+              }).then((res) => {
+                console.log(res);
+                if (res.ok) {
+                  swal({
+                    title: "ثبت نام با موفقیت انجام شد",
+                    icon: "success",
+                    buttons: "اوکی",
+                  }).then(() => {
+                    getCourseDetails();
+                  });
+                }
+              });
+            } else {
+              fetch(`http://localhost:4000/v1/offs/${code}`, {
+                method: "POST",
+                headers: {
+                  Authorization: `Bearer ${JSON.parse(localStorage.getItem("user")).token
+                    }`,
+                  "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                  course: course._id,
+                }),
+              })
+                .then((res) => {
+                  console.log(res);
+
+                  if (res.status == 404) {
+                    swal({
+                      title: "کد تخفیف معتبر نیست",
+                      icon: "error",
+                      buttons: "ای بابا",
+                    });
+                  } else if (res.status == 409) {
+                    swal({
+                      title: "کد تخفیف قبلا استفاده شده :/",
+                      icon: "error",
+                      buttons: "ای بابا",
+                    });
+                  } else {
+                    return res.json();
+                  }
+                })
+                .then((code) => {
+                  fetch(
+                    `http://localhost:4000/v1/courses/${course._id}/register`,
+                    {
+                      method: "POST",
+                      headers: {
+                        Authorization: `Bearer ${JSON.parse(localStorage.getItem("user")).token
+                          }`,
+                        "Content-Type": "application/json",
+                      },
+                      body: JSON.stringify({
+                        price: course.price - (course.price * code.percent / 100)
+                      }),
+                    }
+                  ).then((res) => {
+                    console.log(res);
+                    if (res.ok) {
+                      swal({
+                        title: "ثبت نام با موفقیت انجام شد",
+                        icon: "success",
+                        buttons: "اوکی",
+                      }).then(() => {
+                        getCourseDetails();
+                      });
+                    }
+                  });
+                });
+            }
+          });
+        }
+      });
+    }
+  };
 
   return (
     <>
@@ -336,10 +473,10 @@ const CourseInfo = () => {
                         )
                         :
                         (
-                          <Link className="course-info__register-title">
-                            <i className="fas fa-graduation-cap course-info__register-icon"></i>
+                          <button className="course-info__register-title" onClick={() => registerInCourse(courseDetails)}>
+                            <i className="fas fa-graduation-cap course-info__register-icon"  ></i>
                             &nbsp;ثبت نام &nbsp;
-                          </Link>
+                          </button>
                         )
                     }
                   </div>
