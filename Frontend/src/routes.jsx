@@ -24,6 +24,11 @@ import Offs from './pages/AdminPanel/Offs/Offs';
 import Draft from './pages/AdminPanel/Articles/Draft/Draft';
 import APIndex from './pages/AdminPanel/APIndex/APIndex';
 
+// --------UserPanel
+import UserPanel from './pages/UserPanel/UserPanel';
+
+
+
 const routes = [
     { path: '/', element: <Index /> },
     { path: '/courses/:page', element: <Courses /> },
@@ -52,6 +57,13 @@ const routes = [
             { path: "comments", element: <Comments /> },
             { path: "offs", element: <Offs /> }
         ]
+    },
+    {
+        path: "/my-account/*",
+        element: <UserPanel />,
+        children: [
+
+        ],
     },
 
 ]
