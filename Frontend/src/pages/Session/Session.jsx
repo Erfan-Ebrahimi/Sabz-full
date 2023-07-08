@@ -53,9 +53,9 @@ const Session = () => {
                                                 <li className="sidebar-topics__list-item">
                                                     <div className="sidebar-topics__list-right">
                                                         <i className="sidebar-topics__list-item-icon fa fa-play-circle"></i>
-                                                        <a className="sidebar-topics__list-item-link" href="#">
+                                                        <span className="sidebar-topics__list-item-link" href="#">
                                                             {session.title}
-                                                        </a>
+                                                        </span>
                                                     </div>
                                                     <div className="sidebar-topics__list-left">
                                                         <span className="sidebar-topics__list-item-time">
@@ -76,7 +76,7 @@ const Session = () => {
                     <div className="episode">
                         <div className="episode-haeder">
                             <div className="episode-header__right">
-                                <a className="episode-header__right-back-link" href="#">
+                                <span className="episode-header__right-back-link" href="#">
                                     <i className="episode-header__right-back-icon fa fa-angle-right"></i>
                                     <div className="episode-header__right-home">
                                         <Link className="episode-header__right-home-link" to={`/course-info/${courseName}`}>
@@ -84,7 +84,7 @@ const Session = () => {
                                         </Link>
                                         <i className="episode-header__right-home-icon fa fa-home"></i>
                                     </div>
-                                </a>
+                                </span>
                             </div>
                             <div className="episode-header__left">
                                 <i className="episode-header__left-icon fa fa-play-circle"></i>

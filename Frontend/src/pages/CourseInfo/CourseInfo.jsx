@@ -30,12 +30,14 @@ const CourseInfo = () => {
   const [updatedAt, setUpdatedAt] = useState('')
   const [courseTeacher, setCourseTeacher] = useState({})
   const [courseCategory, setCourseCategory] = useState([])     //why array ???????????? bepors
+  const [relatedCourses, setRelatedCourses] = useState([])
 
   const { courseName } = useParams()
 
   useEffect(() => {
     getCourseDetails()
-  }, [])
+    getRelatedCourses()
+  }, [courseName])
 
   // --------------get course data from api
   function getCourseDetails() {
@@ -219,6 +221,12 @@ const CourseInfo = () => {
     }
   };
 
+  // --------get related courses
+  function getRelatedCourses() {
+    fetch(`http://localhost:4000/v1/courses/related/${courseName}`)
+      .then(res => res.json())
+      .then(data => setRelatedCourses(data))
+  }
   return (
     <>
       <Topbar />
@@ -232,7 +240,6 @@ const CourseInfo = () => {
           { id: 3, title: 'دوره سلام', to: 'course-info/fr' }
         ]}
       />
-
 
       <section className="course-info">
         <div className="container">
@@ -474,7 +481,7 @@ const CourseInfo = () => {
                         :
                         (
                           <button className="course-info__register-title" onClick={() => registerInCourse(courseDetails)}>
-                            <i className="fas fa-graduation-cap course-info__register-icon"  ></i>
+                            <i className="fas fa-graduation-cap course-info__register-icon"></i>
                             &nbsp;ثبت نام &nbsp;
                           </button>
                         )
@@ -498,13 +505,13 @@ const CourseInfo = () => {
                       <div className="course-info__total-comment">
                         <i className="far fa-comments course-info__total-comment-icon"></i>
                         <span className="course-info__total-comment-text">
-                          67 دیدگاه
+                          {comments.length} دیدگاه
                         </span>
                       </div>
                       <div className="course-info__total-view">
                         <i className="far fa-eye course-info__total-view-icon"></i>
                         <span className="course-info__total-view-text">
-                          14,234 بازدید
+                          {courseDetails.discount} بازدید
                         </span>
                       </div>
                     </div>
@@ -517,9 +524,9 @@ const CourseInfo = () => {
                       لینک کوتاه
                     </span>
                   </div>
-                  <span className="course-info__short-url">
-                    https://sabzlearn.ir/?p=117472
-                  </span>
+                  <a className="course-info__short-url">
+                    {`http://sabzlearn.ir`}
+                  </a>
                 </div>
                 <div className="course-info">
                   <span className="course-info__topic-title">
@@ -527,49 +534,36 @@ const CourseInfo = () => {
                   </span>
                   <span className="course-info__topic-text">
                     برای مشاهده و یا دانلود دوره روی کلمه
-                    <a href="#" style={{ color: 'blue', fontWeight: 'bold' }}>
+                    <Link to={`/course-info/${courseDetails.shortName}`} style={{ color: 'blue', fontWeight: 'bold' }}>
                       &nbsp; لینک &nbsp;
-                    </a>
+                    </Link>
                     کلیک کنید&nbsp;
                   </span>
                 </div>
-                <div className="course-info">
-                  <span className="course-info__courses-title">دوره های مرتبط</span>
-                  <ul className="course-info__courses-list">
-                    <li className="course-info__courses-list-item">
-                      <a href="#" className="course-info__courses-link">
-                        <img src={img} alt="Course Cover" className="course-info__courses-img" />
-                        <span className="course-info__courses-text">
-                          پروژه های تخصصی با جاوا اسکریپت
-                        </span>
-                      </a>
-                    </li>
-                    <li className="course-info__courses-list-item">
-                      <a href="#" className="course-info__courses-link">
-                        <img src={img} alt="Course Cover" className="course-info__courses-img" />
-                        <span className="course-info__courses-text">
-                          تعیین قیمت پروژه های فریلنسری
-                        </span>
-                      </a>
-                    </li>
-                    <li className="course-info__courses-list-item">
-                      <a href="#" className="course-info__courses-link">
-                        <img src={img} alt="Course Cover" className="course-info__courses-img" />
-                        <span className="course-info__courses-text">
-                          دوره Api نویسی
-                        </span>
-                      </a>
-                    </li>
-                    <li className="course-info__courses-list-item">
-                      <a href="#" className="course-info__courses-link">
-                        <img src={img} alt="Course Cover" className="course-info__courses-img" />
-                        <span className="course-info__courses-text">
-                          متخصص جنگو
-                        </span>
-                      </a>
-                    </li>
-                  </ul>
-                </div>
+                {
+                  relatedCourses.length  ? (
+                    <div className="course-info">
+                      <span className="course-info__courses-title">دوره های مرتبط</span>
+                      <ul className="course-info__courses-list">
+                        {relatedCourses.map(relatedCourse => (
+                          <li key={relatedCourse._id} className="course-info__courses-list-item">
+                            <Link to={`/course-info/${relatedCourse.shortName}`} className="course-info__courses-link">
+                              <img src={`http://localhost:4000/courses/covers/${relatedCourse.cover}`} alt="Course Cover" className="course-info__courses-img" />
+                              <span className="course-info__courses-text">
+                                {relatedCourse.name}
+                              </span>
+                            </Link>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+
+                  ) 
+                  :
+                  (
+                    <p className='alert alert-info'>دوره ی مرتبطی وجود ندارد</p>
+                  )
+                }
               </div>
             </div>
             {/* Finish Course Sidebar  */}
