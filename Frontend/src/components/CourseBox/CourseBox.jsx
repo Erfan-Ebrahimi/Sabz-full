@@ -11,7 +11,7 @@ const CourseBox = (props) => {
   const onImgLoaded = () => setIsShowImg(true)
 
   return (
-    <div className="col-4" style={{width:`${props.isSlider && '100%'}`}}>
+    <div className="col-4" style={{ width: `${props.isSlider && '100%'}` }}>
       <div className="course-box">
         <Link to={`/course-info/${props.shortName}`}>
           <img
@@ -36,11 +36,16 @@ const CourseBox = (props) => {
               <a href="#" className="course-box__teacher-link">{props.creator}</a>
             </div>
             <div className="course-box__rating">
-              <img src={star} alt="rating" className="course-box__star" />
-              <img src={star} alt="rating" className="course-box__star" />
-              <img src={star} alt="rating" className="course-box__star" />
-              <img src={star} alt="rating" className="course-box__star" />
-              <img src={star} alt="rating" className="course-box__star" />
+              {
+                Array(5 - props.courseAverageScore).fill(0).map((item, index) => (
+                  <img key={index} src="/assets/images/svgs/star.svg" alt="" />
+                ))
+              }
+              {
+                Array(props.courseAverageScore).fill(0).map((item, index) => (
+                  <img key={index} src="/assets/images/svgs/star_fill.svg" alt="" />
+                ))
+              }
             </div>
           </div>
           <div className="course-box__status">
@@ -49,7 +54,7 @@ const CourseBox = (props) => {
               <span className="course-box__users-text">{props.discount}</span>
             </div>
             <span className="course-box__price">
-              {props.price === 0 ? 'رایگان' : props.price.toLocaleString() }
+              {props.price === 0 ? 'رایگان' : props.price.toLocaleString()}
             </span>
           </div>
         </div>

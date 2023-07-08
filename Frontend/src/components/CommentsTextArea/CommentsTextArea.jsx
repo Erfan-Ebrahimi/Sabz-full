@@ -10,7 +10,7 @@ const CommentsTextArea = ({ comments, submitComment }) => { //az CourseInfo.jsx 
 
   // body & score ro mifrestim dar btn submitComment
   const [newCommentBody, setNewCommentBody] = useState('')
-  const [score, setScore] = useState(1)
+  const [score, setScore] = useState(5)
 
   // -------------context
   const authContext = useContext(AuthContext)
@@ -62,10 +62,23 @@ const CommentsTextArea = ({ comments, submitComment }) => { //az CourseInfo.jsx 
                       </a>
                     </div>
                   </div>
+                    
                   <div className="comments__question-text">
                     <p className="comments__question-paragraph comment-paragraph">
                       {comment.body}
                     </p>
+                    <div>
+                    {
+                        Array(5 - comment.score).fill(0).map((item, index) => (
+                          <img key={index} src="/assets/images/svgs/star.svg" alt="" />
+                        ))
+                      }
+                      {
+                        Array(comment.score).fill(0).map((item, index) => (
+                          <img key={index} src="/assets/images/svgs/star_fill.svg" alt="" />
+                        ))
+                      }
+                    </div>
                   </div>
                   {/* answer comment */}
                   {
@@ -105,33 +118,6 @@ const CommentsTextArea = ({ comments, submitComment }) => { //az CourseInfo.jsx 
                 </div>
               </div>
             ))}
-            {/* <div className="comments__pagantion">
-              <ul className="comments__pagantion-list">
-                <li className="comments__pagantion-item">
-                  <a href="#" className="comments__pagantion-link">
-                    <i className="fas fa-long-arrow-alt-right comments__pagantion-icon"></i>
-                  </a>
-                </li>
-                <li className="comments__pagantion-item">
-                  <a href="#" className="comments__pagantion-link">
-                    1
-                  </a>
-                </li>
-                <li className="comments__pagantion-item">
-                  <a href="#" className="comments__pagantion-link">
-                    2
-                  </a>
-                </li>
-                <li className="comments__pagantion-item">
-                  <a
-                    href="#"
-                    className="comments__pagantion-link comments__pagantion-link--active"
-                  >
-                    3
-                  </a>
-                </li>
-              </ul>
-            </div> */}
           </>
         )}
       </div>
@@ -165,11 +151,11 @@ const CommentsTextArea = ({ comments, submitComment }) => { //az CourseInfo.jsx 
                   <span className="comments__score-title">امتیاز شما</span>
                   <div className="comments__score-input">
                     <select className="comments__score-input-text" onChange={onChangeScoreComment} value={score}>
-                      <option name="1" id="">1</option>
-                      <option name="2" id="">2</option>
-                      <option name="3" id="">3</option>
-                      <option name="4" id="">4</option>
-                      <option name="5" id="">5</option>
+                      <option value="5">عالی</option>
+                      <option value="4">خوب</option>
+                      <option value="3">متوسط</option>
+                      <option value="2">ضعیف</option>
+                      <option value="1">خیلی ضعیف</option>
                     </select>
                     {/* <i className="fas fa-angle-down	 comments__input-icon"></i> */}
                   </div>

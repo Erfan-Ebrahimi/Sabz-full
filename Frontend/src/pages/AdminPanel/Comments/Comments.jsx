@@ -17,7 +17,10 @@ const Comments = () => {
     function getAllComments() {
         fetch("http://localhost:4000/v1/comments")
             .then((res) => res.json())
-            .then((allComments) => setComments(allComments));
+            .then((allComments) => {
+                setComments(allComments)
+                console.log(allComments);
+            });
     }
 
     // -----remove a comment
@@ -170,7 +173,7 @@ const Comments = () => {
                     headers: {
                         Authorization: `Bearer ${JSON.parse(localStorage.getItem("user")).token}`,
                     },
-                    body:JSON.stringify({body:'d'})
+                    body: JSON.stringify({ body: 'd' })
                 }).then((res) => {
                     console.log(res);
                     if (res.ok) {
@@ -196,6 +199,7 @@ const Comments = () => {
                         <th>شناسه</th>
                         <th>کاربر</th>
                         <th>دوره</th>
+                        <th>امتیاز</th>
                         <th>مشاهده</th>
                         <th>پاسخ</th>
                         <th>تایید / رد</th>
@@ -210,6 +214,18 @@ const Comments = () => {
                             <td className={comment.answer === 1 ? "answer-comment" : 'no-answer-comment'}>{index + 1}</td>
                             <td>{comment.creator.name}</td>
                             <td>{comment.course}</td>
+                            <td>
+                                {
+                                    Array(5 - comment.score).fill(0).map((item, index) => (
+                                        <img key={index} src="/assets/images/svgs/star.svg" alt="" />
+                                    ))
+                                }
+                                {
+                                    Array(comment.score).fill(0).map((item, index) => (
+                                        <img key={index} src="/assets/images/svgs/star_fill.svg" alt="" />
+                                    ))
+                                }
+                            </td>
                             <td>
                                 <button
                                     type="button"
@@ -277,7 +293,6 @@ const Comments = () => {
                                 >
                                     بن
                                 </button>
-                                <p>{comment.isAnswer}</p>
                             </td>
                         </tr>
 
