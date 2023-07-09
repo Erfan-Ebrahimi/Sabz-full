@@ -27,6 +27,7 @@ import APIndex from './pages/AdminPanel/APIndex/APIndex';
 // --------UserPanel
 import UserPanel from './pages/UserPanel/UserPanel';
 import UserPanelIndex from './pages/UserPanel/UserPanelIndex/UserPanelIndex';
+import Orders from './pages/UserPanel/Orders/Orders';
 
 
 
@@ -64,6 +65,7 @@ const routes = [
         element: <UserPanel />,
         children: [
             { path: "", element: <UserPanelIndex /> },
+            { path: "orders", element: <Orders /> },
 
         ],
     },

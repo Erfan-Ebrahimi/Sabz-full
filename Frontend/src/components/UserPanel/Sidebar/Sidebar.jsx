@@ -44,9 +44,9 @@ const Sidebar = () => {
                         </a>
                     </li>
                     <li className="sidebar__item">
-                        <a className="sidebar__link" href="#">
-                            سفارش
-                        </a>
+                        <Link className="sidebar__link" to='orders'>
+                             سفارش ها
+                        </Link>
                     </li>
                     <li className="sidebar__item">
                         <a className="sidebar__link" href="#">
