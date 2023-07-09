@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import AuthContext from "../../../context/authContext";
+import AuthContext from "../../../context/AuthContext";
 import { Link, useNavigate } from "react-router-dom";
 import swal from "sweetalert";
 import './Sidebar.scss';
@@ -45,7 +45,7 @@ const Sidebar = () => {
                     </li>
                     <li className="sidebar__item">
                         <Link className="sidebar__link" to='orders'>
-                             سفارش ها
+                            سفارش ها
                         </Link>
                     </li>
                     <li className="sidebar__item">
@@ -59,9 +59,9 @@ const Sidebar = () => {
                         </a>
                     </li>
                     <li className="sidebar__item">
-                        <a className="sidebar__link" href="#">
+                        <Link className="sidebar__link" to='buyed'>
                             دوره های خریداری شده
-                        </a>
+                        </Link>
                     </li>
                     <li className="sidebar__item">
                         <a className="sidebar__link" href="#">
@@ -69,7 +69,7 @@ const Sidebar = () => {
                         </a>
                     </li>
                     <li className="sidebar__item">
-                        <Link className="sidebar__link"  onClick={logoutUser}>
+                        <Link className="sidebar__link" onClick={logoutUser}>
                             خروج از سیستم
                         </Link>
                     </li>

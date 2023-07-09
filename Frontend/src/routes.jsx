@@ -29,6 +29,8 @@ import UserPanel from './pages/UserPanel/UserPanel';
 import UserPanelIndex from './pages/UserPanel/UserPanelIndex/UserPanelIndex';
 import Orders from './pages/UserPanel/Orders/Orders';
 import OrderExplain from './pages/UserPanel/Orders/OrderExplain/OrderExplain';
+import UserPanelCourses from "./pages/UserPanel/Courses/Courses";
+
 
 
 
@@ -68,6 +70,8 @@ const routes = [
             { path: "", element: <UserPanelIndex /> },
             { path: "orders", element: <Orders /> },
             { path: "orders/:id", element: <OrderExplain /> },
+            { path: "buyed", element: <UserPanelCourses /> },
+
 
         ],
     },
