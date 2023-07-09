@@ -64,9 +64,9 @@ const Sidebar = () => {
                         </Link>
                     </li>
                     <li className="sidebar__item">
-                        <a className="sidebar__link" href="#">
+                        <Link className="sidebar__link" to='tickets'>
                             تیکت های پشتیبانی
-                        </a>
+                        </Link>
                     </li>
                     <li className="sidebar__item">
                         <Link className="sidebar__link" onClick={logoutUser}>

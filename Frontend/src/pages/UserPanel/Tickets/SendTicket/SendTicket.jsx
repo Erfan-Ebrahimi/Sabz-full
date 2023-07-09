@@ -4,6 +4,7 @@ import Input from '../../../../components/Form/Input';
 import { minValidator } from '../../../../validators/rules';
 import swal from 'sweetalert';
 import './SendTicket.scss';
+import { Link , useNavigate } from 'react-router-dom';
 
 const SendTicket = () => {
 
@@ -14,6 +15,8 @@ const SendTicket = () => {
     const [ticketPriority, setTicketPriority] = useState(1)
     const [userCourses, setUserCourses] = useState([])
 
+    //------------ history
+    const navigate = useNavigate()
     // --------form inputs
     const [formState, onInputHandler] = useForm(
         {
@@ -103,15 +106,16 @@ const SendTicket = () => {
         })
     }
 
+    
 
     return (
         <div className="col-9">
             <div className="ticket">
                 <div className="ticket-header">
                     <span className="ticket-header__title">ارسال تیکت جدید</span>
-                    <a className="ticket-header__link" href="#">
+                    <Link className="ticket-header__link" onClick={() =>navigate(-1)}>
                         همه تیکت ها
-                    </a>
+                    </Link>
                 </div>
                 <form className="ticket-form" action="#">
                     <div className="row">

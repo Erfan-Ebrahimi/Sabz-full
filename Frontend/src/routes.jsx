@@ -30,6 +30,8 @@ import UserPanelIndex from './pages/UserPanel/UserPanelIndex/UserPanelIndex';
 import Orders from './pages/UserPanel/Orders/Orders';
 import OrderExplain from './pages/UserPanel/Orders/OrderExplain/OrderExplain';
 import UserPanelCourses from "./pages/UserPanel/Courses/Courses";
+import SendTicket from './pages/UserPanel/Tickets/SendTicket/SendTicket';
+import Tickets from './pages/UserPanel/Tickets/Tickets';
 
 
 
@@ -71,6 +73,8 @@ const routes = [
             { path: "orders", element: <Orders /> },
             { path: "orders/:id", element: <OrderExplain /> },
             { path: "buyed", element: <UserPanelCourses /> },
+            { path: "tickets", element: <Tickets /> },
+            { path: "send-ticket", element: <SendTicket /> },
 
 
         ],
