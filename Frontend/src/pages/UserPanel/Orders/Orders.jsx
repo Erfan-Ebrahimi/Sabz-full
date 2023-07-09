@@ -1,4 +1,5 @@
 import { useState , useEffect } from 'react';
+import {Link} from 'react-router-dom'
 import './Orders.scss'
 
 
@@ -56,9 +57,9 @@ const Orders = () => {
                                     {order.price}
                                 </td>
                                 <td className="order__table-body-item">
-                                    <a className="order__table-body-btn" href="#">
+                                    <Link className="btn btn-info" to={`${order._id}`}>
                                         نمایش
-                                    </a>
+                                    </Link>
                                 </td>
                             </tr>
                         ))}
