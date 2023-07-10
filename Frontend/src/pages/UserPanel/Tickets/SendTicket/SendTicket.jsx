@@ -115,8 +115,8 @@ const SendTicket = () => {
         <div className="col-9">
             <div className="ticket">
                 <div className="ticket-header">
-                    <span className="ticket-header__title">ارسال تیکت جدید</span>
-                    <Link className="ticket-header__link" onClick={() =>navigate(-1)}>
+                    <span className="ticket-header__title title mb-5">ارسال تیکت جدید</span>
+                    <Link className="ticket-header__link" to='/my-account/tickets'>
                         همه تیکت ها
                     </Link>
                 </div>
