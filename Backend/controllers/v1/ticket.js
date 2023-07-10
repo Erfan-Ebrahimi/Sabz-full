@@ -116,6 +116,7 @@ exports.getAnswer = async (req, res, next) => {
     }
 
     res.json({
+      _id: req.params.id,
       ticket: ticket.body,
       answer: answerTicket ? answerTicket.body : null,
     });
