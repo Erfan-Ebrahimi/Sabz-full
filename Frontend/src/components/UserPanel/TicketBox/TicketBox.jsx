@@ -1,8 +1,10 @@
 import swal from 'sweetalert';
+import {Link} from 'react-router-dom';
 import './TicketBox.scss';
 
 const TicketBox = (props) => {
 
+    console.log(props);
     // --------show ticket body
     const showTicketBody = (ticketBody) => {
         swal({
@@ -16,9 +18,9 @@ const TicketBox = (props) => {
         <div className="ticket-content__box">
             <div className="ticket-content__right">
                 <div className="ticket-content__right-right">
-                    <a className="ticket-content__link" href="#">
+                    <Link className="ticket-content__link" to={`answer/${props._id}`}>
                         {props.title}
-                    </a>
+                    </Link>
                     <span className="ticket-content__category">
                         <i className="fa fa-ellipsis-v ticket-content__icon"></i>
                         {props.departmentSubID}

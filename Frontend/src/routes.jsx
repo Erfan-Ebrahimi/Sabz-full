@@ -32,6 +32,7 @@ import OrderExplain from './pages/UserPanel/Orders/OrderExplain/OrderExplain';
 import UserPanelCourses from "./pages/UserPanel/Courses/Courses";
 import SendTicket from './pages/UserPanel/Tickets/SendTicket/SendTicket';
 import Tickets from './pages/UserPanel/Tickets/Tickets';
+import AnswerTicket from './pages/UserPanel/Tickets/AnswerTicket/AnswerTicket';
 
 
 
@@ -75,6 +76,7 @@ const routes = [
             { path: "buyed", element: <UserPanelCourses /> },
             { path: "tickets", element: <Tickets /> },
             { path: "send-ticket", element: <SendTicket /> },
+            { path: "tickets/answer/:id", element: <AnswerTicket /> },
 
 
         ],
