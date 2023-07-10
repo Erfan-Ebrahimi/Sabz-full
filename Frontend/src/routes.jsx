@@ -24,6 +24,7 @@ import Comments from './pages/AdminPanel/Comments/Comments';
 import Offs from './pages/AdminPanel/Offs/Offs';
 import Draft from './pages/AdminPanel/Articles/Draft/Draft';
 import APIndex from './pages/AdminPanel/APIndex/APIndex';
+import APTickets from './pages/AdminPanel/Tickets/Tickets';
 
 // --------UserPanel
 import UserPanel from './pages/UserPanel/UserPanel';
@@ -69,7 +70,8 @@ const routes = [
             { path: "contact-us", element: <ContactUs /> },
             { path: "sessions", element: <Sessions /> },
             { path: "comments", element: <Comments /> },
-            { path: "offs", element: <Offs /> }
+            { path: "offs", element: <Offs /> },
+            { path: "tickets", element: <APTickets /> }
         ]
     },
     {
