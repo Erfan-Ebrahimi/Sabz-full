@@ -11,6 +11,7 @@ import Search from './pages/Search/Search';
 import Session from './pages/Session/Session';
 
 // -----AdminPanel routes
+import PAdminPrivate from './components/Private/PAdminPrivate';
 import AdminPanel from './pages/AdminPanel/AdminPanel';
 import Users from "./pages/AdminPanel/Users/Users";
 import AdminCourses from "./pages/AdminPanel/Courses/Courses";
@@ -52,7 +53,11 @@ const routes = [
     { path: '/search/:value', element: <Search /> },
     {
         path: '/p-admin/*',
-        element: <AdminPanel />,
+        element: (
+            <PAdminPrivate>
+                <AdminPanel />
+            </PAdminPrivate>
+        ),
         children: [
             { path: "", element: <APIndex /> },
             { path: "users", element: <Users /> },
