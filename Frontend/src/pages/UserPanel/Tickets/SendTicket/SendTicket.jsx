@@ -14,6 +14,7 @@ const SendTicket = () => {
     const [departmentSubId, setdepartmentSubId] = useState('')
     const [ticketPriority, setTicketPriority] = useState(1)
     const [userCourses, setUserCourses] = useState([])
+    const [courseId , setCourseId] = useState('')
 
     //------------ history
     const navigate = useNavigate()
@@ -67,7 +68,8 @@ const SendTicket = () => {
                 console.log(data);
             });
     }
-    // -----------send ticktt
+
+    // -----------send ticket
     const sendTicket = (e) => {
         e.preventDefault()
         const localStorageDate = JSON.parse(localStorage.getItem('user'))
@@ -78,6 +80,7 @@ const SendTicket = () => {
             title: formState.inputs.title.value,
             body: formState.inputs.body.value,
             priority: ticketPriority,
+            course: courseId.length ? courseId : undefined,
         }
         swal({
             title: "آیا از ارسال تیکت اطمینان دارید؟`",
@@ -172,6 +175,7 @@ const SendTicket = () => {
                                     <label className="ticket-form__label">دوره را انتخاب کنید:</label>
                                     <select
                                         className="ticket-form__select"
+                                        onChange={(e) => setCourseId(e.target.value)}
 
                                     >
                                         {
