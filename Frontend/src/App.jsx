@@ -13,7 +13,7 @@ function App() {
 
   // ---------------global functions send to Context
   // az useCallback estefade mikonim ta az render bihode jelogiri konim
-  const login = (userIfos, token) => {    //userInfos & token az Register.jsx or Login.jsx vaghti registerNewUser or userLogin farakhani mishavad miad
+  const login =useCallback( (userIfos, token) => {    //userInfos & token az Register.jsx or Login.jsx vaghti registerNewUser or userLogin farakhani mishavad miad
     if (token) {
       console.log('login : token omad');
     }
@@ -21,14 +21,14 @@ function App() {
     setUserInfos(userIfos)
     setIsLoggedIn(true)
     localStorage.setItem('user', JSON.stringify({ token: token }))
-  }
+  } , [token])
 
   const logout = useCallback( () => {
     setToken(null)
     setUserInfos({})
     localStorage.removeItem('user')
 
-  } , [])
+  } , [token])
 
   // ------------- useEffect
   //if tokeni bod digar niaz be login harbare nabashad v automatic kar login anjam shavad
@@ -50,8 +50,7 @@ function App() {
     }else{
       setIsLoggedIn(false)
     }
-  }, [])
-  // login , logout   if moshkel dasht inaro bezaram toy dependeseies
+  }, [token])
 
   // ----------------ROUTES
   const router = useRoutes(routes)
