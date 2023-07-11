@@ -6,10 +6,13 @@ import { Link } from 'react-router-dom';
 import { useContext, useEffect, useState } from 'react';
 import AuthContext from '../../context/AuthContext';
 
+import { Tooltip } from 'react-tooltip'
+
+
+
 const Navbar = () => {
 
   const [allMenus, setAllMenus] = useState([]);
-
   const authContext = useContext(AuthContext);
 
   // ----------get all menus from api
@@ -64,9 +67,32 @@ const Navbar = () => {
             {
               authContext.isLoggedIn ?
                 (
-                  <Link to="/" className="main-header__profile">
-                    <span className="main-header__profile-text">{authContext.userInfos.name}</span>
-                  </Link>
+                  <>
+                    {
+                      authContext.userInfos.role === 'ADMIN' ?
+                        (
+                          <div>
+
+                            <Link to='/p-admin' className="main-header__profile">
+                              <span className="main-header__profile-text">{authContext.userInfos.name}پنل ادمین</span>
+                            </Link>
+                            <Link to='/my-account' className="main-header__profile">
+                              <span className="main-header__profile-text">{authContext.userInfos.name}پنل کاربر</span>
+                            </Link>
+                          </div>
+
+                        )
+                        :
+                        (
+
+                          <Link to='/my-account' className="main-header__profile" data-tooltip-id="my-tooltip" data-tooltip-content="پنل کاربری" data-tooltip-place="top">
+                            <span className="main-header__profile-text" >{authContext.userInfos.name}</span>
+                            <Tooltip id="my-tooltip" />
+                          </Link>
+                        )
+                    }
+
+                  </>
                 )
                 :
                 (
