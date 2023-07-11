@@ -2,6 +2,7 @@ import './Users.scss';
 import DataTable from '../../../components/AdminPanel/DataTable/DataTable';
 import { useEffect, useState } from 'react';
 import swal from 'sweetalert';
+import Swal from 'sweetalert2';
 import Input from "./../../../components/Form/Input";
 import { useForm } from "./../../../hooks/useForm";
 import {
@@ -132,23 +133,64 @@ const Users = () => {
             },
             body: JSON.stringify(newUserInfo)
         }).then((res) => {
-            if(res.ok){
+            if (res.ok) {
                 res.json()
                 swal({
-                title:'کاربر با موفقیت افزوده شد',
-                    icon:'success',
-                    buttons:'OK'
-                }).then(ok => getAllUsers() )
+                    title: 'کاربر با موفقیت افزوده شد',
+                    icon: 'success',
+                    buttons: 'OK'
+                }).then(ok => getAllUsers())
 
-            }else{
+            } else {
                 swal({
-                    title:'اطلاعات صحیح نمی باشد !!',
-                        icon:'warning',
-                        buttons:'OK'
-                    })
+                    title: 'اطلاعات صحیح نمی باشد !!',
+                    icon: 'warning',
+                    buttons: 'OK'
+                })
             }
         })
     };
+
+    // change user role
+    const changeUserRole = (userID) => {
+
+        const inputOptions = new Promise((resolve) => {
+            setTimeout(() => {
+                resolve({
+                    'USER': 'USER',
+                    'ADMIN': 'ADMIN',
+                })
+            }, 1000)
+        })
+        Swal.fire({
+            title: 'سطح دسترسی را انتخاب کنید',
+            input: 'radio',
+            customClass: 'swal-wide',
+            inputOptions: inputOptions,
+            inputValidator: (value) => {
+                console.log(value , userID);
+                if (value) {
+                    const localStorageData = JSON.parse(localStorage.getItem('user'))
+                    const newUserRoleInfos = {
+                        id:userID,
+                        role:value
+                    }
+                    console.log(newUserRoleInfos);
+                    fetch('http://localhost:4000/v1/users/role', {
+                        method: 'PUT',
+                        headers: {
+                            Authorization: `Bearer ${localStorageData.token}`,
+                            'Content-Type':'application/json'
+                        },
+                        body:JSON.stringify(newUserRoleInfos)
+                    }).then(res => res.json()).then(data => console.log(data))
+                } else {
+                    return 'You need to choose something!'
+                }
+            }
+        })
+
+    }
 
     return (
         <>
@@ -268,9 +310,10 @@ const Users = () => {
                         <tr>
                             <th>شناسه</th>
                             <th> نام و نام خانوادگی </th>
+                            <th> نقش</th>
                             <th>شماره</th>
                             <th>ایمیل</th>
-                            <th>ویرایش</th>
+                            <th>سطح دسترسی</th>
                             <th>حذف</th>
                             <th>بن</th>
                         </tr>
@@ -280,11 +323,18 @@ const Users = () => {
                             <tr key={user._id}>
                                 <td>{index + 1}</td>
                                 <td>{user.name}</td>
+                                <td>{user.role === 'ADMIN' ? (<i class="fa-sharp fa-solid fa-user-gear admin-icon "></i>) : (<i class="fa-regular fa-user user-icon"></i>)}</td>
                                 <td>{user.phone}</td>
                                 <td>{user.email}</td>
                                 <td>
-                                    <button type="button" className="btn btn-primary edit-btn">
-                                        ویرایش
+                                    <button
+                                        type="button"
+                                        className="btn btn-primary edit-btn"
+                                        onClick={() => {
+                                            changeUserRole(user._id)
+                                        }}
+                                    >
+                                        تغییر
                                     </button>
                                 </td>
                                 <td>
@@ -301,7 +351,7 @@ const Users = () => {
                                 <td>
                                     <button
                                         type="button"
-                                        className="btn btn-danger delete-btn"
+                                        className="btn btn-danger delete-btn ban-user"
                                         onClick={() => {
                                             banUser(user._id)
                                         }}
