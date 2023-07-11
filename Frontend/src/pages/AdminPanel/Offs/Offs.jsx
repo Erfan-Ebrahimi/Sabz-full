@@ -11,6 +11,10 @@ const Offs = () => {
     const [courses, setCourses] = useState([]);
     const [offs, setOffs] = useState([]);
     const [offCourse, setOffCourse] = useState("-1");
+    const [discount, setDiscount] = useState('');  //state for campaign
+
+
+    // ----------form inputs for offs
     const [formState, onInputHandler] = useForm(
         {
             code: {
@@ -115,12 +119,41 @@ const Offs = () => {
             }
         });
     };
+
+    // ---------create campaign
+    const createCampaign = (event) => {
+        event.preventDefault();
+        const reqBody = {
+            discount,
+        };
+
+        fetch(`http://localhost:4000/v1/offs/all`, {
+            method: "POST",
+            headers: {
+                Authorization: `Bearer ${JSON.parse(localStorage.getItem("user")).token
+                    }`,
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(reqBody),
+        })
+            .then((res) => {
+                if (res.ok) {
+                    swal({
+                        title: 'کمپین با موفقیت ایجاد شد',
+                        icon: 'success',
+                        buttons: "خیلی هم عالی"
+                    })
+                }
+            })
+    };
+
     return (
         <>
             <div className="container-fluid" id="home-content">
                 <div className="container">
+                    {/*-----------------------------OFFS----------------- */}
                     <div className="home-title">
-                        <span>افزودن جلسه جدید</span>
+                        <span>افزودن کد تخفیف جدید</span>
                     </div>
                     <form className="form">
                         <div className="col-6">
@@ -193,7 +226,38 @@ const Offs = () => {
                                     type="submit"
                                     className='btn-add-course'
                                     onClick={createOff}
-                                    disabled={!formState.isFormValid || offCourse === '-1' }
+                                    disabled={!formState.isFormValid || offCourse === '-1'}
+                                >
+                                    افزودن
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+
+                    {/*----------------------------- CAMPAIGN----------------- */}
+                    <div className="home-title">
+                        <span>افزودن کمپین جدید</span>
+                    </div>
+                    <form className="form">
+                        <div className="col-6">
+                            <div className="price input">
+                                <label className="input-title">کد تخفیف</label>
+                                <input
+                                    value={discount}
+                                    onChange={(e) => setDiscount(e.target.value)}
+                                    type="number"
+                                    placeholder="لطفا درصد تخفیف کمپین را وارد نمایید"
+                                />
+                                <span className="error-message text-danger"></span>
+                            </div>
+                        </div>
+                        <div className="col-12">
+                            <div className="bottom-form">
+                                <button
+                                    type="submit"
+                                    className='btn-add-course'
+                                    onClick={createCampaign}
+                                    disabled={!discount}
                                 >
                                     افزودن
                                 </button>
