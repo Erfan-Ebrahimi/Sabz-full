@@ -19,7 +19,7 @@ const Header = () => {
       .then(infos => setIndexInfo(infos))
   }, [])
   return (
-    <header className="header">
+    <header className="header-1">
       <Topbar />
       <Navbar />
       <Landing info={indexInfo} />

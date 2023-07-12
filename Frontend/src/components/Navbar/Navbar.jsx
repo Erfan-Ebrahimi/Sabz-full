@@ -71,16 +71,10 @@ const Navbar = () => {
                     {
                       authContext.userInfos.role === 'ADMIN' ?
                         (
-                          <div className='link__admin'>
-
-                            <Link to='/p-admin' className="main-header__profile">
-                              <span className="main-header__profile-text">پنل ادمین {authContext.userInfos.username}</span>
-                            </Link>
-                            <Link to='/my-account' className="main-header__profile">
-                              <span className="main-header__profile-text">پنل کاربری {authContext.userInfos.username}</span>
-                            </Link>
-                          </div>
-
+                          <Link to='/p-admin' className="main-header__profile" data-tooltip-id="my-tooltip" data-tooltip-content="پنل ادمین" data-tooltip-place="top">
+                            <span className="main-header__profile-text" >{authContext.userInfos.username}</span>
+                            <Tooltip id="my-tooltip" />
+                          </Link>
                         )
                         :
                         (

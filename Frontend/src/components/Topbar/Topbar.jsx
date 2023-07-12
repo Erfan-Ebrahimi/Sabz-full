@@ -1,12 +1,16 @@
 import { memo, useEffect, useState } from 'react';
 import './Topbar.scss';
+import { FaTelegramPlane } from "react-icons/fa";
+import { FaInstagram } from "react-icons/fa";
+import { BiSolidPhone } from "react-icons/bi";
+import Swal from 'sweetalert2';
+import { BsGithub } from "react-icons/bs";
+import CV from "../../assets/ECV.pdf"
 
-import { Link } from 'react-router-dom';
 
 
 const Topbar = () => {
 
-  const [allTopbarLinks, setAllTopbarLinks] = useState([])
   const [indexInfo, setIndexInfo] = useState([])
 
   useEffect(() => {
@@ -20,41 +24,36 @@ const Topbar = () => {
 
   }, [])
 
-
-  const getRandomItemsFromArray = (arr, randomCount) => {
-    const shuffled = [...arr].sort(() => 0.5 - Math.random())
-    return shuffled.slice(0, randomCount)
+  const callMe = () => {
+    Swal.fire({
+      title: 'زنگ بزن یه گپی با هم بزنیم :)',
+      text: '09918790969',
+      imageUrl: 'assets/images/me.png',
+      imageWidth: 300,
+      imageAlt: 'Custom image',
+      customClass: 'swal-wide',
+      confirmButtonColor: '#00012f'
+    })
   }
+
   return (
     <div className="top-bar">
       <div className="container-fluid">
         <div className="top-bar__content">
           <div className="top-bar__right">
             <ul className="top-bar__menu">
-              {
-                getRandomItemsFromArray(allTopbarLinks, 5).map(link => (
-                  <li key={link._id} className="top-bar__item">
-                    <Link to={`/course-info/${link.href}`} className="top-bar__link">
-                      {link.title}
-                    </Link>
-                  </li>
-                ))
-              }
+              <li className="top-bar__item">
+                <div className='cta'>
+                  <a href={CV} download className='btn--1'>HIRE ME</a>
+                </div>
+              </li>
             </ul>
           </div>
-          <div className="top-bar__left">
-            <div className="top-bar__email">
-              <a href="#" className="top-bar__email-text top-bar__link">
-                {indexInfo.email}
-              </a>
-              <i className="fas fa-envelope top-bar__email-icon"></i>
-            </div>
-            <div className="top-bar__phone">
-              <a href="#" className="top-bar__phone-text top-bar__link">
-                0{indexInfo.phone}
-              </a>
-              <i className="fas fa-phone top-bar__phone-icon"></i>
-            </div>
+          <div className='header__socials'>
+            <a href="https://github.com/Erfan-Ebrahimi" target="_blank" rel="noreferrer" className='icon'><BsGithub /></a>
+            <a href="https://t.me/ME_7676" target="_blank" rel="noreferrer" className='icon'><FaTelegramPlane /></a>
+            <a href="http://www.instagram.com/__erfan__ebrahimi" target="_blank" rel="noreferrer" className='icon'><FaInstagram /></a>
+            <a href='#' rel="noreferrer" className='icon' onClick={callMe}><BiSolidPhone /></a>
           </div>
         </div>
       </div>

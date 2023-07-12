@@ -14,11 +14,14 @@ const Index = () => {
   return (
     <>
       <Header />
-      <LastCourses />
-      <AboutUs />
-      <PopularCourses />
-      <PresellCourses />
-      <LastArticles />
+      <div className='main-1'>
+        <LastCourses />
+        <AboutUs />
+        <PopularCourses />
+        <PresellCourses />
+        <LastArticles />
+
+      </div>
       <Footer />
     </>
   )
