@@ -177,7 +177,7 @@ const Sessions = () => {
                                                 <span>رایگان</span>
                                                 <input
                                                     type="radio"
-                                                    value="0"
+                                                    value="1"
                                                     name="condition"
                                                     defaultChecked
                                                     onInput={event => setSessionFree(event.target.value)}
@@ -189,7 +189,7 @@ const Sessions = () => {
                                                 <span>پولی</span>
                                                 <input
                                                     type="radio"
-                                                    value="1"
+                                                    value="0"
                                                     name="condition"
                                                     onInput={event => setSessionFree(event.target.value)}
                                                 />
@@ -258,6 +258,7 @@ const Sessions = () => {
                     </tbody>
                 </table>
             </DataTable>
+
         </>
     )
 }

@@ -120,6 +120,15 @@ const Articles = () => {
         })
     }
 
+    // -------edit article
+    const editArticle = () => {
+        swal({
+            title: 'این بخش در حال توسعه می باشد',
+            icon: 'info',
+            buttons: 'اوکی'
+        })
+    }
+
     // --------add new draft article
     const draftArticle = (event) => {
         event.preventDefault()
@@ -309,7 +318,7 @@ const Articles = () => {
                                 </td>
 
                                 <td>
-                                    <button type="button" className="btn btn-primary edit-btn">
+                                    <button type="button" className="btn btn-primary edit-btn" onClick={editArticle}>
                                         ویرایش
                                     </button>
                                 </td>

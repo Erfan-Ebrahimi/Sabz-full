@@ -116,6 +116,7 @@ const Category = () => {
 
 
             focusConfirm: false,
+            customClass:'swal-wide',
             preConfirm: () => {
                 return [
                     document.getElementById('swal-input1').value,
@@ -200,7 +201,7 @@ const Category = () => {
                             </div>
                         </div>
                     </form>
-                    <p className='alert alert-danger'>دسته بندی فرانت و بک تغییر داده نشود</p>
+                    <p className='alert alert-danger'>دسته بندی های اصلی تغییر داده نشود</p>
                 </div>
             </div>
             <DataTable title="دسته بندی ها">

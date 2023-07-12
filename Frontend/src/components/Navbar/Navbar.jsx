@@ -44,7 +44,7 @@ const Navbar = () => {
                           {
                             menu.submenus.map(submenu => (
                               <li key={submenu._id} className="main-header__dropdown-item">
-                                <Link to={`course-info/${submenu.href}`} className="main-header__dropdown-link">{submenu.title}</Link>
+                                <Link to={`/course-info/${submenu.href}`} className="main-header__dropdown-link">{submenu.title}</Link>
                               </li>
                             ))
                           }

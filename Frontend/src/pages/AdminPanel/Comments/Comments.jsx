@@ -190,6 +190,14 @@ const Comments = () => {
         });
     };
 
+    // ------edit comment
+    const editComment = () => {
+        swal({
+            title: 'این بخش در حال توسعه می باشد',
+            icon: 'success',
+            buttons: 'اوکی'
+        })
+    }
     return (
 
         <DataTable title="کامنت‌ها">
@@ -272,7 +280,7 @@ const Comments = () => {
                             }
 
                             <td>
-                                <button type="button" className="btn btn-success edit-btn">
+                                <button type="button" className="btn btn-success edit-btn" onClick={editComment}>
                                     ویرایش
                                 </button>
                             </td>

@@ -96,6 +96,17 @@ const Menus = () => {
             }
         });
     };
+
+    // --------edit menu
+    const editMenu = () => {
+        swal({
+            title: 'این بخش در حال توسعه می باشد',
+            icon: 'success',
+            buttons: 'اوکی'
+        })
+    }
+
+
     return (
         <>
             <div className="container">
@@ -127,7 +138,7 @@ const Menus = () => {
                                 id="href"
                                 type="text"
                                 isValid="false"
-                                validations={[minValidator(5)]}
+                                validations={[minValidator(2)]}
                                 placeholder="لطفا عنوان را وارد کنید..."
                             />
                             <span className="error-message text-danger"></span>
@@ -199,7 +210,7 @@ const Menus = () => {
                                     }
                                 </td>
                                 <td>
-                                    <button type="button" className="btn btn-primary edit-btn">
+                                    <button type="button" className="btn btn-primary edit-btn" onClick={editMenu}>
                                         ویرایش
                                     </button>
                                 </td>

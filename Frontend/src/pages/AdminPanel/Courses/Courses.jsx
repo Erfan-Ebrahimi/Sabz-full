@@ -147,6 +147,15 @@ const Courses = () => {
         })
     };
 
+    // ----edit course
+    const editCourse = () => {
+        swal({
+            title: 'این بخش در حال توسعه می باشد',
+            icon: 'success',
+            buttons: 'اوکی'
+        })
+    }
+
     return (
         <>
             <div className="container-fluid" id="home-content">
@@ -190,7 +199,7 @@ const Courses = () => {
                                     id="shortName"
                                     element="input"
                                     onInputHandler={onInputHandler}
-                                    validations={[minValidator(5), requiredValidator()]}
+                                    validations={[minValidator(3), requiredValidator()]}
                                     type="text"
                                     isValid="false"
                                     placeholder="لطفا Url دوره را وارد کنید..."
@@ -205,7 +214,7 @@ const Courses = () => {
                                     id="price"
                                     element="input"
                                     onInputHandler={onInputHandler}
-                                    validations={[minValidator(5), requiredValidator()]}
+                                    validations={[minValidator(1), requiredValidator()]}
                                     type="number"
                                     isValid="false"
                                     placeholder="لطفا قیمت دوره را وارد کنید..."
@@ -305,7 +314,6 @@ const Courses = () => {
                             <th>قیمت</th>
                             <th>لینک</th>
                             <th>تعداد دانشجو</th>
-                            <th>ویرایش</th>
                             <th>حذف</th>
                         </tr>
                     </thead>
@@ -321,7 +329,7 @@ const Courses = () => {
                                 <td> <Link to="#" className='link-courses'> {course.shortName}</Link></td>
                                 <td>{course.discount}</td>
                                 <td>
-                                    <button type="button" className="btn btn-primary edit-btn">
+                                    <button type="button" className="btn btn-primary edit-btn" onClick={editCourse}>
                                         ویرایش
                                     </button>
                                 </td>
