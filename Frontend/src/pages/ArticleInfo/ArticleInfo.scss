@@ -41,21 +41,10 @@
     margin-top: 4rem;
 }
 
-.article__score {
-    display: flex;
-    align-items: center;
-    margin: 2rem 0;
-}
-
 .article__score-icon {
     margin-left: -0.4rem;
 }
 
-.article__score-text {
-    margin-right: 2rem;
-    font-size: 1.7rem;
-    color: #7d7d7f;
-}
 
 .article-read {
     background-color: #f2f2f2;
@@ -100,13 +89,15 @@
 
 .article-section p{
     margin: 2rem 0;
-    font-size: 1.5rem;
+    font-size: 1.8rem;
     line-height: 3rem;
-    color: #006fdd;
+    font-family: 'vazir';
+    color: #062f55;
 }
 
 .article-section img {
     display: block;
+    width: 650px !important;
     margin: 0 auto;
 }
 

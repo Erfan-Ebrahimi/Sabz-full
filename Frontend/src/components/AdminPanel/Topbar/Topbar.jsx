@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import './Topbar.scss';
 
 const Topbar = () => {
@@ -103,7 +104,7 @@ const Topbar = () => {
                                 </a>
                             </div>
                             <div className="home-profile-name">
-                                <a href="#">{adminInfo.name}</a>
+                                <Link to='/'>{adminInfo.name}</Link>
                             </div>
                             <div className="home-profile-icon">
                                 <i className="fas fa-angle-down"></i>

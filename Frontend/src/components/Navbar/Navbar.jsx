@@ -71,13 +71,13 @@ const Navbar = () => {
                     {
                       authContext.userInfos.role === 'ADMIN' ?
                         (
-                          <div>
+                          <div className='link__admin'>
 
                             <Link to='/p-admin' className="main-header__profile">
-                              <span className="main-header__profile-text">{authContext.userInfos.name}پنل ادمین</span>
+                              <span className="main-header__profile-text">پنل ادمین {authContext.userInfos.username}</span>
                             </Link>
                             <Link to='/my-account' className="main-header__profile">
-                              <span className="main-header__profile-text">{authContext.userInfos.name}پنل کاربر</span>
+                              <span className="main-header__profile-text">پنل کاربری {authContext.userInfos.username}</span>
                             </Link>
                           </div>
 
