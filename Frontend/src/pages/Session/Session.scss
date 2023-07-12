@@ -36,7 +36,7 @@
 
 /* ============================== Courses Style ============================== */
 .content {
-    display: flex;
+    display: flex !important;
 }
 
 .sidebar__header {
@@ -75,17 +75,13 @@
     justify-content: space-between;
     border-top: 1px solid #13738b;
     padding: 2rem 2rem;
+    color: #0600a8;
+}
+.sidebar-topics__list-item-link{
+    color: black !important;
 
-    a{
-        color: black;
-    }
-
-    .sidebar-topics__list-item-time{
-        color: black;
-
-        &:hover{
-            color: #13738b;
-        }
+    &:hover{
+        color: #75ff65 !important;
     }
 }
 
@@ -140,10 +136,11 @@
     background-color: #f4f8fa;
     padding: 2rem 0 4rem 0;
 }
-.episode-content__video {
-    max-width: 80%;
-    margin: 4rem 0;
-}
+// .episode-content__video {
+//     max-width: 70%;
+//     margin: 4rem 0;
+//     height: 400px !important;
+// }
 .episode-content__video-link {
     color: $white1;
     padding: 1rem 2rem;

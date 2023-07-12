@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
+import ReactPlayer from 'react-player'
 
 import "./Session.scss";
 
@@ -59,7 +60,7 @@ const Session = () => {
                                                     </div>
                                                     <div className="sidebar-topics__list-left">
                                                         <span className="sidebar-topics__list-item-time">
-                                                            {session.time}
+                                                            {session.time}:00
                                                         </span>
                                                     </div>
                                                 </li>
@@ -95,12 +96,15 @@ const Session = () => {
                             </div>
                         </div>
                         <div className="episode-content">
-                            <video
-                                className="episode-content__video"
-                                controls
-                                src={`http://localhost:4000/courses/covers/${session.video}`}
-                            ></video>
-                            <a className="episode-content__video-link" href="#">
+                            <ReactPlayer
+                                url={`http://localhost:4000/courses/covers/${session.video}`}
+                                controls={true}
+                                light={<img src='/assets/images/example.jpg' alt='Thumbnail' />}
+                                width={700}
+                                height={400}
+                            />
+
+                            <a target="_blank" download className="episode-content__video-link" href={`http://localhost:4000/courses/covers/${session.video}`}>
                                 دانلود ویدئو
                             </a>
                             <div className="episode-content__bottom">
