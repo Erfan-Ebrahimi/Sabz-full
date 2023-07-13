@@ -3,10 +3,11 @@
 
 .title {
     font-size: 2.3rem;
-    color: #444446;
+    color: $dark2 ;
     font-weight: bold;
     line-height: 1.2;
     position: relative;
+    
   }
   
   .title::before {
@@ -15,7 +16,7 @@
     right: -1rem;
     width: 0.4rem;
     height: 4.4rem;
-    background-color: $green1;
+    background-color: $green2;
     border-radius: 5rem;
     transform: rotate(8deg);
   }
@@ -28,6 +29,25 @@
     width: 100%;
     /* max-width: 250px; */
     height: 60%;
-    background-color: rgba(43, 206, 86, 0.2);
+    background-color: rgba(12, 255, 77, 0.196);
+  }
+
+  .btn--3{
+    // width: 1rem;
+    padding: .5rem 2rem; 
+    border-bottom: 2px solid;
+    border-image-slice: 1;
+    border-width: 1px;
+    border-image-source: radial-gradient(circle, rgba(33,237,0,1) 13%, rgba(0,128,255,1) 100%);
+    color: $green1;
+    background: none;
+    transition: all .3s ease-in;
+
+    &:hover{
+      color: $white1;
+      background: $green3;
+
+    }
+
   }
   /* Finish Helper Classes */

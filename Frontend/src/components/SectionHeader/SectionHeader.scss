@@ -10,10 +10,14 @@
   .section-header__right {
     display: flex;
     flex-direction: column;
+
+    .section-header__title{
+      color: $green1;
+    }
   }
   
   .section-header__text {
-    color: #9c9c9c;
+    color: $dark2;
     font-size: 1.5rem;
   }
   
@@ -34,4 +38,11 @@
   .section-header__icon {
     margin-right: 0.5rem;
     font-size: 1.5rem;
+  }
+
+  .sec_1{
+    color: $white1;
+    &:hover{
+      color: $white1;
+    }
   }

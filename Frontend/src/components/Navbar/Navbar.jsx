@@ -27,7 +27,10 @@ const Navbar = () => {
       <div className="container-fluid">
         <div className="main-header__content">
           <div className="main-header__right">
-            <img src={logo} className="main-header__logo" alt="لوگوی سبزلرن" />
+            <Link to="/">
+              <img src={logo} className="main-header__logo" alt="لوگوی سبزلرن" />
+
+            </Link>
 
             <ul className="main-header__menu">
 

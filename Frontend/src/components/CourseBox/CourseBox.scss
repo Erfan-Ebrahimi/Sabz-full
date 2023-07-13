@@ -1,20 +1,25 @@
 @import '../../styles/sass/variables.scss';
 
 .course-box {
-    background-color: $white1;
+    background-color: $blue4;
     box-shadow: 0 0 19px rgba(168, 172, 185, 0.3);
     border-radius: 1rem;
     margin: 2rem 0;
-    transition: all 400ms ease;
+    transition: all .5s ease;
+
+    
+    
   }
-  
   .course-box:hover {
     transform: translateY(-0.6rem);
+    img{  
+        filter:contrast(2);     
+    }
   }
   
   .course-box__img {
-    width: 100%;
     border-radius: 1rem 1rem 0 0;
+    width: 100%;
   }
   
   .course-box__main {
@@ -25,6 +30,7 @@
     display: block;
     padding: 1rem 0;
     color: $green2;
+    
   }
   
   .course-box__rating-teacher {
@@ -39,12 +45,12 @@
   }
   
   .course-box__teacher-icon {
-    color: #6c757d;
+    color: $dark2;
     font-size: 1.8rem;
   }
   
   .course-box__teacher-link {
-    color: #6c757d;
+    color:$dark2;
     font-size: 1.2rem;
     margin-right: 0.4rem;
   }
@@ -61,18 +67,18 @@
   }
   
   .course-box__users-icon {
-    color: #6c757d;
+    color: $dark2;
     font-size: 1.6rem;
     margin-left: .5rem;
   }
   
   .course-box__users-text {
-    color: #6c757d;
+    color: $dark2;
     font-size: 1.4rem;
   }
   
   .course-box__price {
-    color: #9c9c9c;
+    color: $dark2;
     font-size: 1.8rem;
   }
   
@@ -81,7 +87,10 @@
     align-items: center;
     justify-content: center;
     padding: 1.3rem 0;
-    border-top: 1px solid #e8e8e8;
+    border-top: 1px solid;
+    border-image-slice: 1;
+    border-width: 1px;
+    border-image-source: radial-gradient(circle, rgba(33,237,0,1) 13%, rgba(0,128,255,1) 100%);
   }
   
   .course-box__footer-link {

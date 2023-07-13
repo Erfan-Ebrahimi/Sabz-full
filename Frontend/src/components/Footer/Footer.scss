@@ -5,7 +5,7 @@
 }
 /* ============================== Footer Style ============================== */
 .footer-widgets {
-  background-color: #f0f2f7;
+  background-color: $blue3;
   border-radius: 1rem;
   padding: 4rem 3.5rem;
   margin-bottom: 5rem;
@@ -30,6 +30,7 @@
   font-weight: bold;
   margin-bottom: 2rem;
   position: relative;
+  color: $white1;
 }
 .footer-widgets__title::before {
   content: "";
@@ -43,16 +44,21 @@
   right: 1rem;
 }
 .footer-widgets__text {
-  color: #7d7e7f;
+  color: $dark3;
+  margin-top: 20px;
 }
 .footer-widgets__links {
   display: flex;
   flex-direction: column;
 }
 .footer-widgets__link {
-  color: #7d7e7f;
+  color: $dark3;
   display: block;
   margin-bottom: 1rem;
+
+  &:hover{
+    color: $green2;
+  }
 }
 .footer-widgets__form{
   display: flex;
@@ -62,19 +68,22 @@
 }
 .footer-widgets__input{
   height: 3.5rem;
-  border: 1px solid #b8b8b8;
   border-radius: 0 .1rem .1rem 0;
   font-size: 1.3rem;
-  width: 100%;
+  width: 250px;
+  color: $white1;
+  &::placeholder{
+    color: $white1;
+  }
 }
 .footer-widgets__btn{
   border: none;
-  background-color: #7d7e7f;
-  border-radius: .3rem 0 0 .3rem;
+  background-color: none;
   color: $white1;
   font-size: 1.2rem;
   height: 3.5rem;
   padding: 0 1rem;
+  // width: 300px;
   transition: 300ms all ease;
 }
 .footer-widgets__btn:hover {
@@ -84,10 +93,21 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #f0f2f7;
+  background-color: $blue3;
   padding: 3rem 0;
 }
 .footer__copyright-text {
-  color: $dark1;
+  color: $dark2;
+}
+.copy_span{
+  color: $green1;
+}
+.aboute_1{
+  margin: 0 auto; 
+  // text-align: center;
+  // width: 800px;
+}
+.footer_bot{
+  margin-top: 30px;
 }
 /* ============================== Footer Style ============================== */

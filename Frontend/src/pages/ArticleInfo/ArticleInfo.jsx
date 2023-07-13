@@ -39,16 +39,16 @@ const ArticleInfo = () => {
       <Navbar />
       <Breadcrumb
         links={[
-          { id: 1, title: 'خانه', to: '' },
-          { id: 2, title: 'مقاله ها', to: 'category-info/fd' },
-          { id: 3, title: 'مقاله سلام', to: 'course-info/fr' }
+          { id: 1, title: 'خانه', to: '/' },
+          { id: 2, title: 'مقاله ها', to: 'category-info/1' },
+          { id: 3, title: articleDetails.title }
         ]}
       />
 
       <main className="main">
         <div className="container">
           <div className="row">
-            <div className="col-8">
+            <div className="col-12">
 
               <div className="article">
                 <h1 className="article__title">
@@ -69,7 +69,7 @@ const ArticleInfo = () => {
                   </div>
                 </div>
                 <img src={`http://localhost:4000/courses/covers/${articleDetails.cover}`} alt="Article Cover" className="article__banner" />
-                <p>{articleDetails.description}</p>
+                <p className='article-desc'>{articleDetails.description}</p>
                 
                 <div className="article-section" dangerouslySetInnerHTML={{ __html: dumPurify.sanitize(articleDetails.body)}}>
                 </div>
@@ -87,34 +87,6 @@ const ArticleInfo = () => {
                   </a>
                 </div>
               </div>
-
-              <div className="suggestion-articles">
-                <div className="row">
-                  <div className="col-6">
-                    <div className="suggestion-articles__right suggestion-articles__content">
-                      <a href="#" className="suggestion-articles__icon-link">
-                        <i className="fas fa-arrow-right suggestion-articles__icon"></i>
-                      </a>
-                      <a href="#" className="suggestion-articles__link">
-                        سریع ترین و بهترین راه یادگیری جاوا اسکریپت چیست؟ | تجربه برنامه نویسان
-                      </a>
-                    </div>
-                  </div>
-                  <div className="col-6">
-                    <div className="suggestion-articles__left suggestion-articles__content">
-                      <a href="#" className="suggestion-articles__icon-link">
-                        <i className="fas fa-arrow-left suggestion-articles__icon"></i>
-                      </a>
-                      <a href="#" className="suggestion-articles__link">
-                        سریع ترین و بهترین راه یادگیری جاوا اسکریپت چیست؟ | تجربه برنامه نویسان
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* <CommentsTextArea  /> */}
-
 
             </div>
           </div>

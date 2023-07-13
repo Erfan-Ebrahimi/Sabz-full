@@ -40,7 +40,6 @@ const Landing = ({info}) => {
                 <h2 className="landing__subtitle">
                     با آکادمی سبزلرن، برنامه نویسی رو با خیال راحت یاد بگیر و پیشرفت کن.
                 </h2>
-
                 <div className="landing__searchbar">
                     <input
                         type="text"
@@ -59,7 +58,7 @@ const Landing = ({info}) => {
                     <div className="landing-status__item">
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
-                            width="80"
+                            width="60"
                             height="80"
                             viewBox="0 0 512 512"
                         >
@@ -72,7 +71,7 @@ const Landing = ({info}) => {
                     <div className="landing-status__item">
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
-                            width="80"
+                            width="60"
                             height="80"
                             x="0"
                             y="0"
@@ -89,7 +88,7 @@ const Landing = ({info}) => {
                     <div className="landing-status__item">
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
-                            width="80"
+                            width="60"
                             height="80"
                             x="0"
                             y="0"

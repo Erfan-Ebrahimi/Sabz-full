@@ -2,13 +2,11 @@
 
 
 .landing {
-    // background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(../../assets/images/background_landing.jfif) no-repeat center center;
     background-size: cover;
     background-attachment: fixed;
     text-align: center;
     padding: 6rem 0;
     color: $white1;
-    // margin-top: 0;
   }
   
   .landing__title {
@@ -25,18 +23,27 @@
     width: 700px;
     position: relative;
     margin: 3.5rem auto;
+    border-bottom: 1px solid;
+    border-image-slice: 1;
+    border-width: 1px;
+    border-image-source: radial-gradient(circle, rgba(33,237,0,1) 13%, rgba(0,128,255,1) 100%);
   }
   
   .landing__searchbar-input {
     width: 100%;
-    padding: 2.5rem;
+    padding: 2rem;
+    background:none;
     border: none;
-    border-radius: 1rem;
+   color:$green2;
+   font-size: 15px;
+   &::placeholder{
+    color: $dark2;
+   }
   }
   
   .landing__searchbar-btn {
     border: none;
-    background-color: $green1;
+    background: none;
     position: absolute;
     left: 1rem;
     width: 6rem;
@@ -46,8 +53,8 @@
   }
   
   .landing__searchbar-icon {
-    font-size: 2.8rem;
-    color: $white1;
+    font-size: 2rem;
+    color: $blue1;
   }
   
   .landing-status {
@@ -64,15 +71,18 @@
   }
   
   .landing-status__item svg {
+
     fill: $white1;
   }
   
   .landing-status__count {
     font-weight: bold;
     font-size: 2rem;
-    margin-top: 0.5rem;
+    margin-top: .5rem;
+    color: $green2  ;
   }
   
   .landing-status__text {
     font-weight: bold;
+    color: $white1;
   }

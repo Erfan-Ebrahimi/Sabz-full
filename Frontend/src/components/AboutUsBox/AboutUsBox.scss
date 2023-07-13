@@ -11,8 +11,12 @@
   
   .about-us__icon {
     color: $green2;
-    // color: red;
     font-size: 6.5rem;
+    transition: all 1s ease-in;
+
+    &:hover{
+      transform: rotate(360deg);
+    }
   }
   
   .about-us__box-left {
@@ -24,4 +28,9 @@
   .about-us__box-title {
     font-weight: bold;
     font-size: 1.8rem;
+    color: $dark2;
+  }
+  .about-us__box-text {
+    font-size: 1.5rem;
+    color: $dark2;
   }

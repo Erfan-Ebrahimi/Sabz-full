@@ -11,12 +11,12 @@ const SectionHeader = ({ title, desc, btnTitle, btnHref }) => {
       </div>
       {
         btnTitle ? (
-          <div className="section-header__left">
-            <Link to={`/${btnHref}`} className="section-header__link">
+          <button className="section-header__left btn--3">
+            <Link to={`/${btnHref}`} className='sec_1' >
               {btnTitle}
               <i className="fas fa-arrow-left section-header__icon"></i>
             </Link>
-          </div>
+          </button>
 
         ) : null
       }

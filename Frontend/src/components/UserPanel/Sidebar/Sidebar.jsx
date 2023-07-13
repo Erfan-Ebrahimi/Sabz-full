@@ -39,19 +39,14 @@ const Sidebar = () => {
                 <span className="sidebar__name">محمدامین سعیدی راد</span>
                 <ul className="sidebar__list">
                     <li className="sidebar__item">
-                        <a className="sidebar__link" href="#">
+                        <Link className="sidebar__link" to="/my-account">
                             پیشخوان
-                        </a>
+                        </Link>
                     </li>
                     <li className="sidebar__item">
                         <Link className="sidebar__link" to='orders'>
                             سفارش ها
                         </Link>
-                    </li>
-                    <li className="sidebar__item">
-                        <a className="sidebar__link" href="#">
-                            کیف پول من
-                        </a>
                     </li>
                     <li className="sidebar__item">
                         <Link className="sidebar__link" to='edit-account'>

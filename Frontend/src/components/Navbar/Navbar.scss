@@ -15,6 +15,13 @@
   .main-header__menu {
     display: flex;
   }
+  .main-header__logo{
+    &:hover{
+      // filter: contrast(2);
+      // filter: grayscale(2);
+      filter:grayscale(2);
+    }
+  }
   
   .main-header__item {
     display: flex;

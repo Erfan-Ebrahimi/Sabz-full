@@ -1,10 +1,13 @@
 input{
-    border-radius: 12px !important;
+    border-radius: 5px !important;
+    background: none;
+    outline: none !important;
+    border: none !important;
 }
 .success{
-    border: 2px solid greenyellow !important;
+    border-bottom: 3px solid greenyellow !important;
 }
 
 .error{
-    border: 2px solid rgb(238, 64, 64) !important;
+    border-bottom: 3px solid rgb(238, 64, 64) !important;
 }

@@ -9,8 +9,11 @@
 .article__title {
     font-size: 2.6rem;
     font-weight: bold;
-    color: $dark1;
-    border-bottom: 2px solid #f3f3f3;
+    color: $dark2;
+    border-bottom: 2px solid;
+    border-image-slice: 1;
+    border-width: 1px;
+    border-image-source: radial-gradient(circle, rgba(33,237,0,1) 13%, rgba(0,128,255,1) 100%);
     padding-bottom: 1rem;
 }
 
@@ -28,52 +31,24 @@
 
 .article-header__icon {
     font-size: 1.7rem;
-    color: #1a8fb3;
+    color: $blue1;
     margin-left: .5rem;
 }
 
 .article-header__text {
     font-size: 1.2rem;
-    color: #8f8f8f;
+    color: $dark2;
 }
 
 .article__banner {
+    // max-width: 700px;
+    // height: 400px;
     margin-top: 4rem;
+    // margin: 0 auto !important;
+    text-align: center;
 }
-
-.article__score-icon {
-    margin-left: -0.4rem;
-}
-
-
-.article-read {
-    background-color: #f2f2f2;
-    border-radius: 3rem;
-    padding: 2rem 3rem;
-    margin: 3rem 0;
-}
-
-.article-read__title {
-    display: block;
-    color: #333333;
-    font-size: 1.5rem;
-    margin-bottom: 0.5rem;
-    font-weight: bold;
-}
-
-.article-read__link {
-    line-height: 2;
-    font-size: 1.5rem;
-    color: #1e83f0;
-}
-
-.article-read__link:hover {
-    text-decoration: underline;
-}
-
-.article__seconadary-banner {
-    display: block;
-    margin: 0 auto;
+.article-desc{
+    color: $dark2;
 }
 
 .article-section {
@@ -81,23 +56,46 @@
 }
 
 .article-section h2 {
+    margin-top: 2rem;
     font-size: 2.4rem;
-    color: #008c25;
+    color: $green3;
+    font-weight: bold;
+    line-height: 1.2;
+}
+.article-section h3 {
+    margin-top: 2rem;
+    font-size: 2.4rem;
+    color: $green3;
     font-weight: bold;
     line-height: 1.2;
 }
 
 .article-section p{
     margin: 2rem 0;
-    font-size: 1.8rem;
+    font-size: 1.5rem;
     line-height: 3rem;
     font-family: 'vazir';
-    color: #062f55;
+    color: $blue1;
+}
+.article-section ol li{
+    // margin: 2rem 0;
+    font-size: 1.4rem;
+    line-height: 3rem;
+    font-family: 'vazir';
+    color: $blue1;
+}
+.article-section ul li{
+    // margin: 2rem 0;
+    font-size: 1.4rem;
+    line-height: 3rem;
+    font-family: 'vazir';
+    color: $blue1;
 }
 
 .article-section img {
     display: block;
-    width: 650px !important;
+    width: 450px !important;
+    // height: 450px;
     margin: 0 auto;
 }
 
@@ -108,139 +106,17 @@
 
 .article-social-media__text {
     font-size: 1.5rem;
-    color: #7d7e7f;
+    color:$green3;
 }
 
 .article-social-media__link {
     display: flex;
     align-items: center;
     margin: 0.5rem;
-    color: #7b868a;
-}
-
-.suggestion-articles {
-    margin: 4rem 0;
-    padding: 3.5rem 2.5rem;
-    border-radius: 0.5rem;
-    background-color: #f6f7f0;
-}
-
-.suggestion-articles__content {
-    display: flex;
-    align-items: center;
-}
-
-.suggestion-articles__right {
-    position: relative;
-}
-
-.suggestion-articles__left {
-    display: flex;
-    flex-direction: row-reverse;
-    position: relative;
-}
-
-.suggestion-articles__right::before {
-    content: "قدیمی تر";
-    position: absolute;
-    top: -2rem;
-    left: 2rem;
-    font-size: 1.5rem;
-    color: #f17171;
-    font-weight: bold;
-    // transform: rotate(180deg);
-}
-
-.suggestion-articles__left::before {
-    content: "جدید تر";
-    position: absolute;
-    top: -2rem;
-    right: 2rem;
-    font-size: 1.5rem;
-    color: #5a67a9;
-}
-
-.suggestion-articles__icon-link {
-    color: $dark1;
-}
-
-.suggestion-articles__link {
-    text-align: center;
-    margin: 2rem 2rem;
-    color: $dark1;
-}
+    color:$green3;
+    }
 
 /* Finish Article Details Styles */
-
-/* Start Sidebar Styles */
-
-.course-info {
-    overflow: hidden;
-}
-
-.course-info__courses-title {
-    position: relative;
-}
-
-.course-info__courses-title::before {
-    content: "";
-    position: absolute;
-    width: 22px;
-    height: 39px;
-    background-color: $green1;
-    border-top-left-radius: 8px;
-    border-bottom-left-radius: 12px;
-    right: -27px;
-    top: -5px;
-    transform: skewX(-10deg);
-}
-
-.sidebar-articles__list {
-    margin-top: 2rem;
-}
-
-.sidebar-articles__item {
-    display: flex;
-    align-items: center;
-    border-bottom: 1px solid #eeeeee;
-    padding: 0.9rem 1.3rem 0.9rem 1rem;
-    transition: all 400ms ease;
-}
-
-.sidebar-articles__item:hover {
-    padding-right: 2rem;
-    background-color: #f8f9fa;
-}
-
-.sidebar-articles__item:hover .sidebar-articles__icon {
-    color: $green1;
-}
-
-.sidebar-articles__icon {
-    font-size: 1.4rem;
-    color: #909aa7;
-    transition: all 400ms ease;
-}
-
-.sidebar-articles__link {
-    font-size: 1.3rem;
-    margin-right: 0.5rem;
-}
-
-.last-articles__list {
-    margin-top: 2rem;
-}
-
-.last-articles__item {
-    border-bottom: 1px solid #eeeeee;
-    padding: 1rem 0;
-}
-
-.last-articles__link {
-    font-size: 1.5rem;
-}
-
-/* Finish Sidebar Styles */
 
 /* Start Helper Classes */
 
