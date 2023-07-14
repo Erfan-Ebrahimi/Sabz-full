@@ -14,24 +14,24 @@
 
 .courses__pagination-link {
     border-radius: 0.5rem;
-    width: 4rem;
-    height: 4rem;
+    width: 3rem;
+    height: 3rem;
     display: flex;
     justify-content: center;
     align-items: center;
     font-size: 1.5rem;
-    background-color:rgb(156, 172, 148);
+    background-color:$blue3;
     margin: 0 0.5rem;
 }
 
 .courses__pagination-link:hover {
     color: $white1;
-    background-color: $green1;
+    background-color: $green2;
 }
 
 .courses__pagination-link--active {
     color: $white1;
-    background-color: $green1;
+    background-color: $green2;
 }
 
 /* Finish Courses Pagination Styles */

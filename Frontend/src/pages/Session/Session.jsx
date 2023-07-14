@@ -38,12 +38,11 @@ const Session = () => {
 
             <section className="content">
                 <div className="col-4">
-                    <div className="sidebar">
+                    <div className="sidebar-22">
                         <div className="sidebar__header">
                             <a className="sidebar__header-link" href="#">
                                 لیست جلسات
                             </a>
-                            <i className="sidebar__haeder-icon fa fa-book-open"></i>
                         </div>
                         <div className="sidebar-topics">
                             <div className="sidebar-topics__item">
@@ -69,32 +68,18 @@ const Session = () => {
                                     }
 
                                 </ul>
+                                <div className="home-course">
+                                    <Link to={`/course-info/${courseName}`}>
+                                        صفحه اصلی دوره
+                                    </Link>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div className="col-8">
                     <div className="episode">
-                        <div className="episode-haeder">
-                            <div className="episode-header__right">
-                                <span className="episode-header__right-back-link" href="#">
-                                    <i className="episode-header__right-back-icon fa fa-angle-right"></i>
-                                    <div className="episode-header__right-home">
-                                        <Link className="episode-header__right-home-link" to={`/course-info/${courseName}`}>
-                                            به دوره خانه بروید
-                                        </Link>
-                                        <i className="episode-header__right-home-icon fa fa-home"></i>
-                                    </div>
-                                </span>
-                            </div>
-                            <div className="episode-header__left">
-                                <i className="episode-header__left-icon fa fa-play-circle"></i>
-                                <span className="episode-header__left-text">
-                                    {" "}
-                                    سوالات متداول در مورد جاوااسکریپت و دوره
-                                </span>
-                            </div>
-                        </div>
+
                         <div className="episode-content">
                             <ReactPlayer
                                 url={`http://localhost:4000/courses/covers/${session.video}`}
@@ -104,19 +89,10 @@ const Session = () => {
                                 height={400}
                             />
 
-                            <a target="_blank" download className="episode-content__video-link" href={`http://localhost:4000/courses/covers/${session.video}`}>
+                            <a target="_blank" download className="episode-content__video-link btn--3" href={`http://localhost:4000/courses/covers/${session.video}`}>
                                 دانلود ویدئو
                             </a>
-                            <div className="episode-content__bottom">
-                                <a className="episode-content__backward" href="#">
-                                    <i className="episode-content__backward-icon fa fa-arrow-right"></i>
-                                    قبلی
-                                </a>
-                                <a className="episode-content__forward" href="#">
-                                    بعدی
-                                    <i className="episode-content__backward-icon fa fa-arrow-left"></i>
-                                </a>
-                            </div>
+
                         </div>
                     </div>
                 </div>

@@ -28,7 +28,7 @@ const Courses = () => {
             <Breadcrumb
                 links={[
                     { id: 1, title: 'خانه', to: '' },
-                    { id: 2, title: 'تمامی دوره ها', to: 'courses' },
+                    { id: 2, title: 'تمامی دوره ها', to: 'courses/1' },
                 ]}
             />
 

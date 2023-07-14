@@ -149,7 +149,6 @@ const CommentsTextArea = ({ comments, submitComment }) => { //az CourseInfo.jsx 
               <div className="comments__respond">
                 <div className="comments__score">
                   <span className="comments__score-title">امتیاز شما</span>
-                  <div className="comments__score-input">
                     <select className="comments__score-input-text" onChange={onChangeScoreComment} value={score}>
                       <option value="5">عالی</option>
                       <option value="4">خوب</option>
@@ -157,8 +156,6 @@ const CommentsTextArea = ({ comments, submitComment }) => { //az CourseInfo.jsx 
                       <option value="2">ضعیف</option>
                       <option value="1">خیلی ضعیف</option>
                     </select>
-                    {/* <i className="fas fa-angle-down	 comments__input-icon"></i> */}
-                  </div>
                 </div>
                 <div className="comments__respond-content">
                   <div className="comments__respond-title">دیدگاه شما *</div>
@@ -166,6 +163,7 @@ const CommentsTextArea = ({ comments, submitComment }) => { //az CourseInfo.jsx 
                     className="comments__score-input-respond"
                     value={newCommentBody}
                     onChange={onChangeBodyComment}
+                    placeholder='نظر خود را بنویسید . . .'
                   >
                     {newCommentBody}
                   </textarea>

@@ -43,7 +43,7 @@ const Topbar = () => {
           <div className="top-bar__right">
             <ul className="top-bar__menu">
               <li className="top-bar__item">
-                <div className='cta'>
+                <div className='cta' onClick={callMe}>
                   <a href={CV} download className='btn--1'>HIRE ME</a>
                 </div>
               </li>

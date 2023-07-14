@@ -39,9 +39,9 @@ const ArticleInfo = () => {
       <Navbar />
       <Breadcrumb
         links={[
-          { id: 1, title: 'خانه', to: '/' },
-          { id: 2, title: 'مقاله ها', to: 'category-info/1' },
-          { id: 3, title: articleDetails.title }
+          { id: 1, title: 'خانه', to: '' },
+          { id: 2, title: 'مقاله ها', to: 'articles/1' },
+          { id: 3, title: articleDetails.title, to: `article-info/${articleDetails.shortName}` }
         ]}
       />
 
@@ -70,10 +70,10 @@ const ArticleInfo = () => {
                 </div>
                 <img src={`http://localhost:4000/courses/covers/${articleDetails.cover}`} alt="Article Cover" className="article__banner" />
                 <p className='article-desc'>{articleDetails.description}</p>
-                
-                <div className="article-section" dangerouslySetInnerHTML={{ __html: dumPurify.sanitize(articleDetails.body)}}>
+
+                <div className="article-section" dangerouslySetInnerHTML={{ __html: dumPurify.sanitize(articleDetails.body) }}>
                 </div>
-              
+
                 <div className="article-social-media">
                   <span className="article-social-media__text">اشتراک گذاری :</span>
                   <a href="#" className="article-social-media__link">

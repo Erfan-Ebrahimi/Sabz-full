@@ -4,7 +4,7 @@
 .comments {
     margin-top: 2rem;
     border-radius: 0.5rem;
-    box-shadow: 0 0 13px 1px rgba(70, 72, 77, 0.08);
+    box-shadow: 0 0 13px 1px rgba(70, 72, 77, 0.309);
     padding: 2rem 2.5rem;
   }
   .comments__header {
@@ -13,7 +13,7 @@
     margin-bottom: 5rem;
   }
   .comments__header-icon-content {
-    background-color: $green1;
+    background-color: $green3;
     color: $white1;
     width: 4rem;
     height: 4rem;
@@ -27,11 +27,13 @@
   }
   .comments__header-title {
     margin-right: 1rem;
+    color: $dark2;
+    font-size: 2rem;
   }
   .comments__item {
-    background-color: #f9fafd;
+    background-color: $blue4;
     border-radius: 1rem;
-    border: 1px dashed #ccc;
+    border: 1px dashed $blue1;
     padding: 3rem;
     margin-bottom: 3rem;
   }
@@ -48,46 +50,38 @@
   .comment-name {
     font-size: 1.5rem;
     font-weight: bold;
-    color: $dark1;
+    color: $dark2;
   }
   .comment-status {
     display: flex;
     align-items: center;
-    background-color: $green1;
+    background-color: $green3;
     color: $white1;
-    font-size: 1rem;
-    font-weight: bold;
+    font-size: 1.2rem;
     padding: 0.3rem 0.7rem;
     border-radius: 0.5rem;
     margin: 0 1rem;
   }
   .comment-date {
     font-size: 1.5rem;
-    color: #adb5bd;
+    color: $dark3;
   }
   .comment-link {
     font-size: 1.2rem;
-    color: #b1bbbf;
-    border: 1px solid #b1bbbf;
+    color: $blue4;
+    border: 1px solid $dark1;
     padding: 0.5rem 1.2rem;
     border-radius: 0.3rem;
-    background-color: #fff;
+    background-color:$dark2;
   }
   .comments__question-text {
     margin-top: 1rem;
   }
   .comment-paragraph {
     font-size: 1.3rem;
-    color: #7d7e7f;
+    color: $dark3;
   }
-  .comments__ansewr {
-    border: 1px dashed #ccc;
-    border-radius: 1rem;
-    padding: 3rem;
-  }
-  .comments__ansewr-staus {
-    background-color: #2196f3;
-  }
+ 
   .comments__pagantion-list {
     display: flex;
     justify-content: center;
@@ -116,68 +110,73 @@
     display: flex;
     flex-direction: column;
     margin-top: 6rem;
+    margin-bottom: 2rem;
   }
   .comments__rules-title {
     font-size: 1.5rem;
     font-weight: bold;
-    color: $dark1;
+    color: $dark2;
     margin-bottom: 1.5rem;
   }
   .comments__rules-item {
     font-size: 1.2rem;
-    color: #7b868a;
+    color: $dark3;
     margin-bottom: 0.5rem;
   }
   .comments__rules-icon {
-    color: #15cc79;
+    color: $green2;
     margin-left: 0.5rem;
   }
   .comments__respond {
-    background-color: #f0f2f7;
+    background-color: $blue4;
     border-radius: 0.5rem;
     padding: 3rem;
+    border: 2px solid;
+    border-image-slice: 1;
+    border-width: 1px;
+    border-image-source: radial-gradient(circle, rgba(33,237,0,1) 13%, rgba(0,128,255,1) 100%);
+  }
+  .comments__score{
+    display: flex;
+    flex-direction: column;
+    select{
+      color: $dark3;
+      font-family: 'nazanin';
+      margin-top: 1.5rem;
+      margin-bottom: 1.5rem;
+      border-top: 2px solid ;
+      border-image-slice: 1;
+      border-width: 1px;
+      border-image-source: radial-gradient(circle, rgba(33,237,0,1) 13%, rgba(0,128,255,1) 100%);
+      background: none;
+      outline: none !important;
+      width: 200px;
+    }
   }
   .comments__score-title {
     font-size: 1.5rem;
-    color: #6c757d;
+    color: $dark2;
   }
-  .comments__score-input {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: $white1;
-    padding: 0.6rem 0.8rem 0.6rem 2rem;
-    margin: 0.5rem 0;
-    border-radius: 0.5rem;
-    border: 1px solid #e5e5e5;
-    cursor: pointer;
-    color: #7d7e7f;
-    transition: all 400ms ease;
-  }
-  select{
-    width: 200px;
-    border-radius: 5px;
-  }
-  .comments__score-input:hover {
-    background-color: #1e83f0;
-    color: $white1;
-  }
+  
   .comments__respond-title {
     font-size: 1.5rem;
-    color: #6c757d;
+    color: $dark3;
     margin-bottom: 0.5rem;
   }
   .comments__score-input-respond {
+    background: rgb(174, 226, 193);
+    font-size: 2rem;
     width: 100%;
     height: 20rem;
     outline: none;
-    border: none;
-    border: 1px solid #e5e5e5;
+    border: 1px solid $green2;
     border-radius: 0.5rem;
+    color: $dark1;
+    padding-right: 1rem;
   }
   .comments__respond-btn {
-    background-color: $green1;
-    color: $white1;
+    background-color: $green2;
+    color: $blue4;
     font-size: 1.5rem;
     border: none;
     border-radius: 0.5rem;

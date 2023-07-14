@@ -5,8 +5,15 @@
 .main{
     margin-top: 2rem;
 }
+.course-info-1{
+    align-items: center;
+    border-bottom: 2px solid;
+    border-image-slice: 1;
+    border-width: 1px;
+    border-image-source: radial-gradient(circle, rgba(33,237,0,1) 13%, rgba(0,128,255,1) 100%);
+}
 
-.course-info__link {
+.course-info-1__link {
     font-size: 1.2rem;
     color: $green1;
     border-radius: 0.3rem;
@@ -14,73 +21,48 @@
     background-color: rgba(43, 206, 86, 0.2);
 }
 
-.course-info__title {
+.course-info-1__title {
     margin: 2rem 0;
     font-weight: bold;
     font-size: 2.4rem;
-    color: #464749;
+    color: $dark3;
 }
 
-.course-info__text {
+.course-info-1__text {
     margin-bottom: 3rem;
-    font-size: 1.6rem;
-    color: #7b868a;
+    font-size: 1.5rem;
+    color: $dark2;
+    // line-height: rem;
+}
+.course-info-1__social-media{
+    margin-bottom: 20px;
 }
 
-.course-info__social-media-item {
-    color: #b1bbbf;
+.course-info-1__social-media-item {
+    color: $green1;
     margin-left: 1.7rem;
     transition: all 400ms ease;
+    
+    &:hover{
+        color: $green3;
+    }
 }
 
-.course-info__icon {
+.course-info-1__icon {
     font-size: 2rem;
 }
 
-.course-info__video {
+.course-info-1__cover {
     width: 100%;
     border-radius: 1rem;
+    border-bottom: 2px solid;
+    // border-width: 50px;
+    border-image-slice: 1;
+    border-width: 1px;
+    border-image-source: radial-gradient(circle, rgba(33,237,0,1) 13%, rgba(0,128,255,1) 100%);
 }
 
 /* Finish Course Info Styles */
-
-/* Start Course Progress Styles */
-
-.course-progress {
-    border-radius: 1rem;
-    margin: 3rem 0;
-    padding: 2rem 2rem 1.2rem 2rem;
-    background-color: #f0f2f7;
-}
-
-.course-progress__header {
-    display: flex;
-    align-items: center;
-    margin-bottom: 1.5rem;
-}
-
-.course-progress__icon {
-    font-size: 2.5rem;
-    color: #7b868a;
-}
-
-.course-progress__title {
-    margin-right: 1.5rem;
-    color: #7b868a;
-    font-size: 1.5rem;
-}
-
-.course-progress__bar {
-    border-radius: 10rem;
-    height: 1rem;
-}
-
-.progress-bar {
-    background-color: #1fbd50;
-}
-
-/* Finish Course Progress Styles */
-
 /* Start Introduction styles */
 
 .introduction {
@@ -89,65 +71,41 @@
     box-shadow: 0 0 13px 1px rgba(70, 72, 77, 0.08);
 }
 
-.introduction__img {
-    margin-top: 3rem;
-    display: block;
-    border-radius: 1rem;
-}
-
-.introduction__text {
-    margin-top: 2rem;
-    color: #7a7a7a;
-    font-size: 1.5rem;
-}
-
-.introduction__btns {
-    margin-top: 4rem;
-}
-
-.introduction__btns-item {
-    color: $green1;
-    border: 2px solid $green1;
-    border-radius: 0.5rem;
-    padding: 0.8rem 1.5rem;
-    font-weight: bold;
-    font-size: 1.5rem;
-    margin: .5rem;
-}
-
-.introduction__btns-item:hover {
-    color: $white1;
-    background-color: $green1;
-}
-
 .introduction__topic {
     margin-top: 4rem;
 }
+
 
 .accordion {
     margin-bottom: 2rem;
 }
 
+
 .accordion-item {
-    background-color: #f7f9fa;
+    background-color: $blue3;
 }
 
 .accordion-button {
-    background-color: #f7f9fa;
+    background-color: $blue4;
     font-size: 1.5rem;
     padding: 1.25rem;
+    color: $green1;
 }
 
 .accordion-button:not(.collapsed) {
-    background-color: #f7f9fa;
+    background-color: $blue4;
+    
 }
 
 .accordion-button::after {
+    content: " ";
     position: absolute;
     left: 1.5rem;
     width: 2rem;
     height: 2rem;
     background-position: center;
+    background-color: $green1;
+    border-radius: 50px;
 }
 
 .introduction__accordion-body {
@@ -163,24 +121,39 @@
 }
 
 .introduction__accordion-count {
-    width: 3.5rem;
-    height: 3.5rem;
-    border: 1px solid #bfbfbf;
-    color: #656464;
+    // width: 3.5rem;
+    // height: 3.5rem;
+    // border: 1px solid $white1;
+    color: $white1;
     display: flex;
     align-items: center;
     justify-content: center;
     border-radius: 50%;
+    position: relative;
+
+    &::before {
+        content: "";
+        position: absolute;
+        right: 1.5rem;
+        width: 0.2rem;
+        height: 2.4rem;
+        background-color: $green2;
+        border-radius: 5rem;
+        transform: rotate(8deg);
+      }
 }
 
 .introduction__accordion-icon {
     margin: 0 1.5rem;
-    color: #939aa3;
+    color: $dark2;
     font-size: 1.8rem;
 }
 
 .introduction__accordion-link {
-    color: #161616;
+    font-family: 'vazir';
+    color: $white1;
+    margin-right: 15px;
+    font-weight:100 !important;
 }
 .introduction__accordion-left{
     display: flex;
@@ -188,12 +161,13 @@
     align-items: center;
 
     .lock-icon-session{
-        margin-right: 5px;
+        margin-left: 5px;
         font-size: 15px;
+        color: $green2;
     }
 }
 .introduction__accordion-time {
-    color: #7a7a7a;
+    color:$white1;
     margin-top: 5px;
 }
 
@@ -234,25 +208,28 @@
 
 .techer-details__header-link {
     text-decoration: none;
-    color: #7b868a;
+    color:$dark2;
 }
 
 .techer-details__header-skill {
-    color: #7b868a;
+    color:$dark2;
     font-size: 1.2rem;
 }
 
 .techer-details__header-left {
     display: flex;
     align-items: center;
-    color: $white1;
-    background-color: $green1;
+    font-size: 1.5rem;
     padding: 0.5rem 1rem;
     border-radius: 0.5rem;
+    border-top: 1px solid;
+    border-bottom: 1px solid;
 }
 
 .techer-details__header-icon {
-    font-size: 1.8rem;
+    // font-size: 1.8rem;
+    color: $white1;
+    margin-left: 10px;
 }
 
 .techer-details__header-name {
@@ -263,7 +240,7 @@
 
 .techer-details__footer {
     margin-top: 1rem;
-    color: #7b868a;
+    color: $white1;
     font-size: 14px;
 }
 
@@ -273,24 +250,21 @@
 
 .course-info__register {
     text-align: center;
-    // padding: 1.5rem 1rem;
-    background-color: #0df155;
     border-radius: 0.5rem;
 }
 
 .course-info__register-title {
     font-size: 1.7rem;
-    // width:100%;
+    font-family: 'vazir';
+    width:100%;
     padding: 1.5rem 4rem;
-    border-radius: 0.5rem;
-    background: rgb(15, 49, 2);
-    color: $white1;
-    font-weight: 600;
+    color: $white1 !important;
     box-shadow: 0 2px 12px rgba(31, 189, 80, 36%);
 }
 
 .course-info__register-icon {
     font-size: 2rem;
+    margin-left: 10px;
 }
 
 .course-info__top {
@@ -298,31 +272,37 @@
     align-items: center;
     justify-content: center;
     padding: 1.5rem;
-    border-radius: 1rem;
-    border: 2px solid #f0f2f7;
+    border-bottom: 2px solid;
+    border-image-slice: 1;
+    border-width: 1px;
+    border-image-source: radial-gradient(circle, rgba(33,237,0,1) 13%, rgba(0,128,255,1) 100%);
 }
-
+.course-info__total{
+    padding: 1rem;
+    background: $blue4;
+    border-radius: 10px;
+}
 .course-info__total-sale-icon {
-    color: #555555;
-    font-size: 2.7rem;
+    color: $dark2;
+    font-size: 2rem;
+    margin-left: 7px;
 }
 
 .course-info__total-sale-text {
-    color: #7f8187;
+    color: $dark2;
 }
 
 .course-info__total-sale-number {
-    color: $white1;
-    background-color: #c4c7cf;
-    border-radius: 0.5rem;
-    padding: 0.3rem 1.2rem;
+    color: $dark2;
+    margin-right: 7px;
+  
 }
 
 .course-info__bottom {
     display: flex;
     justify-content: space-evenly;
     padding-top: 2rem;
-    color: #7b868a;
+    color: $dark2;
 }
 
 .course-info__total-comment, .course-info__total-view {
@@ -336,7 +316,7 @@
     position: absolute;
     height: 100%;
     width: 1px;
-    background-color: #e5e5e5;
+    background-color: $blue1;
     left: -3rem;
 }
 
@@ -349,31 +329,6 @@
     margin-right: 1rem;
 }
 
-.course-info__header-short-url {
-    display: flex;
-    align-items: center;
-    color: #7b868a;
-}
-
-.course-info__short-url-icon {
-    font-size: 2rem;
-}
-
-.course-info__short-url-text {
-    font-size: 1.7rem;
-    margin-right: 0.5rem;
-}
-
-.course-info__short-url {
-    display: block;
-    margin: 1rem 0;
-    border: 1px solid #dcdcdc;
-    color: #a7a7a7;
-    border-radius: 0.5rem;
-    padding: 0.5rem 1rem;
-    font-size: 1.4rem;
-}
-
 .courses-info {
     position: sticky;
     top: 2rem;
@@ -384,24 +339,13 @@
     margin-top: 1rem;
     padding: 2.2rem;
     box-shadow: 0 0 13px 1px rgba(70, 72, 77, 0.08);
-    border: 1px solid #f2f2f2;
-}
-
-.course-info__topic-title {
-    display: block;
-    color: $dark1;
-    font-size: 1.8rem;
-}
-
-.course-info__topic-text {
-    font-size: 1.5rem;
-    color: #7d7e7f;
+    
 }
 
 .course-info__courses-title {
     font-size: 1.8rem;
     display: block;
-    color: $dark1;
+    color: $dark2;
     margin-bottom: 1.5rem;
 }
 
@@ -415,15 +359,14 @@
 }
 
 .course-info__courses-img {
-    width: 70px;
+    width: 90px;
     border-radius: 0.5rem;
 }
 
 .course-info__courses-text {
     font-size: 1.3rem;
     margin-right: 0.5rem;
-    color: #8d8d8d;
-    font-weight: bold;
+    color: $dark2;
 }
 
 /* Finish Sidebar Styles */

@@ -4,9 +4,7 @@ import Footer from '../../components/Footer/Footer';
 import Navbar from '../../components/Navbar/Navbar';
 import Topbar from '../../components/Topbar/Topbar';
 import Breadcrumb from '../../components/Breadcrumb/Breadcrumb';
-import SectionHeader from '../../components/SectionHeader/SectionHeader';
 
-import img from '../../assets/images/courses/jango.png';
 import CourseDetailBox from '../../components/CourseDetailBox/CourseDetailBox';
 import CommentsTextArea from '../../components/CommentsTextArea/CommentsTextArea';
 
@@ -29,7 +27,8 @@ const CourseInfo = () => {
   const [createdAt, setCreatedAt] = useState('')
   const [updatedAt, setUpdatedAt] = useState('')
   const [courseTeacher, setCourseTeacher] = useState({})
-  const [courseCategory, setCourseCategory] = useState([])     //why array ???????????? bepors
+  const [courseCategory, setCourseCategory] = useState([])//why array ???????????? bepors 
+  const [categoryHref, setCategoryHref] = useState('')     
   const [relatedCourses, setRelatedCourses] = useState([])
 
   const { courseName } = useParams()
@@ -52,6 +51,7 @@ const CourseInfo = () => {
     })
       .then(res => res.json())
       .then(courseInfo => {
+        console.log(courseInfo);
         setComments(courseInfo.comments)
         setSessions(courseInfo.sessions)
         setCourseDetails(courseInfo)
@@ -59,6 +59,7 @@ const CourseInfo = () => {
         setUpdatedAt(courseInfo.updatedAt)
         setCourseTeacher(courseInfo.creator)
         setCourseCategory(courseInfo.categoryID.title)
+        setCategoryHref(courseInfo.categoryID.name)
       })
   }
 
@@ -236,39 +237,39 @@ const CourseInfo = () => {
       <Breadcrumb
         links={[
           { id: 1, title: 'خانه', to: '' },
-          { id: 2, title: 'دوره های فرانت', to: 'category-info/fd' },
-          { id: 3, title: 'دوره سلام', to: 'course-info/fr' }
+          { id: 2, title: 'دوره ها ', to: 'courses/1' },
+          { id: 3, title: courseDetails.name, to: `course-info/${courseDetails.shortName}` }
         ]}
       />
 
-      <section className="course-info">
+      <section className="course-info-1">
         <div className="container">
           <div className="row">
-            <div className="col-6">
-              <a href="#" className="course-info__link">
+            <div className="col-7">
+              <Link to={`/category-info/${categoryHref}/1`} className="course-info-1__link">
                 {courseCategory}
-              </a>
-              <h1 className="course-info__title">
+              </Link>
+              <h1 className="course-info-1__title">
                 {courseDetails.name}
               </h1>
-              <p className="course-info__text">
+              <p className="course-info-1__text">
                 {courseDetails.description}
               </p>
-              <div className="course-info__social-media">
-                <a href="#" className="course-info__social-media-item">
-                  <i className="fab fa-telegram-plane course-info__icon"></i>
+              <div className="course-info-1__social-media">
+                <a href="#" className="course-info-1__social-media-item">
+                  <i className="fab fa-telegram-plane course-info-1__icon"></i>
                 </a>
-                <a href="#" className="course-info__social-media-item">
-                  <i className="fab fa-twitter course-info__icon"></i>
+                <a href="#" className="course-info-1__social-media-item">
+                  <i className="fab fa-twitter course-info-1__icon"></i>
                 </a>
-                <a href="#" className="course-info__social-media-item">
-                  <i className="fab fa-facebook-f course-info__icon"></i>
+                <a href="#" className="course-info-1__social-media-item">
+                  <i className="fab fa-facebook-f course-info-1__icon"></i>
                 </a>
               </div>
             </div>
 
-            <div className="col-6">
-              <video src="" poster={`http://localhost:4000/courses/covers/${courseDetails.cover}`} className="course-info__video" controls></video>
+            <div className="col-5">
+              <img src={`http://localhost:4000/courses/covers/${courseDetails.cover}`} className='course-info-1__cover' ></img>
             </div>
           </div>
         </div>
@@ -317,29 +318,6 @@ const CourseInfo = () => {
                 </div>
                 {/* finish Course Box */}
 
-                {/* Start Course Progress */}
-                <div className="course-progress">
-                  <div className="course-progress__header">
-                    <i className="fas fa-chart-line course-progress__icon"></i>
-                    <span className="course-progress__title">
-                      درصد پیشرفت دوره: 100%
-                    </span>
-                  </div>
-                  <div className="progress course-progress__bar">
-                    <div
-                      className="progress-bar progress-bar-striped progress-bar-animated"
-                      role="progressbar"
-                      aria-label="Animated striped example"
-                      aria-valuenow="75"
-                      aria-valuemin="0"
-                      aria-valuemax="100"
-                      style={{ width: '75%' }}
-                    >
-                    </div>
-                  </div>
-                </div>
-                {/* Finish Course Progress  */}
-
                 {/* <!-- Start Introduction --> */}
                 <div className="introduction">
                   
@@ -347,8 +325,8 @@ const CourseInfo = () => {
                   <div className="introduction__topic">
                     <Accordion>
 
-                      <Accordion.Item className="accordion">
-                        <Accordion.Header>معرفی دوره</Accordion.Header>
+                      <Accordion.Item className="accordion" defaultActiveKey="0">
+                        <Accordion.Header>فصل اول</Accordion.Header>
                         {
                           sessions.map((session, index) => (
                             <Accordion.Body key={session._id} className='introduction__accordion-body'>
@@ -357,7 +335,6 @@ const CourseInfo = () => {
                                   <>
                                     <div className="introduction__accordion-right">
                                       <span className="introduction__accordion-count">{index + 1}</span>
-                                      <i className="fab fa-youtube introduction__accordion-icon"></i>
                                       <Link to={`/${courseName}/${session._id}`} className="introduction__accordion-link">
                                         {session.title}
                                       </Link>
@@ -375,16 +352,60 @@ const CourseInfo = () => {
                                   <>
                                     <div className="introduction__accordion-right">
                                       <span className="introduction__accordion-count">{index + 1}</span>
-                                      <i className="fab fa-youtube introduction__accordion-icon"></i>
                                       <span className="introduction__accordion-link">
                                         {session.title}
                                       </span>
                                     </div>
                                     <div className="introduction__accordion-left">
+                                      <i className='fa fa-lock lock-icon-session'></i>
                                       <span className="introduction__accordion-time">
                                         {session.time}:00
                                       </span>
+                                    </div>
+
+                                  </>
+                                )
+                              }
+                            </Accordion.Body>
+                          ))
+                        }
+                      </Accordion.Item>
+                      <Accordion.Item className="accordion" eventKey="0">
+                        <Accordion.Header>فصل دوم</Accordion.Header>
+                        {
+                          sessions.map((session, index) => (
+                            <Accordion.Body key={session._id} className='introduction__accordion-body'>
+                              {(session.free === 1 || courseDetails.isUserRegisteredToThisCourse) ?
+                                (
+                                  <>
+                                    <div className="introduction__accordion-right">
+                                      <span className="introduction__accordion-count">{index + 1}</span>
+                                      <Link to={`/${courseName}/${session._id}`} className="introduction__accordion-link">
+                                        {session.title}
+                                      </Link>
+                                    </div>
+                                    <div className="introduction__accordion-left">
+                                      <span className="introduction__accordion-time">
+                                        {session.time}:00
+                                      </span>
+                                    </div>
+
+                                  </>
+                                )
+                                :
+                                (
+                                  <>
+                                    <div className="introduction__accordion-right">
+                                      <span className="introduction__accordion-count">{index + 1}</span>
+                                      <span className="introduction__accordion-link">
+                                        {session.title}
+                                      </span>
+                                    </div>
+                                    <div className="introduction__accordion-left">
                                       <i className='fa fa-lock lock-icon-session'></i>
+                                      <span className="introduction__accordion-time">
+                                        {session.time}:00
+                                      </span>
                                     </div>
 
                                   </>
@@ -400,7 +421,6 @@ const CourseInfo = () => {
                   </div>
 
                 </div>
-                {/* <!-- Finish Introduction --> */}
 
                 {/*  Start Teacher Details */}
                 <div className="techer-details">
@@ -417,22 +437,19 @@ const CourseInfo = () => {
                         </span>
                       </div>
                     </div>
-                    <div className="techer-details__header-left">
+                    <div className="techer-details__header-left btn--3">
                       <i className="fas fa-chalkboard-teacher techer-details__header-icon"></i>
-                      <span className="techer-details__header-name">{courseTeacher.role}</span>
+                      <span className="">{courseTeacher.role}</span>
                     </div>
                   </div>
                   <p className="techer-details__footer">
-                    اول از همه برنامه نویسی اندروید رو شروع کردم و نزدیک به 2 سال با زبان جاوا اندروید کار میکردم .بعد تصمیم گرفتم در زمینه وب فعالیت داشته باشم.و..
+                    اول از همه برنامه نویسی اندروید رو شروع کردم و نزدیک به 2 سال با زبان جاوا اندروید کار میکردم .بعد تصمیم گرفتم در زمینه وب فعالیت داشته باشم...
                   </p>
                 </div>
                 {/* Finish Teacher Details*/}
-                {/*  */}
                 <CommentsTextArea comments={comments} submitComment={submitComment} />
               </div>
             </div>
-            {/* Finish Course Main  */}
-
             {/* Start Course Sidebar  */}
             <div className="col-4">
               <div className="courses-info">
@@ -441,17 +458,17 @@ const CourseInfo = () => {
                     {
                       courseDetails.isUserRegisteredToThisCourse ?
                         (
-                          <span className="course-info__register-title">
+                          <button className="course-info__register-title btn--3" disabled>
                             <i className="fas fa-graduation-cap course-info__register-icon"></i>
-                            &nbsp; دانشجوی دوره هستید&nbsp;
-                          </span>
+                             دانشجوی دوره هستید
+                          </button>
 
                         )
                         :
                         (
-                          <button className="course-info__register-title" onClick={() => registerInCourse(courseDetails)}>
+                          <button className="course-info__register-title btn--3" onClick={() => registerInCourse(courseDetails)}>
                             <i className="fas fa-graduation-cap course-info__register-icon"></i>
-                            &nbsp;ثبت نام &nbsp;
+                            ثبت نام
                           </button>
                         )
                     }
