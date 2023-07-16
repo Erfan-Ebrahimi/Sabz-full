@@ -1,11 +1,20 @@
+@import '../../../styles/sass/variables.scss';
+
 #sidebar {
     background-color: #17203f;
-    height: 100vh;
-    position: fixed;
-    right: 0;
+    height:100vh; 
+    position:fixed !important;
+    // top: 0;
+    // right: 0;
+    // overflow: auto !important;
+    // background: none;
+    
   }
   #sidebar .sidebar-header {
-    border-bottom: 1px solid rgba(131, 131, 131, 0.63);
+    border-bottom: 2px solid;
+    border-image-slice: 1;
+    border-width: 1px;
+    border-image-source: radial-gradient(circle, rgba(33,237,0,1) 13%, rgba(0,128,255,1) 100%);   
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -22,67 +31,42 @@
   #sidebar .sidebar-header .sidebar-logo img {
     width: 70px;
   }
-  #sidebar .sidebar-header .sidebar-menu-btn {
-    padding: 10px 25px;
-  }
-  #sidebar .sidebar-header .sidebar-menu-btn i {
-    color: #fff;
-    cursor: pointer;
-    font-size: 18px;
-  }
   #sidebar .sidebar-menu {
-    margin-top: 40px;
+    margin-top: 30px !important;
+     li{
+      position: relative;
+      padding-top:10px !important ;
+      &:hover{
+        background: linear-gradient(90deg, #353c50 0%, rgba(0, 212, 255, 0) 100%);
+        background: -webkit-gradient( linear, left top, right top, from(#353c50), to(rgba(0, 212, 255, 0)));
+      }
+      a{
+        margin-top: 2px;
+        display: inline-block;
+        color: $dark3 !important;
+        padding-right: 20px; 
+        width: 100% !important;
+        &:hover{
+           color: $green1 !important ;
+         }
+        &.active{
+           color: $green1 !important;            
+           &::before{
+             content: "";
+             position: absolute;
+             top: 0;
+             left: 2PX;
+             background-color: $green1;
+             width: 2px;
+             height: 100%;
+           }
+         }
+      }
+
+     
+    }
   }
-  #sidebar .sidebar-menu ul li:hover {
-    background: #353c50;
-    background: -webkit-gradient(
-      linear,
-      left top,
-      right top,
-      from(#353c50),
-      to(rgba(0, 212, 255, 0))
-    );
-    background: linear-gradient(90deg, #353c50 0%, rgba(0, 212, 255, 0) 100%);
-  }
-  #sidebar .sidebar-menu ul li a {
-    color: #8c90a0;
-    -webkit-transition: all 0.2s ease;
-    transition: all 0.2s ease;
-    display: block;
-    padding: 15px 25px;
-    font-size: 15px;
-  }
-  #sidebar .sidebar-menu ul li a:hover {
-    color: #fff;
-  }
-  #sidebar .sidebar-menu ul li a i {
-    padding-left: 10px;
-  }
-  
-  .active-menu {
-    position: relative;
-    background: #353c50;
-    background: -webkit-gradient(
-      linear,
-      left top,
-      right top,
-      from(#353c50),
-      to(rgba(0, 212, 255, 0))
-    );
-    background: linear-gradient(90deg, #353c50 0%, rgba(0, 212, 255, 0) 100%);
-  }
-  .active-menu a {
-    color: #fff !important;
-  }
-  .active-menu::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    background-color: #4869ff;
-    width: 5px;
-    height: 100%;
-  }
+
 
   .logout-li{
     .logout-wrapper{
@@ -91,7 +75,7 @@
       
       
       span{
-        color: #ff3511b2;
+        color: #ff0080e9;
       }
   
       .logout-icon{

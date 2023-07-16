@@ -100,15 +100,13 @@ const Topbar = () => {
                         <div className="home-profile">
                             <div className="home-profile-image">
                                 <a href="#">
-                                    <img src={`/assets/${adminInfo.profile}`} alt="" />
+                                    <img src={`/assets/images/me.png`} alt="" />
                                 </a>
                             </div>
                             <div className="home-profile-name">
                                 <Link to='/'>{adminInfo.name}</Link>
                             </div>
-                            <div className="home-profile-icon">
-                                <i className="fas fa-angle-down"></i>
-                            </div>
+                           
                         </div>
                     </div>
                 </div>
