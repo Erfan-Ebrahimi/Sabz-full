@@ -15,7 +15,6 @@ const UserPanel = () => {
                 <div className="content-header">
                     <div className="container">
                         <span className="content-header__title">حساب کاربری من</span>
-                        <span className="content-header__subtitle">پیشخوان</span>
                     </div>
                 </div>
                 <div className="content-main">

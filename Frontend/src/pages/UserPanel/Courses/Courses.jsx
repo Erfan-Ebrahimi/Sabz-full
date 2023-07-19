@@ -55,7 +55,7 @@ const Courses = () => {
         <div className="col-9">
             <div className="courses">
                 <div className="courses-header">
-                    <span className="courses-header__title">دوره های ثبت نام شده</span>
+                    <span className="courses-header__title title">دوره های ثبت نام شده</span>
                     <ul className="courses-header__list">
                         <li
                             className="courses-header__item"
@@ -99,7 +99,7 @@ const Courses = () => {
                         </li>
                     </ul>
                 </div>
-                <div className="main">
+                <div className="main1">
                     <div className="row">
                         <div className="col-12">
                             {
@@ -116,7 +116,7 @@ const Courses = () => {
                                                             />
                                                         </a>
                                                     </div>
-                                                    <div className="main__box-left">
+                                                    <div className="main__box-left mt-4">
                                                         <a href="#" className="main__box-title">
                                                             {course.course.name}
                                                         </a>

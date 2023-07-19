@@ -36,7 +36,7 @@ const Session = () => {
             <Topbar />
             <Navbar />
 
-            <section className="content">
+            <section className="content1">
                 <div className="col-4">
                     <div className="sidebar-22">
                         <div className="sidebar__header">

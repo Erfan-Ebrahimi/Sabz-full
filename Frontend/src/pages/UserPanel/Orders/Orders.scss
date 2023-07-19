@@ -1,32 +1,38 @@
 @import '../../../styles/sass/variables.scss';
 /* ============================== Content Main Style ============================== */
 .order {
-    border-right: 2px solid #2bce56;
+    border-right: 2px solid hsl(136, 65%, 49%);
     padding-right: 3rem;
+    // background: $blue5;
   }
   .order__table {
     width: 100%;
   }
   .order__table-header {
-    border-bottom: 1px solid #85858570;
+    border-bottom: 1px solid $green1;
   }
   .order__table-header-item {
     font-size: 1.5rem;
     font-weight: bold;
+    
+    color: $green1 !important;
     text-align: center;
   }
   .order__table-body-list {
-    border-bottom: 1px solid #85858570;
+    border-bottom: 1px solid $green2;
+    color: $dark2 !important;
+
   }
   .order__table-body-item {
+    padding: 10px;
     font-size: 1.4rem;
     text-align: center;
   }
   .order__table-body-btn {
     display: block;
     margin: 0.9rem 0;
-    background-color: #2bce56;
-    color: $white1;
+    background-color: red ;
+    color: $green1;
     text-align: center;
     font-size: 1.4rem;
     font-weight: bold;
@@ -35,14 +41,14 @@
     border-radius: 0.3rem;
   }
   .order__table-body-btn:hover {
-    color: $white1;
+    color: red;
     background-color: #33b355;
   }
   .order__btn {
     display: block;
     margin: 0.9rem 0;
     background-color: #2bce56;
-    color: $white1;
+    color: red !important;
     text-align: center;
     font-size: 1.4rem;
     font-weight: bold;
@@ -52,6 +58,8 @@
   }
   .order__btn:hover {
     color: $white1;
+    color: red !important;
+
     background-color: #33b355;
   }
   /* ============================== Content Main Style ============================== */

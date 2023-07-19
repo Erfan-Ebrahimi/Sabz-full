@@ -21,22 +21,22 @@ const TicketBox = (props) => {
                 <span className='span-1'>{props.title}</span>
                 <div className="ticket-content__category">
                 <i className="fa-solid fa-house-chimney-user mx-2 icon-departeman"></i>
-                   <p>{props.departmentSubID}</p> 
+                   <p className='p-11'>{props.departmentSubID}</p> 
                 </div>
             </div>
 
             <div className=" col-3">
-                <button className='btn btn-info btn__body' onClick={() => showTicketBody(props.body)}> مشاهده متن</button>
+                <button className='btn btn-info btn__body mt-5' onClick={() => showTicketBody(props.body)}> مشاهده متن</button>
                 {
                     props.answer ?
                         (
                             <Link to={`answer/${props._id}`} >
-                                <button className='btn btn-success btn__body'>جزییات تیکت</button>
+                                <button className='btn btn-success btn__body  mt-5  '>جزییات تیکت</button>
                             </Link>
                         )
                         :
                         (
-                            <button className='btn btn-danger btn__body' disabled>جزییات تیکت</button>
+                            <button className='btn btn-warning btn__body  mt-5' disabled>جزییات تیکت</button>
                         )
                 }
             </div>

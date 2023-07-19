@@ -36,9 +36,22 @@ const Tickets = () => {
                     </Link>
                 </div>
                 <div className="ticket-content">
-                    {tickets.map((ticket) =>{
-                        return <TicketBox {...ticket} key={ticket._id}/>
-                    })}
+                    {
+                        tickets ? 
+                        <>
+                            (
+                                {tickets.map((ticket) =>{
+                                    return <TicketBox {...ticket} key={ticket._id}/>
+                                })}
+
+                            )
+                        
+                        </>
+                        :
+                        (
+                            <p className='text-warning'>هیچ تیکتی موجود نیست</p>
+                        )
+                    }
                     
                 </div>
             </div>

@@ -3,17 +3,21 @@
   /* ============================== Content Header Style ============================== */
   
   .content {
-    display: block;
+    display: block !important;
   }
   
   .content-header {
-    border-top: 2px solid #2bce56;
-    border-bottom: 2px solid #2bce56;
+    border-top: 2px solid ;
+    border-bottom: 2px solid ;
+    border-image-slice: 1;
+    border-width: 1px;
+    border-image-source: radial-gradient(circle, rgba(33,237,0,1) 13%, rgba(0,128,255,1) 100%);
     padding: 1.7rem 0;
   }
   .content-header__title {
     display: block;
     font-weight: bold;
+    color: $dark3;
     font-size: 2.3rem;
   }
   .content-header__subtitle {
@@ -25,14 +29,18 @@
   
   /* ============================== Content Main Style ============================== */
   .main {
-    border-right: 2px solid #2bce56;
+    border-image-slice: 1;
+    border-width: 1px;
+    border-image-source: radial-gradient(circle, rgba(33,237,0,1) 13%, rgba(0,128,255,1) 100%);
+    border-right: 2px solid;
     padding-right: 3rem;
   }
   .main__title-text {
     font-size: 1.7rem;
+    color: $dark3;
   }
   .main__title-name {
-    color: #2bce56;
+    color: $green1 !important;
     font-weight: bold;
     font-size: 1.8rem;
   }
@@ -41,19 +49,8 @@
     font-weight: bold;
   }
   .main__desc {
+    color: $dark3;
+
     margin: 2.3rem 0 2rem 0;
-  }
-  .main__link {
-    display: block;
-    text-align: center;
-    padding: 1.5rem 0;
-    border: 1px solid #2bce56;
-    border-radius: 0.3rem;
-    margin-bottom: 1.5rem;
-    transition: all 400ms ease;
-  }
-  .main__link:hover {
-    background-color: #2bce56;
-    color: $white1;
   }
   /* ============================== Content Main Style ============================== */

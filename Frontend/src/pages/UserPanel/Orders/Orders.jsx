@@ -57,7 +57,7 @@ const Orders = () => {
                                     {order.price}
                                 </td>
                                 <td className="order__table-body-item">
-                                    <Link className="btn btn-info" to={`${order._id}`}>
+                                    <Link className="btn btn-primary" to={`${order._id}`}>
                                         نمایش
                                     </Link>
                                 </td>

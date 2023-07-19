@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import AuthContext from "../../../context/authContext";
+import AuthContext from "../../../context/AuthContext";
 import IndexBox from "../../../components/UserPanel/IndexBox/IndexBox";
 
 import './UserPanelIndex.scss';
@@ -23,15 +23,6 @@ const UserPanelIndex = () => {
                     مشاهده، آدرس‌های حمل و نقل و صورتحساب‌تان را مدیریت و جزییات حساب
                     کاربری و کلمه عبور خود را ویرایش کنید.
                 </p>
-                <div className="main__links">
-                    <div className="row">
-                        <IndexBox title="سفارش" href="orders" />
-                        <IndexBox title="دوره های خریداری شده" href="courses" />
-                        <IndexBox title="کیف پول من" href="money" />
-                        <IndexBox title="جزئیات حساب کاربری" href="infos" />
-                        <IndexBox title="تیکت های پشتیبانی" href="ticket" />
-                    </div>
-                </div>
             </div>
         </div>
     )

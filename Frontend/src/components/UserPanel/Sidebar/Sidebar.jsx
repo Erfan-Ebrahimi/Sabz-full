@@ -1,8 +1,10 @@
 import { useContext } from "react";
 import AuthContext from "../../../context/AuthContext";
-import { Link, useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import swal from "sweetalert";
 import './Sidebar.scss';
+import { BiLogOut } from 'react-icons/bi';
+
 
 const Sidebar = () => {
 
@@ -36,37 +38,39 @@ const Sidebar = () => {
     return (
         <div className="col-3">
             <div className="sidebar">
-                <span className="sidebar__name">محمدامین سعیدی راد</span>
                 <ul className="sidebar__list">
                     <li className="sidebar__item">
-                        <Link className="sidebar__link" to="/my-account">
+                        <NavLink className="sidebar__link" to="/my-account">
                             پیشخوان
-                        </Link>
+                        </NavLink>
                     </li>
                     <li className="sidebar__item">
-                        <Link className="sidebar__link" to='orders'>
+                        <NavLink className="sidebar__link" to='orders'>
                             سفارش ها
-                        </Link>
+                        </NavLink>
                     </li>
                     <li className="sidebar__item">
-                        <Link className="sidebar__link" to='edit-account'>
+                        <NavLink className="sidebar__link" to='edit-account'>
                             جزئیات حساب کاربری
-                        </Link>
+                        </NavLink>
                     </li>
                     <li className="sidebar__item">
-                        <Link className="sidebar__link" to='buyed'>
+                        <NavLink className="sidebar__link" to='buyed'>
                             دوره های خریداری شده
-                        </Link>
+                        </NavLink>
                     </li>
                     <li className="sidebar__item">
-                        <Link className="sidebar__link" to='tickets'>
+                        <NavLink className="sidebar__link" to='tickets'>
                             تیکت های پشتیبانی
-                        </Link>
+                        </NavLink>
                     </li>
-                    <li className="sidebar__item">
-                        <Link className="sidebar__link" onClick={logoutUser}>
-                            خروج از سیستم
-                        </Link>
+                    <li className='logout-li'>
+                        <a href='#' onClick={logoutUser} >
+                            <div className='logout-wrapper'>
+                                <span> خروج</span>
+                                <BiLogOut    className='logout-icon' />
+                            </div>
+                        </a>
                     </li>
                 </ul>
             </div>

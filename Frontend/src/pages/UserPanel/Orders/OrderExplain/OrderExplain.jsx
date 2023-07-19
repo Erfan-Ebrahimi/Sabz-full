@@ -48,10 +48,10 @@ const OrderExplain = () => {
     return (
         <div className="col-9">
             <div className="order">
-                <p >
-                    سفارش <span className='bg-warning'>{id.slice(0, 8)}</span>{' '}
-                    در تاریخ <span className='bg-warning'>{orderCreatedAt.slice(0, 10)}</span>{' '}
-                    ثبت شده است و در وضعیت <span className='bg-warning'>تکمیل شده </span> می باشد.
+                <p className='a5'>
+                    سفارش <span className='text-warning'>{id.slice(0, 8)}</span>{' '}
+                    در تاریخ <span className='text-warning'>{orderCreatedAt.slice(0, 10)}</span>{' '}
+                    ثبت شده است و در وضعیت <span className='text-warning'>تکمیل شده </span> می باشد.
                 </p>
                 <div className="row">
                     <h1 className='title'>مشخصات سفارش</h1>
@@ -77,10 +77,10 @@ const OrderExplain = () => {
                     </div>                    
                     <div className='row mt-5'>
                         <p className='title'>آدرس صورتحساب</p>
-                        <div >
-                            <p className='col-12' >نام  و نام خانوادگی  : <span>{userInfos.name}</span></p>
-                            <p className='col-12' >ایمیل : <span>{userInfos.email}</span></p>
-                            <p className='col-12' >تلفن : <span>{userInfos.phone}</span></p>
+                        <div className='a4' >
+                            <p className='col-12' >نام  و نام خانوادگی  : <span className='a3'>{userInfos.name}</span></p>
+                            <p className='col-12' >ایمیل : <span className='a3'>{userInfos.email}</span></p>
+                            <p className='col-12' >تلفن : <span className='a3'>{userInfos.phone}</span></p>
                         </div>
                     </div>
                 </div>

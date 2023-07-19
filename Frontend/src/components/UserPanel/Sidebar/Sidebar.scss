@@ -1,17 +1,18 @@
- /* ============================== Content Sidebar Style ============================== */
+@import '../../../styles/sass/variables.scss';
+/* ============================== Content Sidebar Style ============================== */
  .content-main {
     margin: 3rem 0;
   }
   
   .sidebar__name {
-    color: rgb(27, 2, 2);
+    color: rgb(224, 184, 184);
     font-size: 1.7rem;
   }
   .sidebar__list {
     margin-top: 0.7rem;
   }
   .sidebar__link {
-    color: rgb(2, 80, 27);
+    color:$dark2;
     display: block;
     padding: 1rem 0;
     font-weight: bold;

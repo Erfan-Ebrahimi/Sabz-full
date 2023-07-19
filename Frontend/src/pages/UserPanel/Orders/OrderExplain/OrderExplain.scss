@@ -1,12 +1,30 @@
+@import '../../../../styles/sass/variables.scss';
 .a1{
     // text-align: center;
     display: flex;
     justify-content: space-between;
+    color: $dark2;
+    margin-top: 10px;
     
 }
 .title{
     margin-top: 30px;
+    
 }
 .a2{
+    color: $dark3;
+    
+    border-bottom: 1px solid $green2;
     font-size: 20px;
+}
+.a3{
+color: $dark3;
+}
+.a4{
+    margin-top: 20px !important;
+    color: $dark2;
+}
+.a5{
+    
+        color: $dark2;
 }

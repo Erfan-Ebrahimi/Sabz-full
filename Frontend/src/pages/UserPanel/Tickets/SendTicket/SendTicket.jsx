@@ -247,7 +247,7 @@ const SendTicket = () => {
                         <div className="col-12">
                             <button
                                 type="submit"
-                                className='ticket-form__btn m-2'
+                                className='ticket-form__btn btn-add-course m-2'
                                 onClick={sendTicket}
                                 disabled={!formState.isFormValid || !departmentId || !departmentSubId}
                             >
