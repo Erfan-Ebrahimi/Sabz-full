@@ -7,25 +7,36 @@
     box-sizing: border-box;
     font-family: "lale";
   }
- 
   #home{
     background: $blue4;
     position: absolute;
     left: 0;
+    
   }
+  .welcome{
+    margin-top: 2rem !important;
+    color: $dark2;
+    span{
+      color: $green2;
+      margin-top: 100px !important;
+    }
+    
+  } 
   #home #home-content .home-content-latset-users {
-    background-color: #fff;
+    background-color: $blue5;
     -webkit-box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.2);
     box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.2);
     margin-top: 20px;
     border-radius: 5px;
   }
+ 
   #home #home-content .home-content-latset-users .home-content-users-title {
     padding: 20px 15px;
   }
   #home #home-content .home-content-latset-users .home-content-users-title span {
     font-size: 18px;
     font-family: "lale";
+    color: $dark3;
   }
   #home
     #home-content
@@ -33,7 +44,7 @@
     .home-content-users-title
     span
     .signup {
-    color: #1943da;
+    color: $dark3;
   }
   #home #home-content .home-content-latset-users .home-content-users-table {
     padding: 0 10px;
@@ -44,7 +55,7 @@
     .home-content-users-table
     table
     thead {
-    background-color: #f2f7fd;
+    background-color: $blue3;
   }
   #home
     #home-content
@@ -55,7 +66,7 @@
     tr
     th {
     border: none;
-    color: #67747e;
+    color: $green1;
     text-align: center;
     font-size: 18px;
     font-family: "lale";
@@ -67,6 +78,7 @@
     table
     tbody
     tr {
+      color: $dark3;
     vertical-align: middle;
   }
   #home
@@ -96,20 +108,15 @@
     display: flex;
   }
   /*# sourceMappingURL=main.css.map */
-  .home-content-boxes{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-  }
   .chart{
     box-sizing: border-box;
-      text-align: center;
+    text-align: center;
     margin: 0 auto !important;
     margin-top: 20px !important;
     padding: 20px;
     -webkit-box-shadow: 0px 0px 15px -10px rgba(255, 246, 246, 0.75);
     box-shadow: 0px 0px 15px -10px rgb(255, 248, 248);
-    background:#13202c;
+    background:$blue5;
     border-radius: 8px;
     
     .chartTitle{

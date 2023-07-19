@@ -6,6 +6,7 @@ const Editor = ({value , setValue}) => {
         <div className="App-2">
             <h2>Using CKEditor 5 build in React</h2>
             <CKEditor
+            
                 editor={ClassicEditor}
                 data={value}
                 onChange={(event, editor) => {

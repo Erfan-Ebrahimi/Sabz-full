@@ -1,7 +1,15 @@
 @import '../../styles/sass/variables.scss';
 
 /* ============================== Login-Register Style ============================== */
+body{
+  background: none !important;
+}
 .login-register {
+  input{
+    &::placeholder{
+      color: $dark2 !important;
+    }
+  }
     display: flex;
     justify-content: center;
     position: relative;
@@ -27,12 +35,12 @@
     transform: rotate(-4deg);
   }
   .login {
+    background: $blue5 !important;
     display: flex;
     flex-direction: column;
     align-items: center;
     margin: 4rem 0;
     padding: 2.5rem 2rem 5rem 2rem;
-    background-color: $white1;
     box-shadow: 0 6px 20px rgba(168, 172, 185, 0.3);
     border-radius: 5px;
     width: 50rem;
@@ -40,16 +48,16 @@
   }
   .login__title {
     display: block;
-    color: #7b868a;
+    color: $dark3 !important;
     font-size: 2.2rem;
   }
   .login__subtitle {
     display: block;
-    color: #7b868a;
+    color: $dark3 !important;
     font-size: 1.5rem;
   }
   .login__new-member {
-    background-color: #f0f2f7;
+    background-color:$blue3!important;
     margin: 1.5rem 0;
     border-radius: 5px;
     width: 100%;
@@ -59,13 +67,14 @@
     padding: 1.5rem 0;
   }
   .login__new-member-text {
-    color: #7b868a;
+    color: $dark3 !important;
     font-size: 1.4rem;
   }
   .login__new-member-link {
-    background-color: #a8aaaf;
-    color: $white1;
-    font-size: 1.2rem;
+    background-color: $green1 !important;
+    color: $dark1 !important  ;
+    font-size: 1.4rem !important;
+    font-weight: 800 !important;
     margin-right: 0.6rem;
     border-radius: 5px;
     padding: 0.4rem 0.8rem;
@@ -96,7 +105,7 @@
     left: 1.5rem;
     top: 2rem;
     font-size: 2.2rem;
-    color: #ccc;
+    color: $dark3 !important;
   }
   .login-form__btn {
     width: 100%;
@@ -114,13 +123,13 @@
   }
 
   .login-form__btn-icon {
-    color: $white1;
+    color: $dark3 !important;
     font-size: 1.8rem;
     position: absolute;
     right: 1rem;
   }
   .login-form__btn-text {
-    color: $white1;
+    color: $dark3 !important;
     margin: 0 auto;
   }
   .login-form__password-setting {
@@ -137,16 +146,16 @@
     margin-left: 1rem;
   }
   .login-form__password-text {
-    color: #6c757d;
+    color: $dark3 !important;
     font-size: 1.4rem;
   }
   .login-form__password-forget-link {
-    color: #6c757d;
+    color: $dark3 !important;
     font-size: 1.4rem;
   }
   .login__des {
     margin-top: 3rem;
-    color: #7b868a;
+    color: $dark3 !important;
     font-size: 1.2rem;
     width: 100%;
   }
@@ -155,5 +164,16 @@
     margin-right: 2rem;
     margin-top: 1rem;
   }
-  /* ============================== Login-Register Style ============================== */
   
+  // ------------swal alert
+  .swal-footer{
+    display: flex;
+    justify-content: center;
+  }
+  .recaptcha{
+    margin: 0 auto;
+    padding: 2rem 8rem;
+    margin-top: 2rem;
+  }
+  
+  /* ============================== Login-Register Style ============================== */

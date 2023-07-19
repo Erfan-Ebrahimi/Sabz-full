@@ -1,5 +1,21 @@
+@import '../../../styles/sass/variables.scss';
 .article-textarea-admin{
     width: 100% !important;
     height: 100px !important;
-    color: #00ff55;
+    color: #0eed55;
+    background: $blue5;
+
+}
+
+.App-2{
+    h2{
+        display: none;
+    }
+    border: 2px solid rgb(9, 201, 208) !important;
+    border-radius: 0px !important;
+    .ck-content {
+        background: $blue5 !important;
+        color: $dark3;
+
+    }
 }

@@ -106,7 +106,7 @@ const Register = () => {
             <section className="login-register">
                 <div className="login register-form">
                     <span className="login__title">ساخت حساب کاربری</span>
-                    <span className="login__subtitle">خوشحالیم قراره به جمع ما بپیوندی</span>
+                    <span className="login__subtitle"> خوشحالیم قراره به جمع ما بپیوندی :)</span>
                     <div className="login__new-member">
                         <span className="login__new-member-text">قبلا ثبت‌نام کرده‌اید؟ </span>
                         <Link className="login__new-member-link" to="/login">
@@ -144,7 +144,7 @@ const Register = () => {
                                     maxValidator(20)
                                 ]}
                             />
-                            <i className="login-form__username-icon fa fa-user"></i>
+                            <i className="login-form__username-icon fa fa-at"></i>
                         </div>
                         <div className="login-form__password">
                             <Input

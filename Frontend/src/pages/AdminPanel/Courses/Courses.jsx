@@ -19,6 +19,7 @@ const Courses = () => {
     const [categories, setCategories] = useState([]);  //get all categories for set category in add new course
     const [courseStatus, setCourseStatus] = useState('start')
     const [courseCover, setCourseCover] = useState(false)
+    const [sizeFile, setSizeFile] = useState('')
 
     // ---------form inputs
     const [formState, onInputHandler] = useForm(
@@ -63,6 +64,7 @@ const Courses = () => {
             .then(res => res.json())
             .then((allCourses) => {
                 setCourses(allCourses)
+                console.log(allCourses);
             })
     }
 
@@ -155,7 +157,11 @@ const Courses = () => {
             buttons: 'اوکی'
         })
     }
-
+    // ------------show size files
+    const showSize = (fileData) => {
+        const { name: fileName, size } = fileData[0]
+        setSizeFile({ fileName, size })
+    }
     return (
         <>
             <div className="container-fluid" id="home-content">
@@ -238,7 +244,9 @@ const Courses = () => {
                             </div>
                         </div>
                         <div className="col-12">
-                            <div className="number input">
+
+
+                            <div className="input">
                                 <label className="input-title">دسته‌بندی دوره</label>
                                 <select onChange={selectCategory}>
                                     <option value='-1'>یک دسته بندی انتخاب کنید</option>
@@ -246,58 +254,79 @@ const Courses = () => {
                                         <option key={category._id} value={category._id}>+{category.title}+</option>
                                     ))}
                                 </select>
-                                <span className="error-message text-danger"></span>
                             </div>
+
+
+
+
+
                         </div>
                         <div className="col-12">
-                            <div className="file">
-                                <label className="input-title">عکس دوره</label>
-                                <input type="file" id="file" onChange={event => {
-                                    setCourseCover(event.target.files[0])
-                                }} />
+                            <div className="">
+                                <div className="input file-input">
+                                    <label className="input-title" for='file'>عکس دوره<i className='icon-file fa-solid fa-upload'></i></label>
+                                    <input
+                                        type="file"
+                                        className='file'
+                                        id="file"
+                                        onChange={event => {
+                                            setCourseCover(event.target.files[0])
+                                            showSize(event.target.files)
+                                        }}
+                                    />
+                                    {
+                                        sizeFile ? <p className='file-size'>{sizeFile.fileName} , {(sizeFile.size/1000).toFixed(2)}KB</p> : <p className='text-danger'>عکسی انتخاب نشده است</p>
+                                    }
+
+                                </div>
                             </div>
                         </div>
-                        <div className="col-12">
-                            <div className="bottom-form">
-                                <div className="condition">
-                                    <label className="input-title">وضعیت دوره</label>
-                                    <div className="radios">
-                                        <div className="available">
-                                            <label>
-                                                <span>در حال برگزاری</span>
-                                                <input
-                                                    type="radio"
-                                                    value="start"
-                                                    name="condition"
-                                                    defaultChecked
-                                                    onInput={event => setCourseStatus(event.target.value)}
-                                                />
-                                            </label>
+
+                        <div className="col-6">
+                            <label className="input-title1">وضعیت دوره</label>
+                            <div className="condition">
+
+                                <div className="customCheckBoxHolder radios">
+                                    <input
+                                        className="customCheckBoxInput"
+                                        id="cCB1"
+                                        type="radio"
+                                        value="start"
+                                        name="condition"
+                                        defaultChecked
+                                        onInput={event => setCourseStatus(event.target.value)}
+                                    />
+                                    <label className="customCheckBoxWrapper" for="cCB1">
+                                        <div className="customCheckBox">
+                                            <div className="inner">در حال برگزاری</div>
                                         </div>
-                                        <div className="unavailable">
-                                            <label>
-                                                <span>پیش فروش</span>
-                                                <input
-                                                    type="radio"
-                                                    value="presell"
-                                                    name="condition"
-                                                    onInput={event => setCourseStatus(event.target.value)}
-                                                />
-                                            </label>
+                                    </label>
+                                    <input
+                                        className="customCheckBoxInput"
+                                        id="cCB2"
+                                        type="radio"
+                                        value="presell"
+                                        name="condition"
+                                        onInput={event => setCourseStatus(event.target.value)}
+                                    />
+                                    <label className="customCheckBoxWrapper" for="cCB2">
+                                        <div className="customCheckBox">
+                                            <div className="inner">پیش فروش</div>
                                         </div>
-                                    </div>
+                                    </label>
                                 </div>
-                                <div >
-                                    <button
-                                        type="submit"
-                                        className='btn-add-course'
-                                        onClick={addNewCourse}
-                                        disabled={!formState.isFormValid || courseCategory === '-1' || !courseCover}
-                                    >
-                                        افزودن
-                                    </button>
-                                </div>
+
                             </div>
+                        </div>
+                        <div className='col-12 mt-4' >
+                            <button
+                                type="submit"
+                                className='btn-add-course col-12'
+                                onClick={addNewCourse}
+                                disabled={!formState.isFormValid || courseCategory === '-1' || !courseCover}
+                            >
+                                افزودن
+                            </button>
                         </div>
                     </form>
                 </div>
@@ -314,6 +343,7 @@ const Courses = () => {
                             <th>قیمت</th>
                             <th>لینک</th>
                             <th>تعداد دانشجو</th>
+                            <th>ویرایش</th>
                             <th>حذف</th>
                         </tr>
                     </thead>
@@ -327,7 +357,7 @@ const Courses = () => {
                                 <td>{course.isComplete ? 'تکمیل شده' : 'در حال برگزاری'}</td>
                                 <td>{course.price ? course.price.toLocaleString() : 'رایگان'}</td>
                                 <td> <Link to="#" className='link-courses'> {course.shortName}</Link></td>
-                                <td>{course.discount}</td>
+                                <td>{course.registers}</td>
                                 <td>
                                     <button type="button" className="btn btn-primary edit-btn" onClick={editCourse}>
                                         ویرایش

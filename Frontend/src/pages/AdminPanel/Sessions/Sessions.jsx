@@ -14,6 +14,8 @@ const Sessions = () => {
     const [sessionCourse, setSessionCourse] = useState('-1');
     const [sessionFree, setSessionFree] = useState("0");
     const [sessionVideo, setSessionVideo] = useState(false)
+        const [sizeFile, setSizeFile] = useState('')
+
 
 
     // ---------form inputs
@@ -117,6 +119,14 @@ const Sessions = () => {
         })
 
     }
+
+    // ------------show size files
+    const showSize = (fileData) => {
+        const { name: fileName, size } = fileData[0]
+        setSizeFile({ fileName, size })
+    }
+
+
     return (
         <>
             <div className="container-fluid" id="home-content">
@@ -167,43 +177,62 @@ const Sessions = () => {
                                 <span className="error-message text-danger"></span>
                             </div>
                         </div>
+                        
                         <div className="col-6">
-                            <div className="bottom-form">
-                                <div className="condition">
-                                    <label className="input-title">وضعیت جلسه</label>
-                                    <div className="radios">
-                                        <div className="available">
-                                            <label>
-                                                <span>رایگان</span>
-                                                <input
-                                                    type="radio"
-                                                    value="1"
-                                                    name="condition"
-                                                    defaultChecked
-                                                    onInput={event => setSessionFree(event.target.value)}
-                                                />
-                                            </label>
+                            <label className="input-title1">وضعیت جلسه</label>
+                            <div className="condition">
+
+                                <div className="customCheckBoxHolder radios">
+                                    <input
+                                        className="customCheckBoxInput"
+                                        id="cCB1"
+                                        type="radio"
+                                        value="1"
+                                        name="condition"
+                                        defaultChecked
+                                        onInput={event => setSessionFree(event.target.value)}
+                                    />
+                                    <label className="customCheckBoxWrapper" for="cCB1">
+                                        <div className="customCheckBox">
+                                            <div className="inner">رایگان</div>
                                         </div>
-                                        <div className="unavailable">
-                                            <label>
-                                                <span>پولی</span>
-                                                <input
-                                                    type="radio"
-                                                    value="0"
-                                                    name="condition"
-                                                    onInput={event => setSessionFree(event.target.value)}
-                                                />
-                                            </label>
+                                    </label>
+                                    <input
+                                        className="customCheckBoxInput"
+                                        id="cCB2"
+                                        type="radio"
+                                        value="0"
+                                        name="condition"
+                                        onInput={event => setSessionFree(event.target.value)}
+                                    />
+                                    <label className="customCheckBoxWrapper" for="cCB2">
+                                        <div className="customCheckBox">
+                                            <div className="inner"> پولی</div>
                                         </div>
-                                    </div>
+                                    </label>
                                 </div>
+
                             </div>
-                        </div>
-                        <div className="col-6">
-                            <div className="name input">
-                                <label className="input-title">فیلم جلسه</label>
-                                <input type="file" onChange={event => setSessionVideo(event.target.files[0])} />
-                                <span className="error-message text-danger"></span>
+                        </div>  
+                        
+                        <div className="col-12">
+                            <div className="">
+                                <div className="input file-input">
+                                    <label className="input-title" for='file'>فیلم جلسه<i className='icon-file fa-solid fa-upload'></i></label>
+                                    <input
+                                        type="file"
+                                        className='file'
+                                        id="file"
+                                        onChange={event => {
+                                            setSessionVideo(event.target.files[0])
+                                            showSize(event.target.files)
+                                        }}
+                                    />
+                                    {
+                                        sizeFile ? <p className='file-size'>{sizeFile.fileName} , {(sizeFile.size/1000).toFixed(2)}KB</p> : <p className='text-danger'>عکسی انتخاب نشده است</p>
+                                    }
+
+                                </div>
                             </div>
                         </div>
                         <div className="col-12">

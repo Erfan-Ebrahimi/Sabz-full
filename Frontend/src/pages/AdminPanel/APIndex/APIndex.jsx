@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import DataTable from "../../../Components/AdminPanel/DataTable/DataTable";
+import DataTable from "../../../components/AdminPanel/DataTable/DataTable";
 import APItem from "../../../components/AdminPanel/APItem/APItem";
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import { BarChart, Bar } from 'recharts';
@@ -110,9 +110,9 @@ const APIndex = () => {
             <div className="container-fluid" id="home-content">
                 <div className="container">
                     <div className="home-content-title">
-                        <span className="welcome">
-                            <span className="name">{adminName}</span>{" "}خوش آمدید
-                        </span>
+                        <p className="welcome">
+                            <span className="name">{adminName}</span>{" "}خوش آمدید.
+                        </p>
                     </div>
                     <div className="home-content-boxes">
                         <div className="row">

@@ -1,8 +1,18 @@
+@import '../../styles/sass/variables.scss';
+
 input{
     border-radius: 5px !important;
     background: none;
-    outline: none !important;
     border: none !important;
+    outline: none !important;
+    color: $dark2 ;
+    
+    &:focus{
+        outline: none !important;
+        background-color: rgba(224, 202, 202, 0.126);
+        box-shadow: none !important;
+    }
+    
 }
 .success{
     border-bottom: 3px solid greenyellow !important;

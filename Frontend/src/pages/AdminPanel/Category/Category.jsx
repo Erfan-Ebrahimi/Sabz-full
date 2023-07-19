@@ -116,7 +116,7 @@ const Category = () => {
 
 
             focusConfirm: false,
-            customClass:'swal-wide',
+            customClass: 'swal-wide',
             preConfirm: () => {
                 return [
                     document.getElementById('swal-input1').value,
@@ -140,11 +140,11 @@ const Category = () => {
                 if (res.ok) {
                     res.json()
                     swal({
-                        title:'با موفقیت ویرایش شد',
-                        icon:'success',
-                        buttons:'Ok'
+                        title: 'با موفقیت ویرایش شد',
+                        icon: 'success',
+                        buttons: 'Ok'
                     }).then(ok => getAllCategories())
-                    
+
                 }
             })
 
@@ -189,16 +189,16 @@ const Category = () => {
                                 <span className="error-message text-danger"></span>
                             </div>
                         </div>
-                        <div className="col-12">
-                            <div className="bottom-form">
-                                <div className="submit-btn">
-                                    <input
-                                        type="submit"
-                                        value="افزودن"
-                                        onClick={createNewCategory}
-                                    />
-                                </div>
-                            </div>
+                       
+                        <div className='col-12 mt-4' >
+                            <button
+                                type="submit"
+                                className='btn-add-course col-12'
+                                onClick={createNewCategory}
+                                disabled={!formState.isFormValid}
+                            >
+                                افزودن
+                            </button>
                         </div>
                     </form>
                     <p className='alert alert-danger'>دسته بندی های اصلی تغییر داده نشود</p>

@@ -15,6 +15,8 @@ const Articles = () => {
     const [articleCategory, setArticleCategory] = useState("-1");
     const [articleCover, setArticleCover] = useState(false);
     const [articleBody, setArticleBody] = useState('')
+    const [sizeFile, setSizeFile] = useState('')
+
 
     // --------form inputs
     const [formState, onInputHandler] = useForm(
@@ -108,7 +110,7 @@ const Articles = () => {
             body: formData
         }).then(res => {
             if (res.ok) {
-                
+
                 swal({
                     title: 'مقاله جدید با موفقیت ایجاد شد',
                     icon: 'success',
@@ -158,6 +160,12 @@ const Articles = () => {
                 })
             }
         })
+    }
+
+     // ------------show size files
+     const showSize = (fileData) => {
+        const { name: fileName, size } = fileData[0]
+        setSizeFile({ fileName, size })
     }
 
     return (
@@ -222,18 +230,22 @@ const Articles = () => {
                                 <Editor value={articleBody} setValue={setArticleBody} />
                             </div>
                         </div>
-                        <div className="col-6">
-                            <div className="name input">
-                                <label className="input-title" style={{ display: "block" }}>
-                                    کاور
-                                </label>
+                        <div className="col-12">
+                            <div className="input file-input">
+                                <label className="input-title" for='file'>عکس مقاله<i className='icon-file fa-solid fa-upload'></i></label>
                                 <input
                                     type="file"
-                                    onChange={(event) => {
+                                    className='file'
+                                    id="file"
+                                    onChange={event => {
                                         setArticleCover(event.target.files[0]);
+                                        showSize(event.target.files)
                                     }}
                                 />
-                                <span className="error-message text-danger"></span>
+                                {
+                                    sizeFile ? <p className='file-size'>{sizeFile.fileName} , {(sizeFile.size/1000).toFixed(2)}KB   </p> : <p className='text-danger'>عکسی انتخاب نشده است</p>
+                                }
+                               
                             </div>
                         </div>
                         <div className="col-6">
@@ -300,18 +312,18 @@ const Articles = () => {
                                 <td>{article.creator.name}</td>
                                 <td>
                                     {article.publish ?
-                                        (<span className="alert alert-info">منتشر شده</span>)
+                                        (<span className="text-info">منتشر شده</span>)
                                         :
-                                        (<span className="alert alert-warning">پیش نویس</span>)
+                                        (<span className="text-warning">پیش نویس</span>)
                                     }
                                 </td>
                                 <td>
                                     {article.publish ?
-                                        (<i className="fa-solid fa-check" style={{ color: '#0400ff'}}></i>)
+                                        (<i className="fa-solid fa-check" style={{ color: '#fff' }}></i>)
                                         :
                                         (
                                             <Link className="btn" to={`draft/${article.shortName}`}>
-                                                <i className="fa-solid fa-pen fa-beat-fade" style={{ color: '#0400ff', fontSize: 15 }}></i>
+                                                <i className="fa-solid fa-pen fa-beat-fade" style={{ color: '#fff', fontSize: 15 }}></i>
                                             </Link>
                                         )
                                     }

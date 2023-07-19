@@ -497,7 +497,7 @@ const CourseInfo = () => {
                       <div className="course-info__total-view">
                         <i className="far fa-eye course-info__total-view-icon"></i>
                         <span className="course-info__total-view-text">
-                          {courseDetails.discount} بازدید
+                          {1025} بازدید
                         </span>
                       </div>
                     </div>

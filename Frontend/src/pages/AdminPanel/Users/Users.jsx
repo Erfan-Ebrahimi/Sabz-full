@@ -295,13 +295,16 @@ const Users = () => {
                             <span className="error-message text-danger"></span>
                         </div>
                     </div>
-                    <div className="col-12">
-                        <div className="bottom-form">
-                            <div className="submit-btn">
-                                <input type="submit" value="افزودن" onClick={registerNewUser} />
-                            </div>
+                    <div className='col-12 mt-4' >
+                            <button
+                                type="submit"
+                                className='btn-add-course col-12'
+                                onClick={registerNewUser}
+                                disabled={!formState.isFormValid}
+                            >
+                                افزودن
+                            </button>
                         </div>
-                    </div>
                 </form>
             </div>
             <DataTable title="کاربران">
@@ -310,6 +313,7 @@ const Users = () => {
                         <tr>
                             <th>شناسه</th>
                             <th> نام و نام خانوادگی </th>
+                            <th> نام کاربری</th>
                             <th> نقش</th>
                             <th>شماره</th>
                             <th>ایمیل</th>
@@ -323,6 +327,7 @@ const Users = () => {
                             <tr key={user._id}>
                                 <td>{index + 1}</td>
                                 <td>{user.name}</td>
+                                <td>{user.username}</td>
                                 <td>{user.role === 'ADMIN' ? (<i class="fa-sharp fa-solid fa-user-gear admin-icon "></i>) : (<i class="fa-regular fa-user user-icon"></i>)}</td>
                                 <td>{user.phone}</td>
                                 <td>{user.email}</td>

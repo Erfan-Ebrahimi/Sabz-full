@@ -42,10 +42,11 @@
     color: $green1;
     background: none;
     transition: all .3s ease-in;
+    cursor: pointer;
 
     &:hover{
-      color: $white1;
-      background: $green3;
+      color: $dark1;
+      background: $green1;
 
     }
 
