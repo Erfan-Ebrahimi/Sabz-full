@@ -10,6 +10,7 @@
     align-items: center;
     padding: 2.2rem;
     box-shadow: 0 0 13px 1px rgba(70, 72, 77, 0.08);
+    background: $blue5;
 }
 
 .courses-top-bar__right {
@@ -17,25 +18,8 @@
     align-items: center;
 }
 
-.courses-top-bar__row-btn,
-.courses-top-bar__column-btn {
-    padding: 0.8rem 1rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 4.2rem;
-    height: 3.8rem;
-    border-radius: 0.3rem;
-    color: #000;
-    cursor: pointer;
-    border: 1px solid #e5e5e5;
-    margin-left: 1rem;
-}
 
-.courses-top-bar__icon--active {
-    color: $white1;
-    background-color: #1e83f0;
-}
+
 
 .courses-top-bar__selection {
     cursor: pointer;
@@ -104,7 +88,7 @@
 .courses-top-bar__input {
     font-size: 1.5rem;
     width: 100%;
-    border: 1px solid #dcdcdc;
+    border: 1px solid #9b91918a !important;
     padding: 0.8rem 1.5rem 0.8rem 4.2rem;
     border-radius: 0.3rem;
 }
