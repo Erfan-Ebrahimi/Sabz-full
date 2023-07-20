@@ -66,7 +66,7 @@ const ContactUs = () => {
     const removeUserContact = (contactID) => {
         const localStorageData = JSON.parse(localStorage.getItem('user'))
         swal({
-            title: "متن پاسخ را وارد کنید",
+            title: "آیا از حذف اطمینان دارید ؟",
             icon: 'warning',
             dangerMode: true,
             buttons: ["نه", "آره"]

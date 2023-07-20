@@ -23,7 +23,6 @@ const Courses = () => {
             .then((data) => {
                 setCourses(data);
                 setFilteredCourses(data)
-                console.log(data);
             });
     }
 

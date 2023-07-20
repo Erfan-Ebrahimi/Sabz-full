@@ -50,7 +50,6 @@ const EditAccount = () => {
         setEmail(authContext.userInfos.email)
     }, [reload])
 
-    console.log(reload);
     // ---------edit user infos account
     const editAccount = (event) => {
         event.preventDefault();

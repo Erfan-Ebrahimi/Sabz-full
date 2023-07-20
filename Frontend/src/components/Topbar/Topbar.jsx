@@ -14,9 +14,9 @@ const Topbar = () => {
   const [indexInfo, setIndexInfo] = useState([])
 
   useEffect(() => {
-    fetch('http://localhost:4000/v1/menus/topbar')
-      .then(res => res.json())
-      .then(data => setAllTopbarLinks(data))
+    // fetch('http://localhost:4000/v1/menus/topbar')
+    //   .then(res => res.json())
+    //   .then(data => setAllTopbarLinks(data))
 
     fetch('http://localhost:4000/v1/infos/index')
       .then(res => res.json())

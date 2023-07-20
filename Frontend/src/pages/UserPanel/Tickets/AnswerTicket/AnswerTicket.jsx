@@ -23,7 +23,6 @@ const AnswerTicket = () => {
         })
             .then((res) => res.json())
             .then((data) => {
-                console.log(data);
                 setTicketInfo(data);
                 setTicketId(data._id)
             });

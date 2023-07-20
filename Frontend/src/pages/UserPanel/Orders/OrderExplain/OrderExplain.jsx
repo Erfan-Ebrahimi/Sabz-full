@@ -26,7 +26,6 @@ const OrderExplain = () => {
         })
             .then((res) => res.json())
             .then((data) => {
-                console.log(data);
                 setOrder(data[0]);
                 setorderCreatedAt(data[0].createdAt);
                 setOrderCourse(data[0].course);

@@ -98,7 +98,6 @@ const APIndex = () => {
         })
             .then((res) => res.json())
             .then((pageInfo) => {
-                console.log(pageInfo);
                 setInfos(pageInfo.infos)
                 setLastRegisteredUsers(pageInfo.lastUsers)
                 setAdminName(pageInfo.adminName)

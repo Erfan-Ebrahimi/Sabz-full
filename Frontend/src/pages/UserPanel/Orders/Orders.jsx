@@ -1,5 +1,5 @@
-import { useState , useEffect } from 'react';
-import {Link} from 'react-router-dom'
+import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom'
 import './Orders.scss'
 
 
@@ -20,7 +20,6 @@ const Orders = () => {
         })
             .then((res) => res.json())
             .then((data) => {
-                console.log(data);
                 setOrders(data);
             });
     }
@@ -41,28 +40,39 @@ const Orders = () => {
                         </tr>
                     </thead>
                     <tbody className="order__table-body">
-                        {orders.map((order, index) => (
-                            <tr className="order__table-body-list" key={order._id}>
-                                <td className="order__table-body-item">
-                                    <span href="#" className="order__table-body-link">
-                                        {index + 1}
-                                    </span>
-                                </td>
-                                <td className="order__table-body-item">{order.createdAt.slice(0, 10)}</td>
-                                <td className="order__table-body-item">تکمیل شده</td>
-                                <td className="order__table-body-item">
-                                    {order.course.name}
-                                </td>
-                                <td className="order__table-body-item">
-                                    {order.price}
-                                </td>
-                                <td className="order__table-body-item">
-                                    <Link className="btn btn-primary" to={`${order._id}`}>
-                                        نمایش
-                                    </Link>
-                                </td>
-                            </tr>
-                        ))}
+                        {orders.length ?
+                            (
+                                <>
+                                    {orders.map((order, index) => (
+                                        <tr className="order__table-body-list" key={order._id}>
+                                            <td className="order__table-body-item">
+                                                <span href="#" className="order__table-body-link">
+                                                    {index + 1}
+                                                </span>
+                                            </td>
+                                            <td className="order__table-body-item">{order.createdAt.slice(0, 10)}</td>
+                                            <td className="order__table-body-item">تکمیل شده</td>
+                                            <td className="order__table-body-item">
+                                                {order.course.name}
+                                            </td>
+                                            <td className="order__table-body-item">
+                                                {order.price}
+                                            </td>
+                                            <td className="order__table-body-item">
+                                                <Link className="btn btn-primary" to={`${order._id}`}>
+                                                    نمایش
+                                                </Link>
+                                            </td>
+                                        </tr>
+                                    ))}
+
+                                </>
+                            )
+                            :
+                            (
+                                <span className='text-warning'>هیچ دوره ای ثبت نام نکرده اید</span>
+                            )
+                    }
                     </tbody>
                 </table>
             </div>

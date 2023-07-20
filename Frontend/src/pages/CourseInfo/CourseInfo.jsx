@@ -11,7 +11,7 @@ import CommentsTextArea from '../../components/CommentsTextArea/CommentsTextArea
 import Accordion from 'react-bootstrap/Accordion';
 
 // -------------SPA
-import { Link, useParams } from 'react-router-dom';
+import { Link, Navigate, useNavigate, useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 
 // ------------SWAL
@@ -32,6 +32,7 @@ const CourseInfo = () => {
   const [relatedCourses, setRelatedCourses] = useState([])
 
   const { courseName } = useParams()
+  const navigate = useNavigate()
 
   useEffect(() => {
     getCourseDetails()
@@ -51,7 +52,6 @@ const CourseInfo = () => {
     })
       .then(res => res.json())
       .then(courseInfo => {
-        console.log(courseInfo);
         setComments(courseInfo.comments)
         setSessions(courseInfo.sessions)
         setCourseDetails(courseInfo)
@@ -109,13 +109,13 @@ const CourseInfo = () => {
               price: course.price,
             }),
           }).then((res) => {
-            console.log(res);
             if (res.ok) {
               swal({
                 title: "ثبت نام با موفقیت انجام شد",
                 icon: "success",
                 buttons: "اوکی",
               }).then(() => {
+                navigate(`/my-account/buyed`)
                 getCourseDetails();
               });
             }
@@ -129,6 +129,7 @@ const CourseInfo = () => {
         buttons: ["نه", "آره"],
       }).then((result) => {
         if (result) {
+          console.log(result);
           swal({
             title: "در صورت داشتن کد تخفیف وارد کنید:",
             content: "input",
@@ -146,14 +147,13 @@ const CourseInfo = () => {
                   price: course.price,
                 }),
               }).then((res) => {
-                console.log(res);
                 if (res.ok) {
                   swal({
                     title: "ثبت نام با موفقیت انجام شد",
                     icon: "success",
                     buttons: "اوکی",
                   }).then(() => {
-                    getCourseDetails();
+                    navigate(`/my-account/buyed`)
                   });
                 }
               });
@@ -167,11 +167,9 @@ const CourseInfo = () => {
                 },
                 body: JSON.stringify({
                   course: course._id,
-                }),
-              })
-                .then((res) => {
-                  console.log(res);
-
+                })
+              }).then((res) => {
+                console.log(res);
                   if (res.status == 404) {
                     swal({
                       title: "کد تخفیف معتبر نیست",
@@ -203,15 +201,18 @@ const CourseInfo = () => {
                       }),
                     }
                   ).then((res) => {
-                    console.log(res);
                     if (res.ok) {
                       swal({
                         title: "ثبت نام با موفقیت انجام شد",
                         icon: "success",
                         buttons: "اوکی",
                       }).then(() => {
-                        getCourseDetails();
-                      });
+                        console.log('blue');
+                       navigate(`/my-account/buyed`)
+                        
+                      })
+                    }else{
+                      alert('redddddddd')
                     }
                   });
                 });
@@ -228,6 +229,8 @@ const CourseInfo = () => {
       .then(res => res.json())
       .then(data => setRelatedCourses(data))
   }
+
+
   return (
     <>
       <Topbar />
@@ -323,14 +326,14 @@ const CourseInfo = () => {
                   
                   {/* <!-- Start ISessions --> */}
                   <div className="introduction__topic">
-                    <Accordion>
+                    <Accordion defaultActiveKey="0" >
 
-                      <Accordion.Item className="accordion" defaultActiveKey="0">
+                      <Accordion.Item className="accordion" eventKey='0'>
                         <Accordion.Header>فصل اول</Accordion.Header>
                         {
                           sessions.map((session, index) => (
                             <Accordion.Body key={session._id} className='introduction__accordion-body'>
-                              {(session.free === 1 || courseDetails.isUserRegisteredToThisCourse) ?
+                              {session.free === 1 || courseDetails.isUserRegisteredToThisCourse ?
                                 (
                                   <>
                                     <div className="introduction__accordion-right">
@@ -370,53 +373,6 @@ const CourseInfo = () => {
                           ))
                         }
                       </Accordion.Item>
-                      <Accordion.Item className="accordion" eventKey="0">
-                        <Accordion.Header>فصل دوم</Accordion.Header>
-                        {
-                          sessions.map((session, index) => (
-                            <Accordion.Body key={session._id} className='introduction__accordion-body'>
-                              {(session.free === 1 || courseDetails.isUserRegisteredToThisCourse) ?
-                                (
-                                  <>
-                                    <div className="introduction__accordion-right">
-                                      <span className="introduction__accordion-count">{index + 1}</span>
-                                      <Link to={`/${courseName}/${session._id}`} className="introduction__accordion-link">
-                                        {session.title}
-                                      </Link>
-                                    </div>
-                                    <div className="introduction__accordion-left">
-                                      <span className="introduction__accordion-time">
-                                        {session.time}:00
-                                      </span>
-                                    </div>
-
-                                  </>
-                                )
-                                :
-                                (
-                                  <>
-                                    <div className="introduction__accordion-right">
-                                      <span className="introduction__accordion-count">{index + 1}</span>
-                                      <span className="introduction__accordion-link">
-                                        {session.title}
-                                      </span>
-                                    </div>
-                                    <div className="introduction__accordion-left">
-                                      <i className='fa fa-lock lock-icon-session'></i>
-                                      <span className="introduction__accordion-time">
-                                        {session.time}:00
-                                      </span>
-                                    </div>
-
-                                  </>
-                                )
-                              }
-                            </Accordion.Body>
-                          ))
-                        }
-                      </Accordion.Item>
-
-
                     </Accordion>
                   </div>
 

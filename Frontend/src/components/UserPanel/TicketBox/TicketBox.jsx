@@ -5,7 +5,6 @@ import './TicketBox.scss';
 
 const TicketBox = (props) => {
 
-    console.log(props);
     // --------show ticket body
     const showTicketBody = (ticketBody) => {
         swal({

@@ -78,7 +78,6 @@ const Offs = () => {
             },
             body: JSON.stringify(newOffInfos),
         }).then((res) => {
-            console.log(res);
             if (res.ok) {
                 swal({
                     title: "کد تخفیف با موفقیت ایجاد شد",

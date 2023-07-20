@@ -1,7 +1,7 @@
 @import '../../../../styles/sass/variables.scss';
 /* ============================== Content Main Style ============================== */
 .ticket {
-    border-right: 2px solid #2bce56;
+    border-right: 2px solid$green2;
     padding-right: 3rem;
   }
   .ticket-header {
@@ -18,7 +18,7 @@
   .ticket-header__link {
     display: block;
     margin: 2.5rem 0 1rem 0;
-    background-color: #2bce56;
+    background-color:$green2;
     color: $white1;
     font-size: 1.3rem;
     border-radius: 3px;
@@ -41,7 +41,7 @@
     justify-content: center;
     width: 5rem;
     height: 5rem;
-    background-color: #2bce56;
+    background-color:$green2;
     border-radius: 50%;
   }
   .ticket-top__icon {
@@ -59,7 +59,7 @@
   .ticket-top__text {
     display: flex;
     font-size: 1.4rem;
-    color: #073d15;
+    color: #92e6a8;
     font-weight: 600;
   }
   .ticket-send__header {
@@ -79,19 +79,19 @@
     position: absolute;
     width: 0.2rem;
     height: 90%;
-    background-color: #7d7e7f;
+    background-color: $dark3;
     right: 3.7rem;
   }
   .ticket-send__header-icon {
     font-size: 2rem;
-    color: #7d7e7f;
+    color: $dark3;
   }
   .ticket-send__header-text {
-    color: #7d7e7f;
+    color: $dark3;
   }
   .ticket-send__header-icon-left {
     font-size: 2rem;
-    color: #7d7e7f;
+    color: $dark3;
   }
   .ticket-send__title {
     display: flex;
@@ -106,13 +106,13 @@
     position: absolute;
     width: 100%;
     height: 2px;
-    background-color: #2bce56;
+    background-color:$green2;
     z-index: -1;
   }
   .ticket-send__title-text {
     display: flex;
     align-items: center;
-    background-color: #2bce56;
+    background-color:$green2;
     color: $white1;
     border-radius: 20px;
     font-size: 1.4rem;
@@ -122,8 +122,7 @@
     margin-left: 0.3rem;
   }
   .ticket-send__answer-box {
-    background-color: rgba(43, 206, 86, 0.94);
-    color: $white1;
+    background-color: rgba(98, 243, 122, 0.671);
     font-size: 1.5rem;
     width: 55rem;
     border-radius: 2rem 2rem 0 2rem;
@@ -132,7 +131,7 @@
     text-align: justify;
 
     p{
-      color: #fcfdff;
+      color: $dark3;
     }
   }
   .ticket-send__answer-span {
@@ -147,7 +146,7 @@
     align-items: flex-end;
   }
   .ticket-send__answer-user-box {
-    background-color: rgba(18, 164, 237, 94);
+    background-color: rgb(63, 79, 204);
     color: $white1;
     font-size: 1.5rem;
     width: 55rem;

@@ -19,7 +19,6 @@ const Comments = () => {
             .then((res) => res.json())
             .then((allComments) => {
                 setComments(allComments)
-                console.log(allComments);
             });
     }
 
@@ -145,7 +144,6 @@ const Comments = () => {
                         Authorization: `Bearer ${JSON.parse(localStorage.getItem("user")).token}`,
                     },
                 }).then((res) => {
-                    console.log(res);
                     if (res.ok) {
                         swal({
                             title: "کامنت مورد نظر با موفقیت تایید شد",
@@ -175,7 +173,6 @@ const Comments = () => {
                     },
                     body: JSON.stringify({ body: 'd' })
                 }).then((res) => {
-                    console.log(res);
                     if (res.ok) {
                         swal({
                             title: "کامنت مورد نظر با موفقیت رد شد",

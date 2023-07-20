@@ -168,14 +168,12 @@ const Users = () => {
             customClass: 'swal-wide',
             inputOptions: inputOptions,
             inputValidator: (value) => {
-                console.log(value , userID);
                 if (value) {
                     const localStorageData = JSON.parse(localStorage.getItem('user'))
                     const newUserRoleInfos = {
                         id:userID,
                         role:value
                     }
-                    console.log(newUserRoleInfos);
                     fetch('http://localhost:4000/v1/users/role', {
                         method: 'PUT',
                         headers: {

@@ -2,3 +2,42 @@ body{
     /* background: rgb(6, 7, 51) !important; */
     background: linear-gradient(180deg, rgba(0,0,0,1) 0%, rgba(6,7,51,1) 98%);
 }
+.swal-modal{
+    background:#003417 !important;
+    border: 1px solid rgb(73, 194, 255);
+    
+}
+.swal-title{
+    color: rgb(255, 247, 247) !important;
+    font-size: 2rem;
+    font-weight: 200;
+}
+.swal-button--confirm{
+background: #05cb01 !important;
+color: #fff !important;
+font-size:1.5rem;
+}
+.swal-button--cancel{
+    background: rgb(255, 19, 247) !important;
+    color: #fff !important;
+    font-size:1.5rem;
+    
+}
+.swal-button--confirm:hover{
+    background: #fff !important;
+    color: #05cb01 !important;
+    }
+    .swal-button--cancel:hover{
+        background: rgb(255, 252, 252) !important;
+        color: #f10000 !important;
+        
+    }
+.swal-content__input{
+    color: rgb(88, 255, 130) !important;
+    border: 1px solid rgb(94, 255, 14) !important;
+    background: black !important;
+    font-size: 2rem ;
+}
+.swal-icon{
+    background: red !important;
+}

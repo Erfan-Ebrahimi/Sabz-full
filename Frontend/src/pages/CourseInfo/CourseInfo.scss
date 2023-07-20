@@ -98,7 +98,6 @@
 }
 
 .accordion-button::after {
-    content: " ";
     position: absolute;
     left: 1.5rem;
     width: 2rem;
@@ -121,9 +120,7 @@
 }
 
 .introduction__accordion-count {
-    // width: 3.5rem;
-    // height: 3.5rem;
-    // border: 1px solid $white1;
+    
     color: $white1;
     display: flex;
     align-items: center;

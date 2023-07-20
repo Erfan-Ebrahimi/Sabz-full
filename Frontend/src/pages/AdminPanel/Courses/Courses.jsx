@@ -64,7 +64,6 @@ const Courses = () => {
             .then(res => res.json())
             .then((allCourses) => {
                 setCourses(allCourses)
-                console.log(allCourses);
             })
     }
 

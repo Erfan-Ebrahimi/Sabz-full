@@ -25,7 +25,6 @@ const ArticleInfo = () => {
     fetch(`http://localhost:4000/v1/articles/${articleName}`)
       .then(res => res.json())
       .then(articleInfo => {
-        console.log(articleInfo);
         setArticleDetails(articleInfo)
         setArticleCategoryDetails(articleInfo.categoryID)
         setArticleCreatorDetails(articleInfo.creator)

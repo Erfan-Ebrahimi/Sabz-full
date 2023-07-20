@@ -17,5 +17,9 @@
     padding: 1rem 0;
     font-weight: bold;
     font-size: 1.4rem;
+
+    &.active{
+      color: $green2;
+    }
   }
   /* ============================== Content Sidebar Style ============================== */

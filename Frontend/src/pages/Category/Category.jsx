@@ -93,13 +93,6 @@ const Category = () => {
                         <div className="courses-top-bar">
 
                           <div className="courses-top-bar__right">
-                            <div className="courses-top-bar__row-btn courses-top-bar__icon--active">
-                              <i className="fas fa-border-all courses-top-bar__icon"></i>
-                            </div>
-                            <div className="courses-top-bar__column-btn">
-                              <i className="fas fa-align-left courses-top-bar__icon"></i>
-                            </div>
-
                             <div className="courses-top-bar__selection">
                               <span className="courses-top-bar__selection-title">
                                 {statusTitle}

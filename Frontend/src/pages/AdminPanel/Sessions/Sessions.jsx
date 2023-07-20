@@ -53,7 +53,6 @@ const Sessions = () => {
             .then((res) => res.json())
             .then((allSessions) => {
                 setSessions(allSessions)
-                console.log(allSessions);
 
             });
     }

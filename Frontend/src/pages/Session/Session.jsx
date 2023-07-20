@@ -1,6 +1,7 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
-import ReactPlayer from 'react-player'
+import ReactPlayer from 'react-player';
+import AuthContext from "../../context/AuthContext";
 
 import "./Session.scss";
 
@@ -13,9 +14,14 @@ const Session = () => {
     const { courseName, sessionID } = useParams();
     const [session, setSession] = useState({});
     const [sessions, setSessions] = useState([]);
+    const [courseDetails, setCourseDetails] = useState({}) //baghiy data be joz comments & sessions dar in state save mishavad
+
+
+    const authContext = useContext(AuthContext)
 
     useEffect(() => {
         getOneSession()
+        getCourseDetails()
     }, [sessionID]);
 
     // -------get one session
@@ -30,6 +36,24 @@ const Session = () => {
                 setSessions(data.sessions)
             })
     }
+
+    function getCourseDetails() {
+        // aval check mikonim k tokeni hast ya n k if fetch ham anjam shod baz karbari k token dare betone dastresi dashte bashe
+        // film jalase 349 dide shavad
+        const localStorageData = JSON.parse(localStorage.getItem('user'))
+        fetch(`http://localhost:4000/v1/courses/${courseName}`, {
+            method: 'GET',
+            headers: {
+                Authorization: `Bearer ${localStorageData === null ? null : localStorageData.token}` // yani shakhs hanoz login nakarde
+            }
+        })
+            .then(res => res.json())
+            .then(courseInfo => {
+                setCourseDetails(courseInfo)
+                console.log(courseInfo);
+            })
+    }
+
 
     return (
         <>
@@ -47,25 +71,38 @@ const Session = () => {
                         <div className="sidebar-topics">
                             <div className="sidebar-topics__item">
                                 <ul className="sidebar-topics__list">
+
                                     {
-                                        sessions.map(session => (
-                                            <Link to={`/${courseName}/${session._id}`} key={session._id}>
-                                                <li className="sidebar-topics__list-item">
-                                                    <div className="sidebar-topics__list-right">
-                                                        <i className="sidebar-topics__list-item-icon fa fa-play-circle"></i>
-                                                        <span className="sidebar-topics__list-item-link" href="#">
-                                                            {session.title}
-                                                        </span>
-                                                    </div>
-                                                    <div className="sidebar-topics__list-left">
-                                                        <span className="sidebar-topics__list-item-time">
-                                                            {session.time}:00
-                                                        </span>
-                                                    </div>
-                                                </li>
-                                            </Link>
-                                        ))
+                                        courseDetails.isUserRegisteredToThisCourse ?
+                                            (
+                                                <>
+                                                    {sessions.map(session => (
+                                                        <Link to={`/${courseName}/${session._id}`} key={session._id}>
+                                                            <li className="sidebar-topics__list-item">
+                                                                <div className="sidebar-topics__list-right">
+                                                                    <i className="sidebar-topics__list-item-icon fa fa-play-circle"></i>
+                                                                    <span className="sidebar-topics__list-item-link" href="#">
+                                                                        {session.title}
+                                                                    </span>
+                                                                </div>
+                                                                <div className="sidebar-topics__list-left">
+                                                                    <span className="sidebar-topics__list-item-time">
+                                                                        {session.time}:00
+                                                                    </span>
+                                                                </div>
+                                                            </li>
+                                                        </Link>
+                                                    ))}
+
+                                                </>
+
+                                            )
+                                            :
+                                            (
+                                                <p className="text-danger mx-4">برای دسترسی به لیست جلسات در دوره ثبت نام کنید :(</p>
+                                            )
                                     }
+
 
                                 </ul>
                                 <div className="home-course">

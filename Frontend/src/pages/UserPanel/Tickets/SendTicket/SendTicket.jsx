@@ -65,7 +65,6 @@ const SendTicket = () => {
             .then((res) => res.json())
             .then((data) => {
                 setUserCourses(data);
-                console.log(data);
             });
     }
 

@@ -20,7 +20,6 @@ const Sidebar = () => {
             icon: "warning",
             buttons: ["نه", "آره"],
         }).then((result) => {
-            console.log(result);
             if (result) {
                 swal({
                     title: "با موفقیت خارج شدید",
@@ -40,7 +39,7 @@ const Sidebar = () => {
             <div className="sidebar">
                 <ul className="sidebar__list">
                     <li className="sidebar__item">
-                        <NavLink className="sidebar__link" to="/my-account">
+                        <NavLink className="sidebar__link" to="/my-account" end>
                             پیشخوان
                         </NavLink>
                     </li>

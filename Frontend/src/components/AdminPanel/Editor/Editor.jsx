@@ -12,7 +12,6 @@ const Editor = ({value , setValue}) => {
                 onChange={(event, editor) => {
                     const data = editor.getData();
                     setValue(data)
-                    console.log(data);
                 }}
             />
         </div>

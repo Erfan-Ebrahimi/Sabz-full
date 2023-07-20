@@ -23,7 +23,6 @@ const Tickets = () => {
         })
             .then((res) => res.json())
             .then((data) => {
-                console.log(data);
                 setTickets(data);
             });
     };
