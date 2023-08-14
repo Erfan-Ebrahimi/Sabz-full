@@ -17,8 +17,6 @@
   }
   .main-header__logo{
     &:hover{
-      // filter: contrast(2);
-      // filter: grayscale(2);
       filter:grayscale(2);
     }
   }
@@ -142,6 +140,7 @@
     color: $green2;
     height: 4.3rem;
     font-size: 1.4rem;
+    font-weight: 700;
   }
   
   .main-header__profile:hover {

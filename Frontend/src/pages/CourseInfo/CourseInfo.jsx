@@ -12,10 +12,11 @@ import Accordion from 'react-bootstrap/Accordion';
 
 // -------------SPA
 import { Link, Navigate, useNavigate, useParams } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 
 // ------------SWAL
 import swal from 'sweetalert';
+import AuthContext from '../../context/AuthContext';
 
 const CourseInfo = () => {
 
@@ -28,11 +29,12 @@ const CourseInfo = () => {
   const [updatedAt, setUpdatedAt] = useState('')
   const [courseTeacher, setCourseTeacher] = useState({})
   const [courseCategory, setCourseCategory] = useState([])//why array ???????????? bepors 
-  const [categoryHref, setCategoryHref] = useState('')     
+  const [categoryHref, setCategoryHref] = useState('')
   const [relatedCourses, setRelatedCourses] = useState([])
 
   const { courseName } = useParams()
   const navigate = useNavigate()
+  const authContext = useContext(AuthContext)
 
   useEffect(() => {
     getCourseDetails()
@@ -129,13 +131,15 @@ const CourseInfo = () => {
         buttons: ["نه", "آره"],
       }).then((result) => {
         if (result) {
-          console.log(result);
           swal({
             title: "در صورت داشتن کد تخفیف وارد کنید:",
             content: "input",
             buttons: ["ثبت نام بدون کد تخفیف", "اعمال کد تخفیف"],
           }).then((code) => {
             if (code === null) {
+              console.log(course);
+              let newPrice = ((course.price * (course.discount - 100)) / 100) * -1
+              console.log(newPrice);
               fetch(`http://localhost:4000/v1/courses/${course._id}/register`, {
                 method: "POST",
                 headers: {
@@ -144,7 +148,7 @@ const CourseInfo = () => {
                   "Content-Type": "application/json",
                 },
                 body: JSON.stringify({
-                  price: course.price,
+                  price: newPrice,
                 }),
               }).then((res) => {
                 if (res.ok) {
@@ -170,22 +174,22 @@ const CourseInfo = () => {
                 })
               }).then((res) => {
                 console.log(res);
-                  if (res.status == 404) {
-                    swal({
-                      title: "کد تخفیف معتبر نیست",
-                      icon: "error",
-                      buttons: "ای بابا",
-                    });
-                  } else if (res.status == 409) {
-                    swal({
-                      title: "کد تخفیف قبلا استفاده شده :/",
-                      icon: "error",
-                      buttons: "ای بابا",
-                    });
-                  } else {
-                    return res.json();
-                  }
-                })
+                if (res.status == 404) {
+                  swal({
+                    title: "کد تخفیف معتبر نیست",
+                    icon: "error",
+                    buttons: "ای بابا",
+                  });
+                } else if (res.status == 409) {
+                  swal({
+                    title: "کد تخفیف قبلا استفاده شده :/",
+                    icon: "error",
+                    buttons: "ای بابا",
+                  });
+                } else {
+                  return res.json();
+                }
+              })
                 .then((code) => {
                   fetch(
                     `http://localhost:4000/v1/courses/${course._id}/register`,
@@ -208,10 +212,10 @@ const CourseInfo = () => {
                         buttons: "اوکی",
                       }).then(() => {
                         console.log('blue');
-                       navigate(`/my-account/buyed`)
-                        
+                        navigate(`/my-account/buyed`)
+
                       })
-                    }else{
+                    } else {
                       alert('redddddddd')
                     }
                   });
@@ -323,7 +327,7 @@ const CourseInfo = () => {
 
                 {/* <!-- Start Introduction --> */}
                 <div className="introduction">
-                  
+
                   {/* <!-- Start ISessions --> */}
                   <div className="introduction__topic">
                     <Accordion defaultActiveKey="0" >
@@ -333,7 +337,7 @@ const CourseInfo = () => {
                         {
                           sessions.map((session, index) => (
                             <Accordion.Body key={session._id} className='introduction__accordion-body'>
-                              {session.free === 1 || courseDetails.isUserRegisteredToThisCourse ?
+                              {courseDetails.isUserRegisteredToThisCourse ?
                                 (
                                   <>
                                     <div className="introduction__accordion-right">
@@ -416,16 +420,30 @@ const CourseInfo = () => {
                         (
                           <button className="course-info__register-title btn--3" disabled>
                             <i className="fas fa-graduation-cap course-info__register-icon"></i>
-                             دانشجوی دوره هستید
+                            دانشجوی دوره هستید
                           </button>
 
                         )
                         :
                         (
-                          <button className="course-info__register-title btn--3" onClick={() => registerInCourse(courseDetails)}>
-                            <i className="fas fa-graduation-cap course-info__register-icon"></i>
-                            ثبت نام
-                          </button>
+                          authContext.isLoggedIn ?
+                            (
+                              <button className="course-info__register-title btn--3" onClick={() => registerInCourse(courseDetails)}>
+                                <i className="fas fa-graduation-cap course-info__register-icon"></i>
+                                ثبت نام
+                              </button>
+
+                            )
+                            :
+                            (
+                              <Link to='/register'>
+                                  <button className="course-info__register-title btn--3" >
+                                    <i className="fas fa-graduation-cap course-info__register-icon"></i>
+                                    ثبت نام
+                                  </button>
+
+                              </Link>
+                            )
                         )
                     }
                   </div>
@@ -459,10 +477,10 @@ const CourseInfo = () => {
                     </div>
                   </div>
                 </div>
-                
-                
+
+
                 {
-                  relatedCourses.length  ? (
+                  relatedCourses.length ? (
                     <div className="course-info">
                       <span className="course-info__courses-title">دوره های مرتبط</span>
                       <ul className="course-info__courses-list">
@@ -479,11 +497,11 @@ const CourseInfo = () => {
                       </ul>
                     </div>
 
-                  ) 
-                  :
-                  (
-                    <p className='alert alert-info'>دوره ی مرتبطی وجود ندارد</p>
                   )
+                    :
+                    (
+                      <p className='alert alert-info'>دوره ی مرتبطی وجود ندارد</p>
+                    )
                 }
               </div>
             </div>

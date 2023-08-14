@@ -7,6 +7,7 @@ import { useContext, useEffect, useState } from 'react';
 import AuthContext from '../../context/AuthContext';
 
 import { Tooltip } from 'react-tooltip'
+import swal from 'sweetalert';
 
 
 
@@ -21,6 +22,16 @@ const Navbar = () => {
       .then(res => res.json())
       .then(menus => setAllMenus(menus))
   }, [])
+
+  // -------search icon
+  const searchShow = () => {
+    swal({
+      title: 'این قسمت در حال توسعه می باشد',
+      buttons: 'OK',
+      icon: 'success'
+
+    })
+  }
 
   return (
     <div className="main-header">
@@ -61,12 +72,24 @@ const Navbar = () => {
           </div>
 
           <div className="main-header__left">
-            <a href="#" className="main-header__search-btn">
+            <a href="#" className="main-header__search-btn" onClick={searchShow}>
               <i className="fas fa-search main-header__search-icon"></i>
             </a>
-            <a href="#" className="main-header__cart-btn">
-              <i className="fas fa-shopping-cart main-header__cart-icon"></i>
-            </a>
+            {
+              authContext.isLoggedIn ?
+                (
+                  <Link to={`/my-account/orders`} className="main-header__cart-btn">
+                    <i className="fas fa-shopping-cart main-header__cart-icon"></i>
+                  </Link>
+
+                )
+                :
+                (
+                  <Link to={`/`} className="main-header__cart-btn">
+                    <i className="fas fa-shopping-cart main-header__cart-icon"></i>
+                  </Link>
+                )
+            }
             {
               authContext.isLoggedIn ?
                 (

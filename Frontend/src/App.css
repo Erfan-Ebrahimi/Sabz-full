@@ -2,6 +2,20 @@ body{
     /* background: rgb(6, 7, 51) !important; */
     background: linear-gradient(180deg, rgba(0,0,0,1) 0%, rgba(6,7,51,1) 98%);
 }
+
+ 
+html::-webkit-scrollbar{
+    width: 6px;
+  }
+  html::-webkit-scrollbar-track{
+    background:#144041 !important;
+  }
+  html::-webkit-scrollbar-thumb{
+    background:#fff090 !important;
+  }
+  html{
+    overflow-x: hidden !important;
+  }
 .swal-modal{
     background:#003417 !important;
     border: 1px solid rgb(73, 194, 255);
@@ -39,5 +53,15 @@ font-size:1.5rem;
     font-size: 2rem ;
 }
 .swal-icon{
-    background: red !important;
+    background: rgb(1, 0, 0) !important;
+}
+.swal-icon::after{
+    background:none !important;
+}
+.swal-icon::before{
+    background:none !important;
+}
+.swal-icon--success__hide-corners{
+    background:none !important;
+    
 }

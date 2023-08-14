@@ -33,7 +33,7 @@ const CommentsTextArea = ({ comments, submitComment }) => { //az CourseInfo.jsx 
       </div>
       <div className="comments__content">
         {comments.length === 0 ? (
-          <div className="alert alert-warning link-11">
+          <div className="bg-warning link-11">
             هنوز کامنتی برای این دوره ثبت نشده
           </div>
         ) : (

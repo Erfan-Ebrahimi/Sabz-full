@@ -63,7 +63,7 @@ const CourseBox = (props) => {
                       {props.price.toLocaleString()}
                       </span>
                     <span className="course-box__price">
-                      {((props.price * (props.discount - 100)) / 100).toLocaleString()}
+                      {(((props.price * (props.discount - 100)) / 100)* -1).toLocaleString()}
                     </span>
                   </div>
                 )

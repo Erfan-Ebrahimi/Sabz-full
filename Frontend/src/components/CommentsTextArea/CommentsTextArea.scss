@@ -148,7 +148,7 @@
       border-image-slice: 1;
       border-width: 1px;
       border-image-source: radial-gradient(circle, rgba(33,237,0,1) 13%, rgba(0,128,255,1) 100%);
-      background: none;
+      background: $blue5;
       outline: none !important;
       width: 200px;
     }
@@ -164,14 +164,14 @@
     margin-bottom: 0.5rem;
   }
   .comments__score-input-respond {
-    background: rgb(174, 226, 193);
+    background: $blue5;
     font-size: 2rem;
     width: 100%;
     height: 20rem;
     outline: none;
     border: 1px solid $green2;
     border-radius: 0.5rem;
-    color: $dark1;
+    color: $dark2;
     padding-right: 1rem;
   }
   .comments__respond-btn {
@@ -185,7 +185,7 @@
   }
   .link-11{
     font-size: 1.5rem;
-    color: $green1;
+    color: $dark1;
 
   }
   .alert-11{

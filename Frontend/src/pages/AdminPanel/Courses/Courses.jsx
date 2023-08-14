@@ -331,7 +331,7 @@ const Courses = () => {
                 </div>
             </div>
             <DataTable title="دوره ها">
-                <table className="table">
+                <table className="table red1">
                     <thead>
                         <tr>
                             <th>ردیف</th>
